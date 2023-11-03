@@ -1,2 +1,2 @@
-# ISDICODERSJack
-Ejercicios ISDICODERS
+# ISDICODERS Jack
+Temas y ejercicios ISDICODERS
