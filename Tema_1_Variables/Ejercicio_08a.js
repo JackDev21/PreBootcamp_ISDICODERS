@@ -15,9 +15,10 @@ let encontrado = false;
 
 for ( let info = 0; info < data.length; info ++ ) {
     if (data [info].name === "Jack" && data [info].age === 36){
-        console.log(
-            `We found your data! Your name is ${data[info].name} and your age is ${data[info].age}`
-            )
+        resultado = `We found your data! Your name is ${data[info].name} and your age is ${data[info].age}`;
+        console.log(resultado)
+            
+            // `` estas comillas formatean los datos seguido de ${data[info].name} como ejemplo.
         encontrado = true
     }
 }
