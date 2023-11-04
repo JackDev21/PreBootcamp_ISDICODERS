@@ -15,7 +15,9 @@ let encontrado = false;
 
 for ( let info = 0; info < data.length; info ++ ) {
     if (data [info].name === "Jack" && data [info].age === 36){
-        console.log("We found your data! Your name is Jack and your age is 36")
+        console.log(
+            `We found your data! Your name is ${data[info].name} and your age is ${data[info].age}`
+            )
         encontrado = true
     }
 }
