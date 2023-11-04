@@ -3,7 +3,7 @@
 const nombre = ["J","A","C","K","C","A","N","T","O"]
 const caracter = "/"
 
-const nombreSeparado = nombre.join(caracter)
+const nombreSeparado = nombre.join(caracter) // Utilizamos join para añadir el caracter "/" 
 console.log(nombreSeparado)
 
 
