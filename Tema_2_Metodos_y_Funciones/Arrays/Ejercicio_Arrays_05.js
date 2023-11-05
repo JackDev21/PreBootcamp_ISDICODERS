@@ -3,4 +3,4 @@
 const fullname = "Jose A. Cantó"
 
 
-console.log (`Mis iniciales son ${fullname[0]} y ${fullname[8]}`)
+console.log (`Mis iniciales son ${fullname[0]}.${fullname[5]}.${fullname[8]}.`)
