@@ -1,8 +1,7 @@
-// Ahora muestra cada letra de tu nombre con su posición (necesitarás un bucle for)
+// Ahora solo selecciona tu apellido y muestra cada letra separada por "|"
 
 const nombre = ["J","A","C","K","C","A","N","T","O"]
+const caracter = "|"
 
-for (let pos = 0; pos < 4; pos++)
-    console.log (`Nº${pos} ${nombre[pos]}`)
-
-
+const apellido = nombre.slice(4,nombre.length).join("|")
+console.log(apellido)
