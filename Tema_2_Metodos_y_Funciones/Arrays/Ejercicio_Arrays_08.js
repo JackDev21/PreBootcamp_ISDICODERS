@@ -1,1 +1,0 @@
-// Crea ahora, una funcion para eliminar la variable City y asegura los cambios.

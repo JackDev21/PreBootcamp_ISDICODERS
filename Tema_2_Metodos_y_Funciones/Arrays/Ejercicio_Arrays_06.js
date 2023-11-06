@@ -7,9 +7,6 @@ const nombre = array.slice(0,1).join("").toUpperCase() + array.slice(1,4).join("
 const apellido = array.slice(4,5).join("").toUpperCase() + array.slice(5,array.length).join("").toLowerCase()
 array.unshift (30)
 
-console.log(array) // Se añade al array la edad
-
-
 
 console.log(`My name is ${nombre} ${apellido} and I'm ${array[0]} yers old.`)
 
