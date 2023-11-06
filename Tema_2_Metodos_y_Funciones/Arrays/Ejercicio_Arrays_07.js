@@ -4,8 +4,8 @@
 const array = ["Jack","Canto",36]
 
 const addCity = (city) => {
-    array.push(city);
-    console.log(`City added to array! : ${array.join(", ")}`);
+    array.push(city); // Utilizamos push para agregar elemento al final de un array
+    console.log(`City added to array! : ${array.join(", ")}`); // Añadimos join para 
 };
 
 console.log(addCity("Alicante"));
