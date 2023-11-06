@@ -2,7 +2,7 @@
 
 const array = ["J","A","C","K","C","A","N","T","O"]
 
-array.shift();
+array.shift(); // shift para eliminar la primera posicion
 array.shift();
 array.shift();
 array.shift();
