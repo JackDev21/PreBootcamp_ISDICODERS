@@ -3,12 +3,11 @@
 
 const array = ["J","A","C","K","C","A","N","T","O"]
 
-const nombre = array.slice(0,1).join("").toUpperCase() + array.slice(1,4).join("").toLowerCase() // Utilizamos .slice() para extraer los elementos del array que quieres, y.join() para unificar esos elementos.
-const apellido = array.slice(4,5).join("").toUpperCase() + array.slice(5,array.length).join("").toLowerCase()
-array.unshift (30)
+array.unshift("Canto")
+array.unshift("Jack")
+array.splice(3, 0, 36);
 
-
-console.log(`My name is ${nombre} ${apellido} and I'm ${array[0]} yers old.`)
+console.log(`My name is ${array[0]} and I'm ${array[3]} years old.`)
 
 
 /*
