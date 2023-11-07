@@ -1,18 +1,8 @@
-const name = ["J", "O", "N", "S", "N", "O", "W"];
+const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const multiplicatorNumber = 3;
 
-const addCity = (city) => {
-  name.push(city);
-  console.log(`City added to array! => ${name.join(", ")}`);
-};
+const multplicationNumber = numbers.map(
+  (number) => number * multiplicatorNumber
+);
 
-console.log(addCity("New York"));
-// output: City added to array! => Jon, Snow, 40, New York
-
-
-const deleteCity = () => {
-  name.pop();
-  console.log("City deleted! => " + name.join(", "));
-};
-
-console.log(addCity("New York")); // output: City added to array! => Jon, Snow, 40, New York
-console.log(deleteCity()); // output: City deleted! => Jon, Snow, 40
+console.log(multplicationNumber);
