@@ -1,8 +1,13 @@
-const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const multiplicatorNumber = 3;
+const character = {  
+  name: "Jon", // Definimos la propiedad "name" con el valor "Jon"
+  family: "Snow", // Definimos la propiedad "family" con el valor "Snow"
+  id: 1, // Definimos la propiedad "id" con el valor 1
+};
 
-const multplicationNumber = numbers.map(
-  (number) => number * multiplicatorNumber
-);
+const listPropertyValues = (character) => {
+  for (let characterData in character) {
+    console.log(character[characterData]);
+  }
+};
 
-console.log(multplicationNumber);
+console.log(listPropertyValues(character)); // output: Jon, Snow, 01
