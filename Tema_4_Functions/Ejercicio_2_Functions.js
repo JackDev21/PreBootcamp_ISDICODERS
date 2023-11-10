@@ -2,8 +2,8 @@
 
 // Este código define una función llamada saludo que toma un parámetro llamado name.
 const saludo = (name) => {
-    // La función devuelve una cadena de texto que incluye el valor de name.
-    return `Mi nombre es ${name}`
+  // La función devuelve una cadena de texto que incluye el valor de name.
+    return `Mi nombre es ${name}`
 }
 
 // Se define una variable nombre y se le asigna el valor "Jack".
