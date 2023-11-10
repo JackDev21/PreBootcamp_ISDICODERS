@@ -1,5 +1,5 @@
 const getMyName = (myName) => {
-  return(myName); //output: "hello myName"
+  console.log(myName); //output: "hello myName"
 };
 
 const name = "Jon";
