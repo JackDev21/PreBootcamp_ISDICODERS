@@ -11,8 +11,9 @@ const getRandomNumber = () => {
 
 const getmyName = (myName) => {
     return myName; // Retornamos el nombre que se pasa como argumento
-}
 
+}
+const name = "Jack";
 
 
 const calculateMyAge = (añoNacimiento) =>{
@@ -28,6 +29,5 @@ const datosPersonal = (datosNombre) => {
     return `${name} ${age}`; // Retornamos una cadena de texto que combina el nombre y la edad
 }
 
-const name = "Jack"; // Declaramos la variable name y le asignamos el valor "Jack"
 
 console.log(datosPersonal(name)); // Llamamos a la función datosPersonal con el nombre como argumento y mostramos el resultado en la consola
