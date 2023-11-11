@@ -27,8 +27,10 @@ const mostrarParejas = (numeros, multiplicadorNumero, numerosPares) => {
         // posicionNumero es el índice de inicio de la subsección.
         // posicionNumero + 2 es el índice de fin de la subsección, pero sin incluir el elemento en ese índice
 
-        const numeroPar = numeros.slice(posicionNumero, posicionNumero + 2).map((number) => number * multiplicadorNumero).join(" - "); 
-        console.log(`${posicionNumero}ª pareja ${numeroPar}`); 
+        const numeroPar = numeros.slice(posicionNumero, posicionNumero + 2).map((number) => number * multiplicadorNumero).join(" y "); 
+        //metodo .map() se utiliza para  crear un nuevo array con los resultados de aplicar una función a cada elemento de un array, en este caso, multiplicar cada elemento del array por 2.
+        // metodo .join() lo utilizamos para unir todos los elementos de un array en una cadena de texto.
+        console.log(`${posicionNumero + 1}º pareja ${numeroPar}`); 
     }
 };
 
