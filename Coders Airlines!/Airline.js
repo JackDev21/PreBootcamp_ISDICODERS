@@ -39,5 +39,14 @@ const flights = [
     { id: 9, to: "Tel-Aviv", from: "Madrid", cost: 150, layover: false },
 ];
 
-const username = prompt("Por favor, introduce tu nombre de usuario:");
-console.log(`¡Bienvenido, ${username}!`);
+// Definimos funcion llamada interfazUsuario.
+const interfazUsuario = () => {
+    const usuarioNombre = prompt("Bienvenido a la aerolinea. Por favor introduce tu nombre de usuario: ") // Se le pide al usuario su nombre y se almacena en usuarioNombre
+    console.log(`Bienvenido ${usuarioNombre} estos son los vuelos disponibles: `); // Mostramos mensaje de bienvenida con los vuelos disponibles.
+
+    for (const flights of flights){ // se usa un bucle for para iterar sobre los vuelos del array flights.
+        const escalaVuelo = flights.layover ? "Realiza escala" : "No realiza escala";
+        console.log(`El vuelo con origen: ${flights.from}, y destino: ${flights.to} tiene un coste de ${flights.cost}€ y ${escalaVuelo}.`);
+    }
+}
+
