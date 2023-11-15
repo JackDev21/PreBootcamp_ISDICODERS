@@ -1,24 +1,41 @@
-// Ahora, muestra los resultados en forma piramidal:
+// Ahora, muestra los resultados en forma piramidal
+const fibonacciSeries = (fibonacciSequenceLength) => {
+  // Comenzamos la secuencia de Fibonacci con los primeros dos números
+    let resultado = [0, 1];
 
-function fibonacciSeries(fibonacciSequenceLength) { // Declaramos funcion fibonacciSeries con parametro fibonacciSequenceLength
-    const fibonacci = [{ // Declaramos array fibonacci con dos elementos ya definidos
-        posicion: 0, value: 0
-    }, {
-        posicion: 1, value: 1
-    }];
-
-    for (let i = 2; i < fibonacciSequenceLength; i++) { // Utilizamos bucle for para iterar mientras i sea menor que fibonacciSequenceLength, se inicia en 2 y se incrementa en 1 en cada iteración.
-        const siguienteNum = fibonacci[i - 1].value + fibonacci[i - 2].value; // Almacenamos en la variable siguienteNum la suma de los dos elementos anteriores. 
-        // Esto se hace porque la serie de Fibonacci comienza con 0 y 1, y cada término subsiguiente se calcula sumando los dos términos anteriores.
-        fibonacci.push({ posicion: i, value: siguienteNum });
+  // Luego generamos los demás números de la secuencia hasta la longitud deseada
+    for (let posicionFibonacci = 2; posicionFibonacci < fibonacciSequenceLength; posicionFibonacci++) {
+    // Cada número de la secuencia de Fibonacci es la suma de los dos números anteriores
+    const numero = resultado[posicionFibonacci - 1] + resultado[posicionFibonacci - 2];
+    resultado.push(numero);
     }
 
-    return fibonacci;
-}
-
-console.log(fibonacciSeries(10));
-
-const getPyramidalFibonacci = (number) => {
-    
-
+  // Devolvemos la secuencia completa de Fibonacci
+    return resultado;
 };
+const getPyramidalFibonacci = (numero) => {
+  // Primero generamos la secuencia de Fibonacci hasta el número dado
+    const fibonacciSequence = fibonacciSeries(numero); // Llamamos a la funcion
+
+    // Primero, la parte superior de la pirámide
+  // Luego, para cada número en la secuencia de Fibonacci...
+    for (let fila = 0; fila < numero; fila++) {
+    // Comenzamos una nueva línea de la pirámide
+    let line = "";
+
+    // Y agregamos a la línea cada número de la secuencia de Fibonacci hasta el número actual
+    for (let columna = 0; columna <= fila; columna++) {
+        line += fibonacciSequence[columna] + " ";
+        }
+    console.log(line)
+    }
+    // Luego, la parte inferior de la pirámide
+    for (let fila = numero - 2; fila >= 0; fila--) {
+        let line =""
+        for ( let columna = 0; columna <= fila; columna++) {
+            line = line + fibonacciSequence[columna] + " ";
+        }
+    console.log(line)
+    }
+};
+getPyramidalFibonacci(8);
