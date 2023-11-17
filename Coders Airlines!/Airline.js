@@ -39,31 +39,40 @@ const flights = [
     { id: 9, to: "Tel-Aviv", from: "Madrid", cost: 150, layover: false },
 ];
 
-// Definimos funcion llamada interfazUsuario.
+// Definimos la función llamada interfazUsuario como una arrow function
 const interfazUsuario = () => {
-    const usuarioNombre = prompt("Bienvenido a la aerolinea. Por favor introduce tu nombre de usuario: ") // Se le pide al usuario su nombre y se almacena en usuarioNombre
-    console.log(`Bienvenido ${usuarioNombre} estos son los vuelos disponibles: `); // Mostramos mensaje de bienvenida con los vuelos disponibles.
+    // Se le pide al usuario su nombre y se almacena en usuarioNombre
+    const usuarioNombre = prompt("Bienvenido a la aerolínea. Por favor, introduce tu nombre de usuario: ");
 
+    // Mostramos mensaje de bienvenida con los vuelos disponibles
+    console.log(`Bienvenido ${usuarioNombre}, estos son los vuelos disponibles: `);
+
+    // Inicializamos una variable para el costo total de los vuelos
     let totalCoste = 0;
 
-    for ( let i = 0; i < flights.length; i++ ) { // se usa un bucle for para iterar sobre los vuelos del array flights.
-        const flight = flights[i]
+    // Recorremos cada vuelo en el array de vuelos usando un bucle for
+    for (let i = 0; i < flights.length; i++) {
+        const flight = flights[i]; // Accedemos al vuelo actual en la iteración
+
+        // Determinamos si el vuelo realiza escala o no
         const escalaVuelo = flight.layover ? "Realiza escala" : "No realiza escala";
+
+        // Mostramos la información detallada de cada vuelo al usuario
         console.log(`El vuelo con origen: ${flight.from}, y destino: ${flight.to} tiene un coste de ${flight.cost}€ y ${escalaVuelo}.`);
 
-        totalCoste = totalCoste +  flight.cost
+        // Sumamos el costo del vuelo actual al costo total
+        totalCoste = totalCoste + flight.cost;
     }
 
-        
-
-    // let totalCoste = flights[0].cost + flights[1].cost
-
-    //const costePromedio = totalCoste / 2;
-
+    // Calculamos el coste promedio de los vuelos
     const costePromedio = totalCoste / flights.length;
-    console.log(`El coste promedio de los vuelos es: ${costePromedio}`)
 
+    // Mostramos el coste promedio de los vuelos al usuario
+    console.log(`El coste promedio de los vuelos es: ${costePromedio}`);
 }
+
+// Llamamos a la función interfazUsuario para ejecutarla
+interfazUsuario();
 
 
 
