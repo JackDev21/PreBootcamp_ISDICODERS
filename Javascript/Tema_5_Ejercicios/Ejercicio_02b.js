@@ -1,4 +1,5 @@
 // Ahora, muestra los resultados en forma piramidal
+
 const fibonacciSeries = (fibonacciSequenceLength) => {
   // Comenzamos la secuencia de Fibonacci con los primeros dos números
     let resultado = [0, 1];

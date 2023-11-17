@@ -62,4 +62,22 @@ console.log(nuevaLista)
 
 18. `reverse()`: Invierte el orden de los elementos en un array.
 
+19. `includes()`: Verifica si un array incluye un determinado elemento.
+
+20. `indexOf()`: Encuentra el índice de un elemento en un array.
+
+21. `lastIndexOf()`: Encuentra el índice de un elemento en un array, desde la derecha.
+
+22. `join()`: Convierte un array en una cadena de texto separada por un caracter.	
+
+23. `toString()`: Convierte un array en una cadena de texto.
+
+24. `valueOf()`: Convierte un array en un valor numérico.
+
+25. `split()`: Divide una cadena de texto en un array de subcadenas. Utilizando un caracter como separador.
+
+26. `concat()`: Combina dos o más arrays creando un nuevo array.
+
+
+
 Estos métodos son esenciales en la manipulación de arrays en JavaScript y te permiten realizar una variedad de operaciones en tus datos de manera efectiva. */ 
