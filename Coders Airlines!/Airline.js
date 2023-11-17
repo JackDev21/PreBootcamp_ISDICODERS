@@ -44,9 +44,32 @@ const interfazUsuario = () => {
     const usuarioNombre = prompt("Bienvenido a la aerolinea. Por favor introduce tu nombre de usuario: ") // Se le pide al usuario su nombre y se almacena en usuarioNombre
     console.log(`Bienvenido ${usuarioNombre} estos son los vuelos disponibles: `); // Mostramos mensaje de bienvenida con los vuelos disponibles.
 
-    for (const flights of flights){ // se usa un bucle for para iterar sobre los vuelos del array flights.
-        const escalaVuelo = flights.layover ? "Realiza escala" : "No realiza escala";
-        console.log(`El vuelo con origen: ${flights.from}, y destino: ${flights.to} tiene un coste de ${flights.cost}€ y ${escalaVuelo}.`);
+    let totalCoste = 0;
+
+    for ( let i = 0; i < flights.length; i++ ) { // se usa un bucle for para iterar sobre los vuelos del array flights.
+        const flight = flights[i]
+        const escalaVuelo = flight.layover ? "Realiza escala" : "No realiza escala";
+        console.log(`El vuelo con origen: ${flight.from}, y destino: ${flight.to} tiene un coste de ${flight.cost}€ y ${escalaVuelo}.`);
+
+        totalCoste = totalCoste +  flight.cost
     }
+
+        
+
+    // let totalCoste = flights[0].cost + flights[1].cost
+
+    //const costePromedio = totalCoste / 2;
+
+    const costePromedio = totalCoste / flights.length;
+    console.log(`El coste promedio de los vuelos es: ${costePromedio}`)
+
 }
+
+
+
+
+
+
+
+
 
