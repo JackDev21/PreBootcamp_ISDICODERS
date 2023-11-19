@@ -1,0 +1,14 @@
+/* Maqueta y estiliza las siguientes imágenes de forma que queden lo más exactas posible. https://github.com/isdi-coders-env/pre-curso/tree/master/tema7-css
+1 - Basic Markup */
+
+
+html {
+    background-color: rgb(226, 200, 145)
+}
+
+
+div.container_uno{
+    background-color: rgb(223, 22, 11);
+    height: 200px;
+    width: 200px;
+}
