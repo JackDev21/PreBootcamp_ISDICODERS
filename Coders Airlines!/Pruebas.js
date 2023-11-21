@@ -13,101 +13,37 @@ const flights = [
 
 const readline = require("readline-sync");
 
-const interfaceUser = () => {
-    const userRole = readline.question("¿Eres ADMIN o USER? ").toUpperCase();
 
-    if (userRole === "ADMIN") {
-        adminOptions();
-    } else if (userRole === "USER") {
-        showFlights();
-        searchByPrice();
-    } else {
-        console.log("Rol no válido. Saliendo del programa.");
-    }
+const isAdmin = () => {
+    let userAdmin = readline.question("¿Eres ADMIN o USUARIO?: ");
+    return userAdmin.toLowerCase() === "admin";
 };
 
-const showFlights = () => {
-    let totalCoste = 0;
-    let layovers = 0;
-
-    for (let i = 0; i < flights.length; i++) {
-        const flight = flights[i];
-        const fligthLayover = flight.layover ? "Realiza escala" : "No realiza escala";
-        console.log(`El vuelo con origen: ${flight.from}, y destino: ${flight.to} tiene un coste de ${flight.cost}€ y ${fligthLayover}.`);
-        totalCoste += flight.cost;
-        if (flight.layover) {
-            layovers++;
-        }
-    }
-
-    const costePromedio = totalCoste / flights.length;
-
-    console.log(`El coste promedio de los vuelos es: ${costePromedio}`);
-    console.log(`Cantidad de vuelos con escala: ${layovers}`);
-
-    showLastFiveDestinations();
-    askUserRole();
-};
-
-const showLastFiveDestinations = () => {
-    console.log("Destinos de los últimos 5 vuelos del día:");
-    for (let i = flights.length - 5; i < flights.length; i++) {
-        console.log("Vuelo:", flights[i].to, "destino", flights[i].from);
-    }
-};
-
-const askUserRole = () => {
-    const userRole = readline.question("¿Eres ADMIN o USER? ").toUpperCase();
-    if (userRole === "ADMIN") {
-        adminOptions();
-    } else if (userRole === "USER") {
-        searchByPrice();
-    } else {
-        console.log("Rol no válido. Saliendo del programa.");
-    }
-};
-
-const adminOptions = () => {
-    let option = "";
-    while (option !== "EXIT") {
-        console.log("Opciones ADMIN:");
-        console.log("1. Añadir vuelo");
-        console.log("2. Eliminar vuelo por ID");
-        console.log("3. Salir");
-        option = readline.question("Elige una opción: ");
-
-        switch (option) {
-            case "1":
-                if (flights.length >= 15) {
-                    console.log("No se pueden agregar más vuelos. Límite alcanzado (15 vuelos).");
-                } else {
-                    addFlight();
-                }
-                break;
-            case "2":
-                deleteFlightById();
-                break;
-            case "3":
-                option = "EXIT";
-                break;
-            default:
-                console.log("Opción no válida.");
-        }
-    }
-};
 
 const addFlight = () => {
-    const newFlight = {
-        id: flights.length,
-        to: readline.question("Introduce el destino del nuevo vuelo: "),
-        from: readline.question("Introduce el origen del nuevo vuelo: "),
-        cost: parseInt(readline.question("Introduce el coste del nuevo vuelo: ")),
-        layover: readline.question("¿Realiza escala? (true/false): ") === "true",
-    };
+    console.log("Añadiendo vuelo...");
+    let addingFlights = true;
 
-    flights.push(newFlight);
-    console.log("Vuelo añadido exitosamente.");
-};
+    while (addingFlights && flights.length <= 15) {
+        const newFlight = {
+            id: flights.length,
+            to: readline.question("Introduce el nuevo vuelo de destino: "),
+            from: readline.question("Introduce el nuevo vuelo de origen: "),
+            cost: parseInt(readline.question("Introduce el coste del nuevo vuelo: ")),
+            layover: readline.question("¿Realiza escala? (Si/No): ").toLowerCase() === "si",
+        };
+
+        flights.push(newFlight);
+        console.log("Vuelo añadido.");
+
+        addingFlights = readline.question("¿Quieres añadir otro vuelo? (Si/No): ").toLowerCase === "si";
+    }
+
+    if (flights.length >= 15) {
+        console.log("No puedes añadir más vuelos. La cantidad máxima es 15.");
+
+    }
+}
 
 const deleteFlightById = () => {
     const idToDelete = parseInt(readline.question("Introduce el ID del vuelo a eliminar: "));
@@ -121,18 +57,50 @@ const deleteFlightById = () => {
     }
 };
 
-const searchByPrice = () => {
-    const price = parseInt(readline.question("Introduce el precio máximo: "));
-    const filteredFlights = flights.filter((flight) => flight.cost <= price);
 
-    if (filteredFlights.length === 0) {
-        console.log("No hay vuelos disponibles por ese precio o menos.");
+
+const interfaceUser = () => {
+    let userName = "";
+    let admin = isAdmin();
+
+    while (userName === "" || !isNaN(userName)) {
+        userName = readline.question("Bienvenido a la aerolinea. Por favor, introduce tu nombre de usuario: ");
+        if (userName === "" || !isNaN(userName)) {
+            console.log("No has introducido un nombre válido. Por favor, introduce tu nombre de usuario");
+        } else {
+            console.log(`Bienvenido ${userName}, estos son los vuelos disponibles: `);
+        }
+    }
+
+    if (admin) {
+        console.log("Modo ADMIN activado.");
+        addFlight();
+        const deleteFligth = readline.question("¿Quieres eliminar un vuelo? (Si/No): ").toLowerCase() === "si";
+        if (deleteFligth) {
+            deleteFlightById();
+        }
     } else {
-        console.log(`Vuelos disponibles por ${price}€ o menos:`);
-        filteredFlights.forEach((flight) => {
-            console.log(`Origen: ${flight.from}, Destino: ${flight.to}, Coste: ${flight.cost}€`);
-        });
+        console.log("Modo USUARIO activado.");
+    }
+
+
+    let totalCoste = 0;
+    for (let i = 0; i < flights.length; i++) {
+        const flight = flights[i];
+        const fligthLayover = flight.layover ? "Realiza escala" : "No realiza escala";
+        console.log(`El vuelo con origen: ${flight.from}, y destino: ${flight.to} tiene un coste de ${flight.cost}€ y ${fligthLayover}.`);
+        totalCoste = totalCoste + flight.cost;
+    }
+
+    const costePromedio = totalCoste / flights.length;
+    console.log(`El coste promedio de los vuelos es: ${costePromedio}`);
+
+    console.log("Destinos de los ultimos 5 vuelos del día: ");
+    for (let i = flights.length - 5; i < flights.length; i++) {
+        console.log("Vuelo:", flights[i].to, "destino", flights[i].from);
+
     }
 };
+
 
 interfaceUser();

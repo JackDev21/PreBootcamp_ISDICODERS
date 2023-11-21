@@ -118,9 +118,21 @@ const interfaceUser = () => {
   console.log("Destinos de los ultimos 5 vuelos del día: ");
   for (let i = flights.length - 5; i < flights.length; i++) {
     console.log("Vuelo:", flights[i].to, "destino", flights[i].from);
-
   }
+
+
+}
+
+
+
+
+const searchByPrice = (maxprice) => {
+  const filterFligth = flights.filter(fligth => fligth.cost <= maxprice);
+  return filterFligth
+
+
 };
+
 
 
 interfaceUser();
