@@ -7,7 +7,6 @@ const getCodeToString = (code) => {
 
 }
 
-console.log(getCodeToString(1234))
 
 // Funcion  para cambiar la posicion de los digitos
 const changeDigitPosition = (code) => {
@@ -17,7 +16,7 @@ const changeDigitPosition = (code) => {
     return codeToString.join(""); // Unimos el codigo en un string
 }
 
-console.log(changeDigitPosition(1234))
+
 
 
 // Funcion para multiplicar los digitos
@@ -27,16 +26,14 @@ const multiplyDigits = (code, multiplicator) => {
     return multipliedCode.join(""); // Unimos el codigo en un string
 }
 
-console.log(multiplyDigits(1234, 3))
 
 // Funcion para desencriptar el codigo
 const decrypt = (encryptedCode, dividend) => {
     const encryptedCodeToString = getCodeToString(encryptedCode); // Obtenemos el codigo de la funcion getCodeToString
     const decryptedCode = encryptedCodeToString.map((digit) => parseInt(digit) / dividend) // Recorremos con map cada digito del codigo y lo dividimos entre el dividendo
     return decryptedCode.join("");
-
-
 }
+
 
 
 // Funcion para codificar el codigo
@@ -47,8 +44,11 @@ const codeScript = (firstCode, secondCode, multiplicator) => {
     let encryptedSecondcode = changeDigitPosition(secondCode);
     encryptedSecondcode = multiplyDigits(encryptedSecondcode, multiplicator);
 
-    return [encryptedFirstcode, encryptedSecondcode]; // Devolvemos el resultado separado en un array.
+    const result = [encryptedFirstcode, encryptedSecondcode]; // Devolvemos el resultado separado en un array.
+    console.log(result);
+
+    decrypt(result, multiplicator); // Devolvemos el resultado
 }
 
-console.log(codeScript(1234, 5678, 3))
+codeScript(1234, 5678, 3)
 
