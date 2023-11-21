@@ -1,0 +1,9 @@
+# Dependencias de Node.js
+/node_modules
+
+# Archivos generados por Node.js
+npm-debug.log
+yarn-error.log
+
+# Archivos de configuración
+.env

@@ -8,7 +8,6 @@ Esta aerolinea dispondrá de 10 vuelos para el dia de hoy, para empezar, estos v
 - También podrá ver cuantos vuelos efectúan escalas.
 - Y, sabiendo que los ultimos 5 vuelos (los últimos 5 ID's) son los últimos del día, muestra al usuario sus destinos. */
 
-
 /*
 const flights = [
     { id: 00, to: "New York", from: "Barcelona", cost: 700, layover: false },
@@ -24,60 +23,60 @@ const flights = [
     ];
   console.log(flights[0].to); //output: New York*/
 
-
 // - Se preguntará por el nombre de usuario y dará la bienvenida.
 const flights = [
-    { id: 0, to: "New York", from: "Barcelona", cost: 700, layover: false },
-    { id: 1, to: "Los Angeles", from: "Madrid", cost: 1100, layover: true },
-    { id: 2, to: "Paris", from: "Barcelona", cost: 210, layover: false },
-    { id: 3, to: "Roma", from: "Barcelona", cost: 150, layover: false },
-    { id: 4, to: "London", from: "Madrid", cost: 200, layover: false },
-    { id: 5, to: "Madrid", from: "Barcelona", cost: 90, layover: false },
-    { id: 6, to: "Tokyo", from: "Madrid", cost: 1500, layover: true },
-    { id: 7, to: "Shangai", from: "Barcelona", cost: 800, layover: true },
-    { id: 8, to: "Sydney", from: "Barcelona", cost: 150, layover: true },
-    { id: 9, to: "Tel-Aviv", from: "Madrid", cost: 150, layover: false },
+  { id: 0, to: "New York", from: "Barcelona", cost: 700, layover: false },
+  { id: 1, to: "Los Angeles", from: "Madrid", cost: 1100, layover: true },
+  { id: 2, to: "Paris", from: "Barcelona", cost: 210, layover: false },
+  { id: 3, to: "Roma", from: "Barcelona", cost: 150, layover: false },
+  { id: 4, to: "London", from: "Madrid", cost: 200, layover: false },
+  { id: 5, to: "Madrid", from: "Barcelona", cost: 90, layover: false },
+  { id: 6, to: "Tokyo", from: "Madrid", cost: 1500, layover: true },
+  { id: 7, to: "Shangai", from: "Barcelona", cost: 800, layover: true },
+  { id: 8, to: "Sydney", from: "Barcelona", cost: 150, layover: true },
+  { id: 9, to: "Tel-Aviv", from: "Madrid", cost: 150, layover: false },
 ];
+
+
+const readline = require("readline-sync");
 
 // Definimos la función llamada interfazUsuario como una arrow function
 const interfazUsuario = () => {
-    // Se le pide al usuario su nombre y se almacena en usuarioNombre
-    const usuarioNombre = prompt("Bienvenido a la aerolínea. Por favor, introduce tu nombre de usuario: ");
+  // Se le pide al usuario su nombre y se almacena en usuarioNombre
+  const usuarioNombre = readline.question(
+    "Bienvenido a la aerolínea. Por favor, introduce tu nombre de usuario: "
+  );
 
-    // Mostramos mensaje de bienvenida con los vuelos disponibles
-    console.log(`Bienvenido ${usuarioNombre}, estos son los vuelos disponibles: `);
+  // Mostramos mensaje de bienvenida con los vuelos disponibles
+  console.log(
+    `Bienvenido ${usuarioNombre}, estos son los vuelos disponibles: `
+  );
 
-    // Inicializamos una variable para el costo total de los vuelos
-    let totalCoste = 0;
+  // Inicializamos una variable para el costo total de los vuelos
+  let totalCoste = 0;
 
-    // Recorremos cada vuelo en el array de vuelos usando un bucle for
-    for (let i = 0; i < flights.length; i++) {
-        const flight = flights[i]; // Accedemos al vuelo actual en la iteración
+  // Recorremos cada vuelo en el array de vuelos usando un bucle for
+  for (let i = 0; i < flights.length; i++) {
+    const flight = flights[i]; // Accedemos al vuelo actual en la iteración
 
-        // Determinamos si el vuelo realiza escala o no
-        const escalaVuelo = flight.layover ? "Realiza escala" : "No realiza escala";
+    // Determinamos si el vuelo realiza escala o no
+    const escalaVuelo = flight.layover ? "Realiza escala" : "No realiza escala";
 
-        // Mostramos la información detallada de cada vuelo al usuario
-        console.log(`El vuelo con origen: ${flight.from}, y destino: ${flight.to} tiene un coste de ${flight.cost}€ y ${escalaVuelo}.`);
+    // Mostramos la información detallada de cada vuelo al usuario
+    console.log(
+      `El vuelo con origen: ${flight.from}, y destino: ${flight.to} tiene un coste de ${flight.cost}€ y ${escalaVuelo}.`
+    );
 
-        // Sumamos el costo del vuelo actual al costo total
-        totalCoste = totalCoste + flight.cost;
-    }
+    // Sumamos el costo del vuelo actual al costo total
+    totalCoste = totalCoste + flight.cost;
+  }
 
-    // Calculamos el coste promedio de los vuelos
-    const costePromedio = totalCoste / flights.length;
+  // Calculamos el coste promedio de los vuelos
+  const costePromedio = totalCoste / flights.length;
 
-    // Mostramos el coste promedio de los vuelos al usuario
-    console.log(`El coste promedio de los vuelos es: ${costePromedio}`);
-}
+  // Mostramos el coste promedio de los vuelos al usuario
+  console.log(`El coste promedio de los vuelos es: ${costePromedio}`);
+};
 
 // Llamamos a la función interfazUsuario para ejecutarla
 interfazUsuario();
-
-
-
-
-
-
-
-
