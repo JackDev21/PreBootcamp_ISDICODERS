@@ -66,7 +66,7 @@ const addFlight = () => {
 }
 
 const deleteFlightById = () => {
-  const idToDelete = parseInt(readline.question("Introduce el ID del vuelo a eliminar: "));
+  const idToDelete = readline.question("Introduce el ID del vuelo a eliminar: ");
   const indexToDelete = flights.findIndex((flight) => flight.id === idToDelete);
 
   if (indexToDelete !== -1) {
