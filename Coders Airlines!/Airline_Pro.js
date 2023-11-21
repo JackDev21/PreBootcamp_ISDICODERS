@@ -34,6 +34,12 @@ const flights = [
 const readline = require("readline-sync");
 
 
+const isAdmin = () => {
+  let userAdmin = readline.question("¿Eres ADMIN o USUARIO?: ");
+  return userAdmin.toLowerCase() === "admin";
+};
+
+
 const addFlight = () => {
   console.log("Añadiendo vuelo...");
   let addingFlights = true;
@@ -54,7 +60,7 @@ const addFlight = () => {
   }
 
   if (flights.length >= 15) {
-    console.log("No puedes añadir más vuelos. La cantidad máxima es 15.");
+    alert("No puedes añadir más vuelos. La cantidad máxima es 15.");
 
   }
 }
@@ -71,10 +77,6 @@ const deleteFlightById = () => {
   }
 };
 
-const isAdmin = () => {
-  let userType = readline.question("¿Eres ADMIN o USER?: ");
-  return userType.toLowerCase() === "admin";
-};
 
 
 const interfaceUser = () => {
@@ -93,12 +95,12 @@ const interfaceUser = () => {
   if (admin) {
     console.log("Modo ADMIN activado.");
     addFlight();
-    const deleteFligth = readline.question("¿Quieres eliminar un vuelo? (Si/No): ") === "Si";
+    const deleteFligth = readline.question("¿Quieres eliminar un vuelo? (Si/No): ").toLowerCase() === "si";
     if (deleteFligth) {
       deleteFlightById();
     }
   } else {
-    console.log("Modo USER activado.");
+    console.log("Modo USUARIO activado.");
   }
 
 
