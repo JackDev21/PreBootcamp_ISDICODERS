@@ -33,12 +33,10 @@ const flights = [
 
 const readline = require("readline-sync");
 
-
 const isAdmin = () => {
   let userAdmin = readline.question("¿Eres ADMIN o USUARIO?: ");
   return userAdmin.toLowerCase() === "admin";
 };
-
 
 const addFlight = () => {
   console.log("Añadiendo vuelo...");
@@ -49,7 +47,7 @@ const addFlight = () => {
       id: flights.length,
       to: readline.question("Introduce el nuevo vuelo de destino: "),
       from: readline.question("Introduce el nuevo vuelo de origen: "),
-      cost: parseInt(readline.question("Introduce el coste del nuevo vuelo: ")),
+      cost: (readline.question("Introduce el coste del nuevo vuelo: ")),
       layover: readline.question("¿Realiza escala? (Si/No): ").toLowerCase() === "si",
     };
 
@@ -77,11 +75,29 @@ const deleteFlightById = () => {
   }
 };
 
-
+const searchByPrice = (maxPrice) => {
+  return flights.filter(flight => flight.cost <= maxPrice);
+}
 
 const interfaceUser = () => {
   let userName = "";
   let admin = isAdmin();
+
+  if (admin) {
+    console.log("Benvenido a la Aeriolinea")
+    console.log("Modo ADMIN activado.");
+    addFlight();
+    const deleteFligth = readline.question("¿Quieres eliminar un vuelo? (Si/No): ").toLowerCase() === "si";
+    if (deleteFligth) {
+      deleteFlightById();
+      if (deleteFligth) {
+
+      }
+    }
+
+  } else {
+    console.log("Modo USUARIO activado.");
+  }
 
   while (userName === "" || !isNaN(userName)) {
     userName = readline.question("Bienvenido a la aerolinea. Por favor, introduce tu nombre de usuario: ");
@@ -91,18 +107,6 @@ const interfaceUser = () => {
       console.log(`Bienvenido ${userName}, estos son los vuelos disponibles: `);
     }
   }
-
-  if (admin) {
-    console.log("Modo ADMIN activado.");
-    addFlight();
-    const deleteFligth = readline.question("¿Quieres eliminar un vuelo? (Si/No): ").toLowerCase() === "si";
-    if (deleteFligth) {
-      deleteFlightById();
-    }
-  } else {
-    console.log("Modo USUARIO activado.");
-  }
-
 
   let totalCoste = 0;
   for (let i = 0; i < flights.length; i++) {
@@ -120,19 +124,33 @@ const interfaceUser = () => {
     console.log("Vuelo:", flights[i].to, "destino", flights[i].from);
   }
 
+  const findByPrice = readline.question("¿Buscar vuelos por precios? (si/no): ").toLowerCase() === "si";
+  if (findByPrice) {
+    const maxPrice = readline.question("Precio maximo: ");
+    const findFligths = searchByPrice(maxPrice);
+
+    if (findFligths.length > 0) {
+      console.log(`Vuelos con precio igual o menor a ${maxPrice}:`);
+      const detailFligth = findFligths.map(flight => {
+        console.log(`Origen ${flight.from}, Destino: ${flight.to}, Coste: ${flight.cost}, Escala: ${flight.layover}`)
+      })
+      console.log(detailFligth.join())
+    } else {
+      console.log(`No se encuentras vuelos pod debajo de ${maxPrice}`)
+    }
+  }
+
+  const displayFligths = () => {
+    console.log("Vuelos disponibles: ");
+    for (fligth of flights) {
+
+    }
+
+  }
+
+
 
 }
-
-
-
-
-const searchByPrice = (maxprice) => {
-  const filterFligth = flights.filter(fligth => fligth.cost <= maxprice);
-  return filterFligth
-
-
-};
-
 
 
 interfaceUser();
