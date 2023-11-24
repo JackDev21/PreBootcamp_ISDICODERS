@@ -156,29 +156,28 @@ const interfaceUser = () => {
   }
 
   let findByPrice = readline.question("¿Buscar vuelos por precios? (si/no): ").toLowerCase() === "si";
-  if (!findByPrice) {
-    console.log("Gracias por utilizar la aplicación de la aerolinea")
-  } else {
-  } while (findByPrice) {
+  while (findByPrice) {
     const maxPrice = readline.question("Precio máximo: ");
     const foundFlights = searchByPrice(maxPrice);
     if (foundFlights.length > 0) {
       console.log(`Vuelos con precio igual o menor a ${maxPrice}€:`);
-      foundFlights.forEach(flight => {
+      for (const flight of flights) {
         console.log(`Origen: ${flight.from}, Destino: ${flight.to}, Coste: ${flight.cost}, Escala: ${flight.layover}`);
-      });
+      };
     } else {
       console.log(`No se encuentran vuelos por debajo de ${maxPrice}€`);
     }
 
     const continueOperations = readline.question("¿Quieres realizar otra operación? (Si/No): ").toLowerCase();
     if (continueOperations !== "si") {
-      findByPrice = false;
-    } else {
-      findByPrice = readline.question("¿Buscar más vuelos por precios? (si/no): ").toLowerCase() === "si";
+      break;
     }
-
+    findByPrice = readline.question("¿Buscar más vuelos por precios? (si/no): ").toLowerCase() === "si";
   }
-  console.log("Gracias por utilizar la aplicación de la aerolinea")
+
+  console.log("Gracias por utilizar la aplicación de la aerolinea");
 }
+
+
+
 interfaceUser();
