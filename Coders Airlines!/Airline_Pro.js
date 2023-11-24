@@ -121,11 +121,8 @@ const interfaceUser = () => {
     const deleteFligth = readline.question("¿Quieres eliminar un vuelo? (Si/No): ").toLowerCase() === "si";
     if (deleteFligth) {
       deleteFlightById();
-    } else {
-      const continueAdmin = readline.question("¿Quieres realizar otra operacion? (Si/No)").toLowerCase() === "si"
-      if (continueAdmin) {
-        interfaceUser();
-      }
+      return
+
     }
 
   } else {
@@ -182,6 +179,6 @@ const interfaceUser = () => {
     }
 
   }
-
+  console.log("Gracias por utilizar la aplicación de la aerolinea")
 }
 interfaceUser();
