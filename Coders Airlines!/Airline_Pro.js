@@ -34,10 +34,16 @@ const flights = [
 const readline = require("readline-sync");
 
 const isAdmin = () => {
-  let userAdmin = readline.question("¿Eres ADMIN o USUARIO?: ");
-  return userAdmin.toLowerCase() === "admin";
-};
-
+  let userAdmin = "";
+  while (true) {
+    userAdmin = readline.question("¿Eres ADMIN o USUARIO?: ").toLowerCase();
+    if (userAdmin === "admin" || userAdmin === "usuario") {
+      return userAdmin === "admin";
+    } else {
+      console.log("Por favor, introduce 'admin' o 'usuario'.");
+    }
+  }
+}
 const addFlight = () => {
   console.log("Añadiendo vuelo...");
   let addingFlights = true;
@@ -47,7 +53,7 @@ const addFlight = () => {
       id: flights.length,
       to: readline.question("Introduce el nuevo vuelo de destino: "),
       from: readline.question("Introduce el nuevo vuelo de origen: "),
-      cost: (readline.question("Introduce el coste del nuevo vuelo: ")),
+      cost: readline.question("Introduce el coste del nuevo vuelo: "),
       layover: readline.question("¿Realiza escala? (Si/No): ").toLowerCase() === "si",
     };
 
@@ -58,40 +64,67 @@ const addFlight = () => {
   }
 
   if (flights.length >= 15) {
-    alert("No puedes añadir más vuelos. La cantidad máxima es 15.");
+    console.log("No puedes añadir más vuelos. La cantidad máxima es 15.");
 
   }
 }
 
 const deleteFlightById = () => {
-  const idToDelete = readline.question("Introduce el ID del vuelo a eliminar: ");
+  const idToDelete = parseInt(readline.question("Introduce el ID del vuelo a eliminar: "));
   const indexToDelete = flights.findIndex((flight) => flight.id === idToDelete);
 
   if (indexToDelete !== -1) {
     flights.splice(indexToDelete, 1);
     console.log(`Vuelo con ID ${idToDelete} eliminado.`);
+    displayFlights();
+
+    let continueDeleting = readline.question("¿Quieres eliminar otro vuelo? (Si/No): ").toLowerCase();
+    if (continueDeleting === "si") {
+      deleteFlightById();
+    } else {
+      let continueAdmin = readline.question("¿Quieres realizar otra operacion? (Si/No): ").toLowerCase();
+      if (continueAdmin === "si") {
+        interfaceUser();
+      } else {
+        console.log("Gracias por utilizar la aplicación de la aerolinea");
+        return;
+      }
+    }
   } else {
     console.log("ID de vuelo no encontrado.");
   }
 };
 
+
+const displayFlights = () => {
+  console.log("Lista de vuelos actualizada:");
+  for (const flight of flights) {
+    console.log(`ID: ${flight.id}, Origen: ${flight.from}, Destino: ${flight.to}, Coste: ${flight.cost}€, Escala: ${flight.layover ? 'Sí' : 'No'}`);
+
+  };
+
+}
+
 const searchByPrice = (maxPrice) => {
   return flights.filter(flight => flight.cost <= maxPrice);
 }
 
+
 const interfaceUser = () => {
+  console.log("Bienvenido a la Aerolinea")
   let userName = "";
   let admin = isAdmin();
 
   if (admin) {
-    console.log("Benvenido a la Aeriolinea")
     console.log("Modo ADMIN activado.");
     addFlight();
     const deleteFligth = readline.question("¿Quieres eliminar un vuelo? (Si/No): ").toLowerCase() === "si";
     if (deleteFligth) {
       deleteFlightById();
-      if (deleteFligth) {
-
+    } else {
+      const continueAdmin = readline.question("¿Quieres realizar otra operacion? (Si/No)").toLowerCase() === "si"
+      if (continueAdmin) {
+        interfaceUser();
       }
     }
 
@@ -124,33 +157,31 @@ const interfaceUser = () => {
     console.log("Vuelo:", flights[i].to, "destino", flights[i].from);
   }
 
-  const findByPrice = readline.question("¿Buscar vuelos por precios? (si/no): ").toLowerCase() === "si";
-  if (findByPrice) {
-    const maxPrice = readline.question("Precio maximo: ");
-    const findFligths = searchByPrice(maxPrice);
-
-    if (findFligths.length > 0) {
-      console.log(`Vuelos con precio igual o menor a ${maxPrice}:`);
-      const detailFligth = findFligths.map(flight => {
-        console.log(`Origen ${flight.from}, Destino: ${flight.to}, Coste: ${flight.cost}, Escala: ${flight.layover}`)
-      })
-      console.log(detailFligth.join())
+  let findByPrice = readline.question("¿Buscar vuelos por precios? (si/no): ").toLowerCase() === "si";
+  if (!findByPrice) {
+    console.log("Gracias por utilizar la aplicación de la aerolinea")
+  } else {
+  } while (findByPrice) {
+    const maxPrice = readline.question("Precio máximo: ");
+    const foundFlights = searchByPrice(maxPrice);
+    if (foundFlights.length > 0) {
+      console.log(`Vuelos con precio igual o menor a ${maxPrice}€:`);
+      foundFlights.forEach(flight => {
+        console.log(`Origen: ${flight.from}, Destino: ${flight.to}, Coste: ${flight.cost}, Escala: ${flight.layover}`);
+      });
     } else {
-      console.log(`No se encuentras vuelos pod debajo de ${maxPrice}`)
-    }
-  }
-
-  const displayFligths = () => {
-    console.log("Vuelos disponibles: ");
-    for (fligth of flights) {
-
+      console.log(`No se encuentran vuelos por debajo de ${maxPrice}€`);
     }
 
+    const continueOperations = readline.question("¿Quieres realizar otra operación? (Si/No): ").toLowerCase();
+    if (continueOperations !== "si") {
+      console.log("Gracias por utilizar la aplicación de la aerolinea")
+      findByPrice = false;
+    } else {
+      findByPrice = readline.question("¿Buscar más vuelos por precios? (si/no): ").toLowerCase() === "si";
+    }
+
   }
-
-
 
 }
-
-
 interfaceUser();
