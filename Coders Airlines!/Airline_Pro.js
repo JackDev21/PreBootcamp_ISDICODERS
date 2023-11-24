@@ -172,7 +172,6 @@ const interfaceUser = () => {
 
     const continueOperations = readline.question("¿Quieres realizar otra operación? (Si/No): ").toLowerCase();
     if (continueOperations !== "si") {
-      console.log("Gracias por utilizar la aplicación de la aerolinea")
       findByPrice = false;
     } else {
       findByPrice = readline.question("¿Buscar más vuelos por precios? (si/no): ").toLowerCase() === "si";
