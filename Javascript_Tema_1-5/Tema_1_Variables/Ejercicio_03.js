@@ -2,4 +2,4 @@
 
 const info = ["36", "Canto", "Jose"];
 
-console.log(info[2],info[1],info[0])
+console.log(info[0], info[2])

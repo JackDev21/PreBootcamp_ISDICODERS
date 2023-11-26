@@ -1,4 +1,4 @@
- // Ahora, el usuario debería poder introducir como parámetro dos códigos a la vez y devolver los dos códigos 
+// Ahora, el usuario debería poder introducir como parámetro dos códigos a la vez y devolver los dos códigos 
 //  encriptados (Los dos códigos se deberían encriptar en la misma función):
 
 const codeScript = (code1, code2) => {
@@ -35,3 +35,6 @@ const codeScript = (code1, code2) => {
     // Retornar un objeto con las versiones encriptadas de code1 y code2
     return { encryptedCode1: result1, encryptedCode2: result2 };
 };
+
+
+console.log(codeScript("1234", "5678"))
