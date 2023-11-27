@@ -86,8 +86,7 @@ const deleteFlightById = () => {
       if (continueAdmin === "si") {
         interfaceUser();
       } else {
-        console.log("Gracias por utilizar la aplicación de la aerolinea");
-        return;
+        return `Gracias por utilizar la aplicación de la aerolinea`
       }
     }
   } else {
@@ -123,7 +122,7 @@ const interfaceUser = () => {
       deleteFlightById()
     } else {
       console.log("Gracias por utilizar la aplicación de la aerolinea");
-      return;
+
     }
 
   } else {
@@ -166,11 +165,13 @@ const interfaceUser = () => {
       };
     } else {
       console.log(`No se encuentran vuelos por debajo de ${maxPrice}€`);
-    }
 
+    }
     const continueOperations = readline.question("¿Quieres realizar otra operación? (Si/No): ").toLowerCase();
+
     if (continueOperations !== "si") {
-      break;
+      console.log("Gracias por utilizar la aplicación de la aerolinea")
+      return;
     }
     findByPrice = readline.question("¿Buscar más vuelos por precios? (si/no): ").toLowerCase() === "si";
   }
