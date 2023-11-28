@@ -178,12 +178,12 @@ const interfaceUser = () => {
 
   // Búsqueda de vuelos por precios
   let findByPrice = readline.question("¿Buscar vuelos por precios? (si/no): ").toLowerCase() === "si";
-  while (findByPrice) {
-    const maxPrice = readline.question("Precio máximo: ");
-    const foundFlights = searchByPrice(maxPrice);
-    if (foundFlights.length > 0) {
+  while (findByPrice) { // Mientras se busque por precios 
+    const maxPrice = readline.question("Precio máximo: "); // Solicita el precio máximo a buscar
+    const foundFlights = searchByPrice(maxPrice); // Busca los vuelos que tengan un coste menor o igual al precio máximo introducido
+    if (foundFlights.length > 0) { // Si se encuentran vuelos con un coste menor o igual al precio máximo introducido, los muestra en pantalla
       console.log(`Vuelos con precio igual o menor a ${maxPrice}€:`);
-      for (const flight of foundFlights) {
+      for (const flight of foundFlights) { // Muestra la información de cada vuelo encontrado
         console.log(`Origen: ${flight.from}, Destino: ${flight.to}, Coste: ${flight.cost}, Escala: ${flight.layover}`);
       };
     } else {
