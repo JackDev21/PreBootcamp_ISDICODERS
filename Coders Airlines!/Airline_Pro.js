@@ -183,7 +183,7 @@ const interfaceUser = () => {
     const foundFlights = searchByPrice(maxPrice);
     if (foundFlights.length > 0) {
       console.log(`Vuelos con precio igual o menor a ${maxPrice}€:`);
-      for (const flight of flights) {
+      for (const flight of foundFlights) {
         console.log(`Origen: ${flight.from}, Destino: ${flight.to}, Coste: ${flight.cost}, Escala: ${flight.layover}`);
       };
     } else {
