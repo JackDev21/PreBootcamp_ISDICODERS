@@ -31,18 +31,19 @@ const flights = [
   { id: 9, to: "Tel-Aviv", from: "Madrid", cost: 150, layover: false },
 ];
 
-// Importación de la librería para leer la entrada del usuario desde la consola
-const readline = require("readline-sync");
+
 
 // Función que determina si el usuario es un administrador
 const isAdmin = () => {
   let userAdmin = "";
   while (true) {
     // Solicita al usuario que especifique si es admin o usuario
-    userAdmin = readline.question("¿Eres ADMIN o USUARIO?: ").toLowerCase();
+    userAdmin = prompt("¿Eres ADMIN o USUARIO?: ").toLowerCase();
     // Verifica si la entrada es 'admin' o 'usuario' y devuelve un booleano
-    if (userAdmin === "admin" || userAdmin === "usuario") {
-      return userAdmin === "admin";
+    if (userAdmin === "admin") {
+      return interfaceAdmin()
+    } else if (userAdmin === "usuario") {
+      return interfaceUser()
     } else {
       console.log("Por favor, introduce 'admin' o 'usuario'.");
     }
@@ -59,17 +60,17 @@ const addFlight = () => {
     // Solicita información sobre el nuevo vuelo y lo agrega a la lista
     const newFlight = {
       id: flights.length,
-      to: readline.question("Introduce el nuevo vuelo de destino: "),
-      from: readline.question("Introduce el nuevo vuelo de origen: "),
-      cost: readline.question("Introduce el coste del nuevo vuelo: "),
-      layover: readline.question("¿Realiza escala? (Si/No): ").toLowerCase() === "si",
+      to: prompt("Introduce el nuevo vuelo de destino: "),
+      from: prompt("Introduce el nuevo vuelo de origen: "),
+      cost: prompt("Introduce el coste del nuevo vuelo: "),
+      layover: prompt("¿Realiza escala? (Si/No): ").toLowerCase() === "si",
     };
 
     flights.push(newFlight);
     console.log("Vuelo añadido.");
 
     // Pregunta si se desea agregar otro vuelo
-    addingFlights = readline.question("¿Quieres añadir otro vuelo? (Si/No): ").toLowerCase() === "si";
+    addingFlights = prompt("¿Quieres añadir otro vuelo? (Si/No): ").toLowerCase() === "si";
   }
 
   // Muestra un mensaje si se alcanza el límite máximo de vuelos
@@ -81,7 +82,7 @@ const addFlight = () => {
 // Función para eliminar un vuelo por su ID
 const deleteFlightById = () => {
   // Solicita el ID del vuelo que se desea eliminar
-  const idToDelete = parseInt(readline.question("Introduce el ID del vuelo a eliminar: "));
+  const idToDelete = parseInt(prompt("Introduce el ID del vuelo a eliminar: "));
   // Encuentra el índice del vuelo en base a su ID
   const indexToDelete = flights.findIndex((flight) => flight.id === idToDelete);
 
@@ -93,21 +94,22 @@ const deleteFlightById = () => {
     displayFlights();
 
     // Pregunta si se quiere eliminar otro vuelo o realizar otra operación
-    let continueDeleting = readline.question("¿Quieres eliminar otro vuelo? (Si/No): ").toLowerCase();
+    let continueDeleting = prompt("¿Quieres eliminar otro vuelo? (Si/No): ").toLowerCase();
     if (continueDeleting === "si") {
       deleteFlightById();
     } else {
-      let continueAdmin = readline.question("¿Quieres realizar otra operacion? (Si/No): ").toLowerCase();
-      if (continueAdmin === "si") {
-        interfaceUser();
-      } else if (continueAdmin !== "si") {
+      let continueAdmin = confirm("¿Quieres realizar otra operacion?: "); // Preguntar si se quiere realizar otra operación
+      if (continueAdmin === true) { // Si se quiere realizar otra operación, se llama a la función isAdmin()
+        isAdmin();
+      } else if (continueAdmin !== true) {
         // Mensaje de despedida y finalización del programa
         console.log("Gracias por utilizar la aplicación de la aerolinea");
-        process.exit(); // Cierra el programa
+        return showBye
       }
     }
   } else {
     console.log("ID de vuelo no encontrado.");
+    return deleteFlightById()
   }
 };
 
@@ -125,43 +127,50 @@ const searchByPrice = (maxPrice) => {
   return flights.filter(flight => flight.cost <= maxPrice); //
 }
 
-showBye = () => {
+const showBye = () => {
   console.log("Gracias por utilizar la aplicación de la aerolinea");
 }
 
 // Función principal para la interfaz de usuario
-const interfaceUser = () => {
+const interfaceAdmin = () => {
   console.log("Bienvenido a la Aerolinea")
   let userName = "";
-  let admin = isAdmin();
-
-  // Verifica si el usuario es admin o usuario
-  if (admin) {
-    console.log("Modo ADMIN activado.");
-    // Permite agregar vuelos si es admin
-    const addFlights = readline.question("¿Quieres añadir vuelos? (Si/No): ").toLowerCase() === "si";
-    if (addFlights) {
-      addFlight();
-    }
-    const deleteFligth = readline.question("¿Quieres eliminar un vuelo? (Si/No): ").toLowerCase() === "si";
-    if (deleteFligth) {
-      deleteFlightById()
-    } else {
-      return showBye();
-    }
-  } else {
-    console.log("Modo USUARIO activado.");
-  }
-
   // Solicita al usuario su nombre hasta que se ingrese uno válido
   while (userName === "" || !isNaN(userName)) {
-    userName = readline.question("Bienvenido a la aerolinea. Por favor, introduce tu nombre de usuario: ");
+    userName = prompt("Bienvenido a la aerolinea. Por favor, introduce tu nombre de usuario: ");
+    if (userName === "" || !isNaN(userName)) {
+      console.log("No has introducido un nombre válido. Por favor, introduce tu nombre de usuario");
+    }
+  }
+
+  // Verifica si el usuario es admin o usuario
+  console.log(`Modo ADMIN activado. Bienvenido ${userName}`);
+  // Permite agregar vuelos si es admin
+  const addFlights = prompt("¿Quieres añadir vuelos? (Si/No): ").toLowerCase() === "si";
+  if (addFlights) {
+    addFlight();
+  }
+  const deleteFligth = prompt("¿Quieres eliminar un vuelo? (Si/No): ").toLowerCase() === "si";
+  if (deleteFligth) {
+    deleteFlightById()
+  } else {
+    return showBye();
+  }
+}
+
+
+const interfaceUser = () => {
+  let userName = "";
+  // Solicita al usuario su nombre hasta que se ingrese uno válido
+  while (userName === "" || !isNaN(userName)) {
+    userName = prompt("Bienvenido a la aerolinea. Por favor, introduce tu nombre de usuario: ");
     if (userName === "" || !isNaN(userName)) {
       console.log("No has introducido un nombre válido. Por favor, introduce tu nombre de usuario");
     } else {
       console.log(`Bienvenido ${userName}, estos son los vuelos disponibles: `);
     }
   }
+
 
   // Muestra la información de los vuelos disponibles
   let totalCoste = 0;
@@ -183,14 +192,15 @@ const interfaceUser = () => {
   }
 
   // Búsqueda de vuelos por precios
-  let findByPrice = readline.question("¿Buscar vuelos por precios? (si/no): ").toLowerCase() === "si";
+  let findByPrice = prompt("¿Buscar vuelos por precios? (si/no): ").toLowerCase() === "si";
   while (findByPrice) { // Mientras se busque por precios 
-    const maxPrice = readline.question("Precio máximo: "); // Solicita el precio máximo a buscar
+    const maxPrice = prompt("Precio máximo: "); // Solicita el precio máximo a buscar
     const foundFlights = searchByPrice(maxPrice); // Busca los vuelos que tengan un coste menor o igual al precio máximo introducido
     if (foundFlights.length > 0) { // Si se encuentran vuelos con un coste menor o igual al precio máximo introducido, los muestra en pantalla
       console.log(`Vuelos con precio igual o menor a ${maxPrice}€:`);
       for (const flight of foundFlights) { // Muestra la información de cada vuelo encontrado
-        console.log(`Origen: ${flight.from}, Destino: ${flight.to}, Coste: ${flight.cost}, Escala: ${flight.layover}`);
+        const layover = flight.layover ? "Realiza escala" : "No realiza escala"; // Verifica si el vuelo realiza escala o no
+        console.log(`Origen: ${flight.from}, Destino: ${flight.to}, Coste: ${flight.cost}, Escala: ${layover}`);
       };
     } else {
       console.log(`No se encuentran vuelos por debajo de ${maxPrice}€`);
@@ -198,13 +208,11 @@ const interfaceUser = () => {
 
 
     // Pregunta si se quiere realizar otra operación de búsqueda por precios
-    const continueOperations = readline.question("¿Quieres realizar otra operación? (Si/No): ").toLowerCase();
-    if (continueOperations !== "si") {
+    const continueOperations = confirm("¿Quieres realizar otra operación?: ");
+    if (continueOperations !== true) {
       return showBye();
     }
 
   }
 }
 
-// Inicia la interfaz de usuario
-interfaceUser();
