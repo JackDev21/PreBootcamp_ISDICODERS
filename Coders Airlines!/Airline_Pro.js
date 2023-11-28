@@ -125,6 +125,10 @@ const searchByPrice = (maxPrice) => {
   return flights.filter(flight => flight.cost <= maxPrice); //
 }
 
+showBye = () => {
+  console.log("Gracias por utilizar la aplicación de la aerolinea");
+}
+
 // Función principal para la interfaz de usuario
 const interfaceUser = () => {
   console.log("Bienvenido a la Aerolinea")
@@ -135,13 +139,15 @@ const interfaceUser = () => {
   if (admin) {
     console.log("Modo ADMIN activado.");
     // Permite agregar vuelos si es admin
-    addFlight();
+    const addFlights = readline.question("¿Quieres añadir vuelos? (Si/No): ").toLowerCase() === "si";
+    if (addFlights) {
+      addFlight();
+    }
     const deleteFligth = readline.question("¿Quieres eliminar un vuelo? (Si/No): ").toLowerCase() === "si";
     if (deleteFligth) {
       deleteFlightById()
     } else {
-      console.log("Gracias por utilizar la aplicación de la aerolinea");
-      return
+      return showBye();
     }
   } else {
     console.log("Modo USUARIO activado.");
@@ -190,16 +196,14 @@ const interfaceUser = () => {
       console.log(`No se encuentran vuelos por debajo de ${maxPrice}€`);
     }
 
+
     // Pregunta si se quiere realizar otra operación de búsqueda por precios
     const continueOperations = readline.question("¿Quieres realizar otra operación? (Si/No): ").toLowerCase();
     if (continueOperations !== "si") {
-      console.log("Gracias por utilizar la aplicación de la aerolinea");
-      return;
+      return showBye();
     }
-    findByPrice = readline.question("¿Buscar más vuelos por precios? (si/no): ").toLowerCase() === "si";
-  }
 
-  console.log("Gracias por utilizar la aplicación de la aerolinea");
+  }
 }
 
 // Inicia la interfaz de usuario
