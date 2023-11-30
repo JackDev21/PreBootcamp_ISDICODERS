@@ -1,5 +1,5 @@
 // El nombre de los números
-// Crea un programa al que le introduces un número como parámetro del 0 al 100 y devuelve el número transformado a alfabeto normal, es decir:
+// Crea un programa al que le introduces un número como parámetro del 0 al 100 y devuelve el número transformado a alfabeto normal.
 
 const numWithWords = (number) => {
 

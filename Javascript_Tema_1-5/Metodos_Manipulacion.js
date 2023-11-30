@@ -1,23 +1,23 @@
 
 
-const listaNumeros = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-console.log (listaNumeros)
+const listaNumeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+console.log(listaNumeros)
 
 listaNumeros.push(16) // Push para agregar elemento al final de un array
-console.log (listaNumeros)
+console.log(listaNumeros)
 
 
-const nuevaLista =listaNumeros.slice(11,16) // Slice para seleccionar una subsección de elementos de un array
-console.log (nuevaLista)
+const nuevaLista = listaNumeros.slice(11, 16) // Slice para seleccionar una subsección de elementos de un array
+console.log(nuevaLista)
 
 nuevaLista.pop() // Pop para eliminar elemento al final de un array
-console.log (nuevaLista)
+console.log(nuevaLista)
 
 nuevaLista.unshift(10) // Unshift para agregar elemento al principio de un array
-console.log (nuevaLista)
+console.log(nuevaLista)
 
 nuevaLista.shift() // Shift para eliminar elemento al principio de un array
-console.log (nuevaLista)
+console.log(nuevaLista)
 
 
 const numeroEliminado = 12
@@ -78,6 +78,7 @@ console.log(nuevaLista)
 
 26. `concat()`: Combina dos o más arrays creando un nuevo array.
 
+27 `replace()`: Reemplaza parte de una cadena de texto por otra cadena de texto.
 
 
 Estos métodos son esenciales en la manipulación de arrays en JavaScript y te permiten realizar una variedad de operaciones en tus datos de manera efectiva. */ 
