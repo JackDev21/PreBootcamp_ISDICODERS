@@ -1,0 +1,73 @@
+/* Maqueta y estiliza las siguientes imágenes de forma que queden lo más exactas posible. https://github.com/isdi-coders-env/pre-curso/tree/master/tema7-css
+1 - Basic Markup */
+
+/* Body de los botones */
+body {
+    text-align: center;
+}
+
+/* Botones generales */
+button {
+    padding: 10px 35px
+}
+
+/* div container_uno con sus respectivos botones */
+.container_uno {
+    padding: 20px 40px;
+    font-size: 20px;
+}
+
+.boton_gris {
+    background-color: rgb(235, 234, 234);
+    border: 1px solid lightgray;
+    font-size: 15px;
+    border-radius: 5%;
+}
+
+#boton_azul {
+    background-color: rgb(97, 178, 228);
+    border: 1px solid rgb(112, 195, 247);
+    border-radius: 5%;
+    color: white;
+    font-size: 15px;
+
+}
+
+.boton_verde {
+    background-color: rgb(102, 211, 102);
+    border: 1px solid rgb(102, 211, 102);
+    border-radius: 5%;
+    color: white;
+    font-size: 15px;
+
+}
+
+.boton_azul_claro {
+    background-color: rgb(245, 189, 84);
+    border: 1px solid orange;
+    border-radius: 5%;
+    color: white;
+    font-size: 15px;
+
+}
+
+
+.container_dos {
+    padding: 20px 40px;
+    font-size: 20px;
+}
+
+.container_tres {
+    padding: 20px 40px;
+    font-size: 20px;
+}
+
+.container_cuatro {
+    padding: 20px 40px;
+    font-size: 20px;
+}
+
+.container_cinco {
+    padding: 20px 40px;
+    font-size: 20px;
+}

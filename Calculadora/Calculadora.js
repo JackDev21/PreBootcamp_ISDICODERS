@@ -21,43 +21,42 @@ Prohibido usar la función eval().
 Documentación: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters */
 
 
-const prompt = require("readline-sync")
+const prompt = require("readline-sync"); // Importamos el paquete readline-sync para poder leer por consola
 
-console.log("Bienvenido a la calculadora!");
-const valor1 = prompt.question("Introduce el prmier número a calcular: ");
-const valor2 = prompt.question("Introduce el segundo número a calcular: ");
+console.log("Bienvenido a la calculadora!"); // Mostramos un mensaje de bienvenida
+let input1 = prompt.question("Introduce el primer número a calcular: "); // Leemos por consola el primer valor
+let input2 = prompt.question("Introduce el segundo número a calcular (o deja en blanco para calcular la raíz cuadrada): ");
 
+let valor1 = Number(input1);
+let valor2 = Number(input2);
 
-
-const calculator = (valor1, valor2) => {
-    const suma = (a, b) => {
-        return Number(a) + Number(b);
-    }
-
-    const resta = (a, b) => {
-        return Number(a) - Number(b);
-    }
-
-    const multiplicacion = (a, b) => {
-        return Number(a) * Number(b);
-    }
-
-    const división = (a, b) => {
-        if (Number(b) === 0) {
-            console.log("No se puede dividir entre 0");
-            return " Intentalo de nuevo"
-        } else {
-            return Number(a) / Number(b);
-        }
-    }
-    return {
-        suma: suma(valor1, valor2).toFixed(3),
-        resta: resta(valor1, valor2).toFixed(3),
-        multiplicacion: multiplicacion(valor1, valor2).toFixed(3),
-        división: división(valor1, valor2).toFixed(3),
-    }
-
+if (isNaN(valor1)) { // Si el valor1 introducido no es un número, mostramos un mensaje de error y salimos del programa.
+    console.log("El primer valor no es un número, introduce un número válido.");
+    return;
 }
 
+// Si sólo se ha introducido un número (valor1) y el segundo input está vacío o no es un número, calculamos la raíz cuadrada.
+if (input2 === "" || isNaN(valor2)) {
+    console.log(`La raíz cuadrada de ${valor1} es: ` + Math.sqrt(valor1).toFixed(3));
+} else {
+    // Si ambos valores son números, procedemos con las operaciones de la calculadora.
+    const calculator = (a, b) => {
+        const suma = a + b;
+        const resta = a - b;
+        const multiplicacion = a * b;
+        let division;
+        if (b === 0) {
+            division = "No se puede dividir entre 0";
+        } else {
+            division = (a / b).toFixed(3);
+        }
 
-console.log(calculator(valor1, valor2));
+        return {
+            suma: suma.toFixed(3),
+            resta: resta.toFixed(3),
+            multiplicacion: multiplicacion.toFixed(3),
+            division: division
+        };
+    }
+    console.log(calculator(valor1, valor2));
+}
