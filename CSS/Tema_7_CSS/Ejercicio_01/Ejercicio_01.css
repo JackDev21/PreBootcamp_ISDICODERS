@@ -8,19 +8,18 @@ body {
 
 /* Botones generales */
 button {
-    padding: 10px 35px
+    padding: 10px 35px;
+    font-size: 15px;
 }
 
 /* div container_uno con sus respectivos botones */
 .container_uno {
     padding: 20px 40px;
-    font-size: 20px;
 }
 
 .boton_gris {
     background-color: rgb(235, 234, 234);
     border: 1px solid lightgray;
-    font-size: 15px;
     border-radius: 5%;
 }
 
@@ -29,7 +28,6 @@ button {
     border: 1px solid rgb(112, 195, 247);
     border-radius: 5%;
     color: white;
-    font-size: 15px;
 
 }
 
@@ -38,7 +36,6 @@ button {
     border: 1px solid rgb(102, 211, 102);
     border-radius: 5%;
     color: white;
-    font-size: 15px;
 
 }
 
@@ -47,7 +44,6 @@ button {
     border: 1px solid rgb(81, 212, 212);
     border-radius: 5%;
     color: white;
-    font-size: 15px;
 }
 
 .boton_naranja {
@@ -55,7 +51,6 @@ button {
     border: 1px solid orange;
     border-radius: 5%;
     color: white;
-    font-size: 15px;
 }
 
 .boton_rojo {
@@ -63,14 +58,12 @@ button {
     border: 1px solid rgb(240, 93, 93);
     border-radius: 5%;
     color: white;
-    font-size: 15px;
 }
 
 
 /* div container_dos con sus respectivos botones */
 .container_dos {
     padding: 20px 40px;
-    font-size: 20px;
 }
 
 .boton2_gris {
@@ -78,7 +71,6 @@ button {
     color: lightgray;
     border-radius: 5%;
     border: 1px solid lightgray;
-    font-size: 15px;
 }
 
 .boton2_azul {
@@ -86,7 +78,6 @@ button {
     color: rgb(97, 178, 228);
     border-radius: 5%;
     border: 1px solid rgb(97, 178, 228);
-    font-size: 15px;
 }
 
 .boton2_verde {
@@ -94,7 +85,6 @@ button {
     color: rgb(102, 211, 102);
     border-radius: 5%;
     border: 1px solid rgb(102, 211, 102);
-    font-size: 15px;
 }
 
 .boton2_azul_claro {
@@ -102,13 +92,67 @@ button {
     color: rgb(81, 212, 212);
     border-radius: 5%;
     border: 1px solid rgb(81, 212, 212);
-    font-size: 15px;
 }
 
+.boton2_naranja {
+    background-color: transparent;
+    color: orange;
+    ;
+    border-radius: 5%;
+    border: 1px solid orange;
+}
+
+.boton2_rojo {
+    background-color: transparent;
+    color: red;
+    border-radius: 5%;
+    border: 1px solid red;
+}
+
+
+/* div container_tres con sus respectivos botones */
 .container_tres {
     padding: 20px 40px;
-    font-size: 20px;
 }
+
+.boton3 {
+    border-radius: 3vb;
+    color: white;
+}
+
+#boton3_gris {
+    background-color: rgb(235, 234, 234);
+    border: 1px solid lightgray;
+    color: black
+}
+
+#boton3_azul {
+    background-color: rgb(97, 178, 228);
+    border: 1px solid rgb(112, 195, 247);
+}
+
+#boton3_verde {
+    background-color: rgb(102, 211, 102);
+    border: 1px solid rgb(102, 211, 102);
+}
+
+#boton3_azul_claro {
+    background-color: rgb(81, 212, 212);
+    border: 1px solid rgb(81, 212, 212);
+}
+
+#boton3_naranja {
+    background-color: rgb(245, 189, 84);
+    border: 1px solid orange;
+}
+
+#boton3_rojo {
+    background-color: rgb(240, 93, 93);
+    border: 1px solid rgb(240, 93, 93);
+}
+
+
+
 
 .container_cuatro {
     padding: 20px 40px;
