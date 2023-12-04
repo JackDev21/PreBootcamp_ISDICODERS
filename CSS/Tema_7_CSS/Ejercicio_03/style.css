@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+    margin: 150px 20% 150px 20%;
+    min-width: 960px;
+    background-color: rgb(77, 77, 77) !important;
+    font-family: 'Gill Sans';
+    font-size: 18px;
+    color: grey;
+}
+
+.cajas {
+    border: 5px solid white !important;
+    height: 150px;
+    width: 150px;
+    max-width: 150px;
+    margin: 20px;
+    text-align: center;
+    padding: 1%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(175, 175, 175);
+}
