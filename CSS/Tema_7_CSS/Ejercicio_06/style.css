@@ -77,7 +77,7 @@ section {
 
 .text {
     position: absolute;
-    top: 440px;
+    top: 360px;
     left: 600px;
     transform: translate(-50%, -50%);
     width: 900px;
@@ -85,11 +85,24 @@ section {
     text-align: left;
 }
 
+
+
 .heading {
     padding: 5px;
     margin: 10px;
     position: relative;
+    top: 150px;
     background-color: rgb(255, 255, 255);
+    margin-bottom: 300px;
+
+}
+
+.heading2 {
+    padding: 5px;
+    margin: 10px;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+
 }
 
 h1 {
@@ -104,7 +117,7 @@ h1 {
     width: 850px;
     height: 750px;
     top: 200px;
-    left: 1040px;
+    left: 1150px;
 }
 
 .container .box,
@@ -123,12 +136,12 @@ h1 {
 }
 
 .container .box1 {
-    height: 120px;
+    height: 200px;
     margin-bottom: 100px;
 }
 
 .container .box3 {
-    height: 120px;
+    height: 200px;
     margin-bottom: 10px;
 }
 
