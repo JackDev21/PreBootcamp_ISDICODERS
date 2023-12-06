@@ -5,12 +5,13 @@
 }
 
 img {
-    width: 50px;
-    margin: 1px;
+    width: 3em;
+    margin: 0.2em;
 }
 
 li {
     list-style: none;
+    text-decoration: none;
 }
 
 .navbar ul {
@@ -20,7 +21,7 @@ li {
     margin: 5px 0;
 }
 
-li a {
+.inicio li a {
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-size: 20px;
@@ -32,31 +33,65 @@ li a {
     position: relative;
     background-color: rgb(0, 0, 0);
     display: flex;
+    min-width: 600px;
+    max-width: 100%;
 }
 
 section {
-    background-color: aquamarine;
+    background-color: rgb(180, 180, 180);
+    height: 900px;
+
 }
 
 .menu {
     position: absolute;
-    width: 150px;
-    height: 100%;
+    width: 9em;
     display: flex;
-    padding: 20px;
+
+}
+
+.menu h4 {
+    position: absolute;
+    top: 0.1em;
+    left: 0.1em;
+    font-weight: bold;
+    font-family: 'Sofia';
+    font-size: 2em;
+}
+
+.menu ul {
+    position: absolute;
+    left: 5%;
+    margin-top: 50%;
+}
+
+.menu li {
+    margin-bottom: 0.5em;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Sofia';
+    font-size: 22px;
 }
 
 .text {
     position: relative;
     left: 150px;
     top: 5px;
-    margin-top: 10px;
-    padding: 15px;
+    margin-top: 5px;
+    padding: 10px;
     background-color: rgb(255, 255, 255);
     text-align: left;
     max-width: 60%;
+    max-height: 50%;
 }
 
 .heading {
-    margin-bottom: 150px;
+    margin-bottom: 2em;
+}
+
+.heading h1 {
+    margin-bottom: 1em;
 }
