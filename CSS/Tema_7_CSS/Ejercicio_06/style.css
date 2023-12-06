@@ -4,8 +4,6 @@
     box-sizing: border-box;
 }
 
-
-
 img {
     width: 3em;
     margin: 0.2em;
@@ -18,13 +16,10 @@ li {
 
 .navbar ul {
     display: -webkit-flex;
-    /* Para navegadores WebKit como Safari */
     display: -ms-flexbox;
-    /* Para Internet Explorer */
     justify-content: center;
     padding: 10px;
     margin: 5px 0;
-
 }
 
 .inicio li a {
@@ -65,10 +60,8 @@ section {
 .menu ul {
     position: absolute;
     left: 0;
-    /* Cambiado de left: 5%; */
     margin-top: 180px;
     padding-left: 40px;
-    /* Agregado para espaciar los enlaces del menú */
 }
 
 .menu li {
@@ -84,17 +77,16 @@ section {
 
 .text {
     position: absolute;
-    top: 380px;
+    top: 440px;
     left: 600px;
     transform: translate(-50%, -50%);
     width: 900px;
     background-color: rgb(255, 255, 255);
     text-align: left;
-
 }
 
 .heading {
-    padding: 50px;
+    padding: 5px;
     margin: 10px;
     position: relative;
     background-color: rgb(255, 255, 255);
@@ -104,4 +96,45 @@ h1 {
     margin-bottom: 25px;
     font-family: 'Sofia';
     font-size: 50px;
+    color: red;
+}
+
+.container {
+    background-color: white;
+    width: 850px;
+    height: 750px;
+    top: 200px;
+    left: 1040px;
+}
+
+.container .box,
+.container .box1,
+.container .box2,
+.container .box3 {
+    position: relative;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.container .box1 {
+    height: 120px;
+    margin-bottom: 100px;
+}
+
+.container .box3 {
+    height: 120px;
+    margin-bottom: 10px;
+}
+
+.container p {
+    font-family: sofia;
+    font-size: 25px;
+    text-align: center;
+    justify-content: center;
 }
