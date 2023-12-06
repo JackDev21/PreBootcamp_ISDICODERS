@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+
+
 img {
     width: 3em;
     margin: 0.2em;
@@ -19,10 +21,10 @@ li {
     /* Para navegadores WebKit como Safari */
     display: -ms-flexbox;
     /* Para Internet Explorer */
-    display: flex;
     justify-content: center;
     padding: 10px;
     margin: 5px 0;
+
 }
 
 .inicio li a {
@@ -34,42 +36,38 @@ li {
 }
 
 .inicio {
-    position: relative;
+    position: fixed;
     background-color: rgb(0, 0, 0);
     display: flex;
-    width: 100%;
-
+    min-width: 100%;
+    z-index: 1;
 }
 
 section {
-    position: relative;
-    background-color: rgb(180, 180, 180);
-    height: 100%
+    position: absolute;
+    background-color: rgb(109, 50, 50);
+    height: 100%;
 }
 
 .menu {
-    position: absolute;
-    width: 9em;
-    display: flex;
-
-
+    width: 150px;
 }
 
 .menu h4 {
     position: absolute;
-    top: 0.1em;
-    left: 0.1em;
     font-weight: bold;
     font-family: 'Sofia';
     font-size: 2em;
+    margin-left: 10px;
+    margin-top: 100px;
 }
 
 .menu ul {
     position: absolute;
     left: 0;
     /* Cambiado de left: 5%; */
-    margin-top: 50%;
-    padding-left: 10px;
+    margin-top: 180px;
+    padding-left: 40px;
     /* Agregado para espaciar los enlaces del menú */
 }
 
@@ -85,70 +83,25 @@ section {
 }
 
 .text {
-    position: relative;
-    left: 150px;
-    top: 5px;
-    margin-top: 5px;
-    padding: 10px;
+    position: absolute;
+    top: 380px;
+    left: 600px;
+    transform: translate(-50%, -50%);
+    width: 900px;
     background-color: rgb(255, 255, 255);
     text-align: left;
-    max-width: 60%;
-    max-height: 25em;
 
 }
 
 .heading {
-    margin-bottom: 2em;
-    background-color: rgb(235, 235, 235);
-    max-width: 80em;
-}
-
-.heading h1 {
-    margin-bottom: 1em;
-}
-
-
-.box-one {
-    width: 30em;
-    height: 7em;
+    padding: 50px;
+    margin: 10px;
     position: relative;
-    border: 0.1em solid rgb(196, 196, 196);
     background-color: rgb(255, 255, 255);
-    left: 65em;
-    top: -19.5em;
-    margin-bottom: 1em;
-
 }
 
-.big-box-one {
-    width: 30em;
-    height: 15em;
-    position: relative;
-    background-color: rgb(233, 233, 233);
-    left: 65em;
-    top: -19.5em;
-    margin-bottom: 1em;
-
-}
-
-.box-two {
-    width: 30em;
-    height: 7em;
-    position: relative;
-    border: 0.1em solid rgb(196, 196, 196);
-    background-color: rgb(255, 255, 255);
-    left: 65em;
-    top: -19.5em;
-    margin-bottom: 1em;
-
-}
-
-.big-box-two {
-    width: 30em;
-    height: 15em;
-    position: relative;
-    background-color: rgb(233, 233, 233);
-    left: 65em;
-    top: -19.5em;
-
+h1 {
+    margin-bottom: 25px;
+    font-family: 'Sofia';
+    font-size: 50px;
 }
