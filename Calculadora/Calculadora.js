@@ -37,7 +37,8 @@ if (isNaN(valor1)) { // Si el valor1 introducido no es un número, mostramos un 
 
 // Si sólo se ha introducido un número (valor1) y el segundo input está vacío o no es un número, calculamos la raíz cuadrada.
 if (input2 === "" || isNaN(valor2)) {
-    console.log(`La raíz cuadrada de ${valor1} es: ` + Math.sqrt(valor1).toFixed(3));
+    console.log(`La raíz cuadrada de ${valor1} es: ${Math.sqrt(valor1).toFixed(3)}`);
+
 } else {
     // Si ambos valores son números, procedemos con las operaciones de la calculadora.
     const calculator = (a, b) => {
@@ -45,17 +46,24 @@ if (input2 === "" || isNaN(valor2)) {
         const resta = a - b;
         const multiplicacion = a * b;
         let division;
+
         if (b === 0) {
             division = "No se puede dividir entre 0";
         } else {
             division = (a / b).toFixed(3);
         }
 
+        const resultado = []; // Almacenamos los resultados en un array.
+        resultado.push(suma.toFixed(3));
+        resultado.push(resta.toFixed(3));
+        resultado.push(multiplicacion.toFixed(3));
+        resultado.push(division);
+
         return {
-            suma: suma.toFixed(3),
-            resta: resta.toFixed(3),
-            multiplicacion: multiplicacion.toFixed(3),
-            division: division
+            "El resultado para la suma es": `${a} + ${b} = ${resultado[0]}`,
+            "El resultado para la resta es": `${a} - ${b} = ${resultado[1]}`,
+            "El resultado para la multiplicación es": `${a} * ${b} = ${resultado[2]}`,
+            "El resultado para la división es": `${a} / ${b} = ${resultado[3]}`
         };
     }
     console.log(calculator(valor1, valor2));
