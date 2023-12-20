@@ -1,5 +1,3 @@
-<img src="../img/logo_ISDICODERS.png" alt="Skylab">
-
 ## INTRODUCCIÓN
 
 Para referencia teórica recomendamos utilizar las siguientes webs:
