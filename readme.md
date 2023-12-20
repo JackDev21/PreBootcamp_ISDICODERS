@@ -55,10 +55,6 @@ En la nueva ventana que se abra a la derecha del navegador, teneis que hacer cli
 
 Una vez abierta la console de Chrome, podeis ver que a veces aparecen errores en la misma, esos errores van relacionados con la pagina que estamos viendo en ese momento.
 
-Para borrar esos errores, debemos hacer click en la redonda tachada que aparece remarcada en la siguiente imagen:
-
-<img src="../img/limpiar_consola_chrome.png" alt="limpiar_consola_chrome">
-
 ### Ejecución del código
 
 En la consola de Chrome Dev Tools puedes pegar tu código y ejecutarlo.
