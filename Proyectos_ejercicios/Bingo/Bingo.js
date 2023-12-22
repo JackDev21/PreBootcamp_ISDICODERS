@@ -44,25 +44,55 @@ Recursos: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 
 
 
-const readlineSync = require("readline-sync"); //importamos la librería readlineSync para poder interactuar con el usuario
+const readlineSync = require("readline-sync");
 
-const bingoGame = () => {
-    console.log("BINGO GAME!");
-    let name = readlineSync.question("Introduce tu nombre de jugador: ");
-    console.log(`Bienvenido ${name}!`);
-};
+const bingo = () => {
 
-const generarCarton = () => {
-    const carton = new Set(); // creamos un set para almacenar los números del cartón, y evitar que se repitan los números
 
-    while (carton.size < 15) {
-        const numero = Math.floor(Math.random() * 15) + 1; // generamos un número aleatorio entre 1 y 15
-        carton.add(numero); // agregamos el número al set de números del cartón
+    const bingoGame = (user) => {
+        console.log("BINGO GAME!");
+        console.log(`Bienvenido ${user}!`);
+    };
+
+    const generarCarton = () => {
+        const carton = new Set(); // Se crea un set para evitar repeticiones.
+
+        while (carton.size < 15) {
+            const numero = Math.floor(Math.random() * 15) + 1; // Generamos un numero aleatorio entre 1 y 15.
+            carton.add(numero); // Añadimos el numero al set.
+        }
+
+        return Array.from(carton); // Convertimos el set en un array.
+    };
+
+    const mostrarCarton = (user, carton) => {
+        console.log(`Cartón de ${user}: ${carton}`); // Mostramos el cartón del jugador.
+    };
+
+
+    const turno = () => {
+        const randomNum = Math.floor(Math.random() * 15) + 1; // Generamos un numero aleatorio entre 1 y 15.
+        console.log(`El numero es: ${randomNum}`); // Mostramos el numero aleatorio.
+
+        if (carton.includes(randomNum)) { // Verificamos si el numero existe en el cartón.
+            const index = carton.indexOf(randomNum); // Obtenemos el indice del numero.
+            carton[index] = "X"; // Cambiamos el numero por una X.
+            console.log(`El numero ${randomNum} ha sido encontrado.`);
+        } else {
+            console.log(`El numero ${numero} no ha sido encontrado en tú cartón.`);
+        }
+
+        mostrarCarton(user, carton); // Mostramos el cartón.
+
     }
 
-    return Array.from(carton); // convertimos el set en un array y lo retornamos
+
+    const user = readlineSync.question("Bienvenido al Bingo!. Introduce tu nombre de jugador: "); // Pedimos nombre al jugador.
+    const carton = generarCarton();
+
+    bingoGame(user);
+    mostrarCarton(user, carton);
+    turno()
 };
-console.log(generarCarton());
 
-
-
+bingo();
