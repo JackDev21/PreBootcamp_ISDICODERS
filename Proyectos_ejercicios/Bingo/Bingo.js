@@ -43,16 +43,26 @@ Ranking de usuarios (ordenado por puntos).
 Recursos: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
 
 
-const promp = require("readline-sync");
+
+const readlineSync = require("readline-sync"); //importamos la librería readlineSync para poder interactuar con el usuario
 
 const bingoGame = () => {
     console.log("BINGO GAME!");
-    let name = promp.question("Introduce tu nombre de jugador: ");
+    let name = readlineSync.question("Introduce tu nombre de jugador: ");
     console.log(`Bienvenido ${name}!`);
+};
 
-    const cartonNumOne = [1, 2, 3, 4, 5];
+const generarCarton = () => {
+    const carton = new Set(); // creamos un set para almacenar los números del cartón, y evitar que se repitan los números
+
+    while (carton.size < 15) {
+        const numero = Math.floor(Math.random() * 15) + 1; // generamos un número aleatorio entre 1 y 15
+        carton.add(numero); // agregamos el número al set de números del cartón
+    }
+
+    return Array.from(carton); // convertimos el set en un array y lo retornamos
+};
+console.log(generarCarton());
 
 
 
-
-}
