@@ -43,35 +43,51 @@ Ranking de usuarios (ordenado por puntos).
 Recursos: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
 
 
-
 const readlineSync = require("readline-sync");
 
 const bingo = () => {
-
-
+    let lineaCantada = false;
     const bingoGame = (user) => {
         console.log("BINGO GAME!");
         console.log(`Bienvenido ${user}!`);
     };
 
+
     const generarCarton = () => {
         const carton = new Set(); // Se crea un set para evitar repeticiones.
 
-        while (carton.size < 15) {
-            const numero = Math.floor(Math.random() * 15) + 1; // Generamos un numero aleatorio entre 1 y 15.
+        while (carton.size < 15) { // Mientras el cartón no tenga 15 elementos.
+            const numero = Math.floor(Math.random() * 30) + 1; // Generamos un numero aleatorio entre 1 y 30.
             carton.add(numero); // Añadimos el numero al set.
         }
 
         return Array.from(carton); // Convertimos el set en un array.
     };
 
+
+
     const mostrarCarton = (user, carton) => {
-        console.log(`Cartón de ${user}: ${carton}`); // Mostramos el cartón del jugador.
+        carton.sort((a, b) => a - b); // Ordenar el carton de menor a mayor
+
+        const rows = [];
+        for (let i = 0; i < 3; i++) {
+            const row = {};
+            for (let j = 0; j < 5; j++) {
+                row[`Columna ${j + 1}`] = carton[i * 5 + j];
+            }
+            rows.push(row);
+        }
+
+        console.log(`Cartón de ${user}:`);
+        console.table(rows);
     };
 
 
-    const turno = () => {
-        const randomNum = Math.floor(Math.random() * 15) + 1; // Generamos un numero aleatorio entre 1 y 15.
+
+
+
+    const turno = (carton) => {
+        const randomNum = Math.floor(Math.random() * 30) + 1; // Generamos un numero aleatorio entre 1 y 30.
         console.log(`El numero es: ${randomNum}`); // Mostramos el numero aleatorio.
 
         if (carton.includes(randomNum)) { // Verificamos si el numero existe en el cartón.
@@ -79,48 +95,58 @@ const bingo = () => {
             carton[index] = "X"; // Cambiamos el numero por una X.
             console.log(`El numero ${randomNum} ha sido encontrado.`);
         } else {
-            console.log(`El numero ${randomNum} no ha sido encontrado en tú cartón.`);
+            console.log(`El numero ${randomNum} no ha sido encontrado en tu cartón.`);
         }
 
         mostrarCarton(user, carton); // Mostramos el cartón.
-
-    }
-
-    const linea = () => {
-
-    }
+        return carton;
+    };
 
 
-
-    const nuevoTurno = () => {
-        let continuar = true;
-        while (continuar) {
-            turno();
-            if (carton.every(element => element === 'X')) {
-                console.log('!Bingo! Has completado el cartón. ¡Felicitaciones!');
-                continuar = false;
-            } else {
-                console.log("¿Deseas seguir jugando? (Si/No)");
-                const answer = readlineSync.question();
-                if (answer.toLowerCase() === "no") {
-                    continuar = false;
+    const linea = (carton) => {
+        if (!lineaCantada) { // Verificar si la línea no ha sido cantada antes
+            const filas = [
+                carton.slice(0, 5),
+                carton.slice(5, 10),
+                carton.slice(10, 15)
+            ];
+            for (let fila of filas) {
+                if (fila.every(element => element === 'X')) {
+                    console.log("¡LINEA!");
+                    lineaCantada = true; // Actualizar el indicador
                 }
             }
         }
-
-    }
-
+    };
 
 
+    const nuevoTurno = (carton) => {
+        let continuar = true;
+        while (continuar && !carton.every(element => element === 'X')) {
+            console.log("¿Deseas seguir jugando? (Si/No)");
+            const answer = readlineSync.question().toLowerCase();
+            if (answer === "no") {
+                console.log('¡Gracias por jugar!');
+                continuar = false;
+            } else {
+                carton = turno(carton);
+                linea(carton);
+            }
+        }
 
+        if (carton.every(element => element === 'X')) {
+            console.log('¡Bingo! Has completado el cartón. ¡Felicitaciones!');
+        }
+    };
 
     const user = readlineSync.question("Bienvenido al Bingo!. Introduce tu nombre de jugador: "); // Pedimos nombre al jugador.
-    const carton = generarCarton();
+    let carton = generarCarton();
 
     bingoGame(user);
     mostrarCarton(user, carton);
-    turno()
-    nuevoTurno()
+    carton = turno(carton);
+    linea(carton);
+    nuevoTurno(carton);
 };
 
 bingo();
