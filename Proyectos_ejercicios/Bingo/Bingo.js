@@ -79,12 +79,39 @@ const bingo = () => {
             carton[index] = "X"; // Cambiamos el numero por una X.
             console.log(`El numero ${randomNum} ha sido encontrado.`);
         } else {
-            console.log(`El numero ${numero} no ha sido encontrado en tú cartón.`);
+            console.log(`El numero ${randomNum} no ha sido encontrado en tú cartón.`);
         }
 
         mostrarCarton(user, carton); // Mostramos el cartón.
 
     }
+
+    const linea = () => {
+
+    }
+
+
+
+    const nuevoTurno = () => {
+        let continuar = true;
+        while (continuar) {
+            turno();
+            if (carton.every(element => element === 'X')) {
+                console.log('!Bingo! Has completado el cartón. ¡Felicitaciones!');
+                continuar = false;
+            } else {
+                console.log("¿Deseas seguir jugando? (Si/No)");
+                const answer = readlineSync.question();
+                if (answer.toLowerCase() === "no") {
+                    continuar = false;
+                }
+            }
+        }
+
+    }
+
+
+
 
 
     const user = readlineSync.question("Bienvenido al Bingo!. Introduce tu nombre de jugador: "); // Pedimos nombre al jugador.
@@ -93,6 +120,7 @@ const bingo = () => {
     bingoGame(user);
     mostrarCarton(user, carton);
     turno()
+    nuevoTurno()
 };
 
 bingo();
