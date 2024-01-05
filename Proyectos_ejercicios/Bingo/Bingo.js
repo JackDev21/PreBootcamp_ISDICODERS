@@ -47,6 +47,7 @@ const readlineSync = require("readline-sync");
 
 const bingo = () => {
     let lineaCantada = false;
+    let turnos = 0;
     const bingoGame = (user) => {
         console.log("BINGO GAME!");
         console.log(`Bienvenido ${user}!`);
@@ -65,25 +66,25 @@ const bingo = () => {
     };
 
 
-
     const mostrarCarton = (user, carton) => {
-        carton.sort((a, b) => a - b); // Ordenar el carton de menor a mayor
+        // Ordena el carton de menor a mayor
+        carton.sort((a, b) => a - b); // Utiliza el método sort para ordenar el cartón numéricamente
 
-        const rows = [];
-        for (let i = 0; i < 3; i++) {
-            const row = {};
-            for (let j = 0; j < 5; j++) {
+        const rows = []; // Crea una matriz vacía para almacenar las filas del cartón
+        for (let i = 0; i < 3; i++) { // Bucle externo para crear las tres filas del cartón
+            const row = {}; // Crea un objeto vacío para representar cada fila del cartón
+            for (let j = 0; j < 5; j++) { // Bucle interno para las cinco columnas de cada fila
+                // Asigna cada número del cartón a una columna específica en el objeto 'row'
                 row[`Columna ${j + 1}`] = carton[i * 5 + j];
+                // i * 5 + j es la manera de acceder a cada número en el cartón, organizado en filas y columnas
             }
-            rows.push(row);
+            rows.push(row); // Agrega la fila completada a la matriz 'rows'
         }
-
+        // Imprime el encabezado del cartón con el nombre del usuario
         console.log(`Cartón de ${user}:`);
-        console.table(rows);
+        // Imprime el cartón en formato de tabla en la consola
+        console.table(rows); // Muestra el cartón como una tabla en la consola
     };
-
-
-
 
 
     const turno = (carton) => {
@@ -98,13 +99,14 @@ const bingo = () => {
             console.log(`El numero ${randomNum} no ha sido encontrado en tu cartón.`);
         }
 
-        mostrarCarton(user, carton); // Mostramos el cartón.
+        mostrarCarton(user, carton);
         return carton;
     };
 
 
+
     const linea = (carton) => {
-        if (!lineaCantada) { // Verificar si la línea no ha sido cantada antes
+        if (!lineaCantada) {
             const filas = [
                 carton.slice(0, 5),
                 carton.slice(5, 10),
@@ -113,7 +115,7 @@ const bingo = () => {
             for (let fila of filas) {
                 if (fila.every(element => element === 'X')) {
                     console.log("¡LINEA!");
-                    lineaCantada = true; // Actualizar el indicador
+                    lineaCantada = true;
                 }
             }
         }
@@ -123,30 +125,45 @@ const bingo = () => {
     const nuevoTurno = (carton) => {
         let continuar = true;
         while (continuar && !carton.every(element => element === 'X')) {
-            console.log("¿Deseas seguir jugando? (Si/No)");
-            const answer = readlineSync.question().toLowerCase();
+            const answer = readlineSync.question("¿Deseas seguir jugando? (Si/No)").toLowerCase();
             if (answer === "no") {
                 console.log('¡Gracias por jugar!');
                 continuar = false;
             } else {
                 carton = turno(carton);
                 linea(carton);
+                turnos++;
+                console.log(`Turno ${turnos}`);
             }
         }
 
         if (carton.every(element => element === 'X')) {
-            console.log('¡Bingo! Has completado el cartón. ¡Felicitaciones!');
+            console.log(`¡Bingo! Has completado el cartón en ${turnos} turnos. ¡Felicitaciones!`);
+        }
+        return carton;
+    };
+
+    const nuevaPartida = () => {
+        const jugarNuevamente = readlineSync.question("¿Deseas jugar otra partida? (Si/No)").toLowerCase();
+        if (jugarNuevamente === "si") {
+            lineaCantada = false; // Restablece la variable para la nueva partida
+            turnos = 0; // Restablece el contador de turnos para la nueva partida
+            bingo(); // Inicia un nuevo juego
+        } else {
+            console.log("¡Hasta la próxima!");
         }
     };
 
-    const user = readlineSync.question("Bienvenido al Bingo!. Introduce tu nombre de jugador: "); // Pedimos nombre al jugador.
-    let carton = generarCarton();
-
+    // Código para iniciar el juego
+    const user = readlineSync.question("Bienvenido al Bingo!. Introduce tu nombre de jugador: ");
     bingoGame(user);
+    let carton = generarCarton();
+    generarCarton();
     mostrarCarton(user, carton);
-    carton = turno(carton);
-    linea(carton);
     nuevoTurno(carton);
+    nuevaPartida();
+
+
 };
 
 bingo();
