@@ -45,10 +45,14 @@ Recursos: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 
 const readlineSync = require("readline-sync");
 
+
+let ranking = []
+
 const bingo = () => {
     let lineaCantada = false;
     let turnos = 0;
-    const puntosBase = 100;
+    const puntosBase = 200;
+
 
     // Mostramos el sistema de puntos al usuario
     const mostrarSistemaPuntos = () => {
@@ -72,10 +76,8 @@ const bingo = () => {
             const numero = Math.floor(Math.random() * 30) + 1; // Generamos un numero aleatorio entre 1 y 30.
             carton.add(numero); // Añadimos el numero al set.
         }
-
         return Array.from(carton); // Convertimos el set en un array.
     };
-
 
 
     const mostrarCarton = (user, carton) => {
@@ -114,7 +116,6 @@ const bingo = () => {
                 console.log("Opción no válida. Por favor, responde con 'Si' o 'No'.");
             }
         }
-
         return carton;
     }
 
@@ -136,7 +137,6 @@ const bingo = () => {
     };
 
 
-
     const linea = (carton) => {
         if (!lineaCantada) {
             const filas = [
@@ -154,15 +154,7 @@ const bingo = () => {
     };
 
 
-    const calcularPuntaje = (turnos) => {
-        // Calculamos el puntaje basado en los turnos
-        const puntaje = puntosBase - turnos;
-
-        // Aseguramos que el puntaje no sea negativo
-        return puntaje >= 0 ? puntaje : 0;
-    };
-
-    const nuevoTurno = (carton) => {
+    const nuevoTurno = (carton, user) => {
         let continuar = true;
         while (continuar && !carton.every(element => element === 'X')) {
             const answer = readlineSync.question("¿Deseas seguir jugando? (Si/No)").toLowerCase();
@@ -177,9 +169,9 @@ const bingo = () => {
             }
         }
         if (carton.every(element => element === 'X')) {
-            const puntaje = calcularPuntaje(turnos); // Calculamos el puntaje al finalizar la partida
+            const puntos = calcularPuntos(turnos, user); // Calculamos el puntaje al finalizar la partida
             console.log(`¡Bingo! Has completado el cartón en ${turnos} turnos.`);
-            console.log(`Tu puntaje es: ${puntaje}`);
+            console.log(`Has obtenido una puntación de: ${puntos}`);
         }
         return carton;
     };
@@ -193,8 +185,30 @@ const bingo = () => {
         } else {
             console.log("¡Hasta la próxima!");
         }
-
     };
+
+
+
+
+    const calcularPuntos = (turnos, user) => {
+        // Calculamos el puntaje basado en los turnos
+        const puntos = puntosBase - turnos;
+
+        // Aseguramos que el puntaje no sea negativo
+        const puntosFinal = puntos >= 0 ? puntos : 0;
+        ranking.push({ user: user, puntos: puntosFinal }); // Agregamos el usuario y su puntaje al ranking 
+        return puntosFinal
+    };
+
+
+    const mostrarRanking = () => {
+        ranking.sort((a, b) => b.puntos - a.puntos)
+
+        console.log('\nRanking de Usuarios:');
+        ranking.forEach((element, index) => {
+            console.log(`${index + 1}. ${element.user} - ${element.puntos} puntos`)
+        })
+    }
 
 
     const user = readlineSync.question("Bienvenido al Bingo!. Introduce tu nombre de jugador: ");
@@ -203,7 +217,8 @@ const bingo = () => {
     let carton = generarCarton();
     mostrarCarton(user, carton);
     generarNuevoCarton();
-    nuevoTurno(carton);
+    nuevoTurno(carton, user);
+    mostrarRanking();
     nuevaPartida()
 
 };
