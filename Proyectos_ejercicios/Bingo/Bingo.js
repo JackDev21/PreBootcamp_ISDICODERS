@@ -73,9 +73,9 @@ const bingo = () => {
     const generarCarton = () => {
         const carton = new Set(); // Set para almacenar números únicos
 
-        // Genera 12 números únicos entre 1 y 30 para el cartón
-        while (carton.size < 12) {
-            const numero = Math.floor(Math.random() * 30) + 1;
+        // Genera 9 números únicos entre 1 y 20 para el cartón
+        while (carton.size < 9) {
+            const numero = Math.floor(Math.random() * 20) + 1;
             carton.add(numero);
         }
         return Array.from(carton); // Convierte el set en un array
@@ -121,7 +121,7 @@ const bingo = () => {
 
     // Realiza un turno del juego
     const turno = (carton) => {
-        const randomNum = Math.floor(Math.random() * 30) + 1; // Genera un número aleatorio
+        const randomNum = Math.floor(Math.random() * 20) + 1; // Genera un número aleatorio
         console.log(`El numero es: ${randomNum}`); // Muestra el número aleatorio
 
         if (carton.includes(randomNum)) { // Verifica si el número está en el cartón

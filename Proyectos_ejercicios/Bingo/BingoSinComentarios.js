@@ -66,7 +66,7 @@ const bingo = () => {
     };
 
     const turno = (carton) => {
-        const randomNum = Math.floor(Math.random() * 30) + 1;
+        const randomNum = Math.floor(Math.random() * 20) + 1;
         console.log(`El numero es: ${randomNum}`);
 
         if (carton.includes(randomNum)) {
