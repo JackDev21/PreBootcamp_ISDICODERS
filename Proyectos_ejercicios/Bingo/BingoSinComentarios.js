@@ -1,9 +1,11 @@
 const readlineSync = require("readline-sync");
 
+let ranking = [];
+
 const bingo = () => {
     let lineaCantada = false;
     let turnos = 0;
-    const puntosBase = 100;
+    const puntosBase = 200;
 
     const mostrarSistemaPuntos = () => {
         console.log("Bienvenido al Bingo!");
@@ -20,8 +22,9 @@ const bingo = () => {
 
     const generarCarton = () => {
         const carton = new Set();
-        while (carton.size < 12) {
-            const numero = Math.floor(Math.random() * 30) + 1;
+
+        while (carton.size < 9) {
+            const numero = Math.floor(Math.random() * 20) + 1;
             carton.add(numero);
         }
         return Array.from(carton);
@@ -29,11 +32,12 @@ const bingo = () => {
 
     const mostrarCarton = (user, carton) => {
         carton.sort((a, b) => a - b);
+
         const rows = [];
         for (let i = 0; i < 3; i++) {
             const row = {};
-            for (let j = 0; j < 4; j++) {
-                row[`Columna ${j + 1}`] = carton[i * 4 + j];
+            for (let j = 0; j < 3; j++) {
+                row[`Columna ${j + 1}`] = carton[i * 3 + j];
             }
             rows.push(row);
         }
@@ -44,8 +48,10 @@ const bingo = () => {
     const generarNuevoCarton = () => {
         let carton;
         let jugar = true;
+
         while (jugar) {
             const otroCarton = readlineSync.question("¿Deseas otro cartón? (Si/No)").toLowerCase();
+
             if (otroCarton === 'no') {
                 carton = generarCarton();
                 jugar = false;
@@ -62,6 +68,7 @@ const bingo = () => {
     const turno = (carton) => {
         const randomNum = Math.floor(Math.random() * 30) + 1;
         console.log(`El numero es: ${randomNum}`);
+
         if (carton.includes(randomNum)) {
             const index = carton.indexOf(randomNum);
             carton[index] = "X";
@@ -69,6 +76,7 @@ const bingo = () => {
         } else {
             console.log(`El numero ${randomNum} no ha sido encontrado en tu cartón.`);
         }
+
         mostrarCarton(user, carton);
         return carton;
     };
@@ -76,9 +84,9 @@ const bingo = () => {
     const linea = (carton) => {
         if (!lineaCantada) {
             const filas = [
-                carton.slice(0, 5),
-                carton.slice(5, 10),
-                carton.slice(10, 15)
+                carton.slice(0, 3),
+                carton.slice(3, 6),
+                carton.slice(6, 9)
             ];
             for (let fila of filas) {
                 if (fila.every(element => element === 'X')) {
@@ -89,12 +97,7 @@ const bingo = () => {
         }
     };
 
-    const calcularPuntaje = (turnos) => {
-        const puntaje = puntosBase - turnos;
-        return puntaje >= 0 ? puntaje : 0;
-    };
-
-    const nuevoTurno = (carton) => {
+    const nuevoTurno = (carton, user) => {
         let continuar = true;
         while (continuar && !carton.every(element => element === 'X')) {
             const answer = readlineSync.question("¿Deseas seguir jugando? (Si/No)").toLowerCase();
@@ -109,9 +112,9 @@ const bingo = () => {
             }
         }
         if (carton.every(element => element === 'X')) {
-            const puntaje = calcularPuntaje(turnos);
+            const puntos = calcularPuntos(turnos, user);
             console.log(`¡Bingo! Has completado el cartón en ${turnos} turnos.`);
-            console.log(`Tu puntaje es: ${puntaje}`);
+            console.log(`Has obtenido una puntación de: ${puntos}`);
         }
         return carton;
     };
@@ -127,13 +130,30 @@ const bingo = () => {
         }
     };
 
+    const calcularPuntos = (turnos, user) => {
+        const puntos = puntosBase - turnos;
+        const puntosFinal = puntos >= 0 ? puntos : 0;
+        ranking.push({ user: user, puntos: puntosFinal });
+        return puntosFinal;
+    };
+
+    const mostrarRanking = () => {
+        ranking.sort((a, b) => b.puntos - a.puntos);
+
+        console.log('\nRanking de Usuarios:');
+        ranking.forEach((element, index) => {
+            console.log(`${index + 1}. ${element.user} - ${element.puntos} puntos`)
+        })
+    };
+
     const user = readlineSync.question("Bienvenido al Bingo!. Introduce tu nombre de jugador: ");
     bingoGame(user);
     mostrarSistemaPuntos();
     let carton = generarCarton();
     mostrarCarton(user, carton);
     generarNuevoCarton();
-    nuevoTurno(carton);
+    nuevoTurno(carton, user);
+    mostrarRanking();
     nuevaPartida()
 };
 
