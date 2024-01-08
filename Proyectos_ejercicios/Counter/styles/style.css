@@ -28,7 +28,7 @@ body {
     background-image: url(./background.jpg);
     background-size: cover;
     background-position: center;
-    color: whitesmoke;
+    color: rgb(236, 212, 189);
     font-family: 'Salsa', cursive;
 
 }
@@ -41,6 +41,7 @@ body {
     border-radius: 50px;
 
 }
+
 
 .number {
     display: flex;
