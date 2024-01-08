@@ -89,8 +89,8 @@ const bingo = () => {
         const rows = []; // Matriz para las filas del cartón
         for (let i = 0; i < 3; i++) { // Itera 3 veces para generar las filas del cartón
             const row = {}; // Objeto para representar cada fila del cartón
-            for (let j = 0; j < 4; j++) { // Itera 4 veces para generar las columnas del cartón
-                row[`Columna ${j + 1}`] = carton[i * 4 + j]; // Agrega la columna al objeto de fila
+            for (let j = 0; j < 3; j++) { // Itera 4 veces para generar las columnas del cartón
+                row[`Columna ${j + 1}`] = carton[i * 3 + j]; // Agrega la columna al objeto de fila
             }
             rows.push(row); // Agrega la fila al array de filas
         }
@@ -140,9 +140,9 @@ const bingo = () => {
     const linea = (carton) => {
         if (!lineaCantada) { // Verifica si la línea ya fue completada
             const filas = [ // Matriz de filas del cartón
-                carton.slice(0, 5),
-                carton.slice(5, 10),
-                carton.slice(10, 15)
+                carton.slice(0, 3),
+                carton.slice(3, 6),
+                carton.slice(6, 9)
             ];
             for (let fila of filas) { // Itera sobre las filas del cartón
                 if (fila.every(element => element === 'X')) { // Verifica si la fila está completa
