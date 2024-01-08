@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background: linear-gradient(135deg, rgba(33, 33, 33, 1) 0%, rgba(33, 33, 33, 1) 50%, rgb(150, 99, 4) 50%, rgb(191, 132, 4) 60%);
 
 }
 
@@ -21,7 +25,11 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-
+    background-image: url(./background.jpg);
+    background-size: cover;
+    background-position: center;
+    color: whitesmoke;
+    font-family: 'Salsa', cursive;
 
 }
 
