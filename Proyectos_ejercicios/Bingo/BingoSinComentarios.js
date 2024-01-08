@@ -1,4 +1,4 @@
-const readlineSync = require("readline-sync");
+/* BINGO GAME! 🎲🎰*/
 
 let ranking = [];
 
@@ -50,7 +50,7 @@ const bingo = () => {
         let jugar = true;
 
         while (jugar) {
-            const otroCarton = readlineSync.question("¿Deseas otro cartón? (Si/No)").toLowerCase();
+            const otroCarton = prompt("¿Deseas otro cartón? (Si/No)").toLowerCase();
 
             if (otroCarton === 'no') {
                 carton = generarCarton();
@@ -100,8 +100,8 @@ const bingo = () => {
     const nuevoTurno = (carton, user) => {
         let continuar = true;
         while (continuar && !carton.every(element => element === 'X')) {
-            const answer = readlineSync.question("¿Deseas seguir jugando? (Si/No)").toLowerCase();
-            if (answer === "no") {
+            const answer = confirm("¿Deseas seguir jugando?");
+            if (answer === false) {
                 console.log('¡Gracias por jugar!');
                 continuar = false;
             } else {
@@ -120,7 +120,7 @@ const bingo = () => {
     };
 
     const nuevaPartida = () => {
-        const jugarNuevamente = readlineSync.question("¿Deseas jugar otra partida? (Si/No)").toLowerCase();
+        const jugarNuevamente = prompt("¿Deseas jugar otra partida? (Si/No)").toLowerCase();
         if (jugarNuevamente === "si") {
             lineaCantada = false;
             turnos = 0;
@@ -146,7 +146,7 @@ const bingo = () => {
         })
     };
 
-    const user = readlineSync.question("Bienvenido al Bingo!. Introduce tu nombre de jugador: ");
+    const user = prompt("Bienvenido al Bingo!. Introduce tu nombre de jugador: ");
     bingoGame(user);
     mostrarSistemaPuntos();
     let carton = generarCarton();
