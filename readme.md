@@ -75,4 +75,3 @@ Existen otras **alternativas** para ejecutar el código:
 
 ---
 
-## [Empezar tema 1: Variables](../tema1-variables/README.md) <br>
