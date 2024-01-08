@@ -45,17 +45,17 @@ Recursos: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 
 const readlineSync = require("readline-sync");
 
+let ranking = []; // Almacena los puntajes de los usuarios
 
-let ranking = []
-
+// Función principal del juego de Bingo
 const bingo = () => {
-    let lineaCantada = false;
-    let turnos = 0;
-    const puntosBase = 200;
+    let lineaCantada = false; // Indica si se cantó línea
+    let turnos = 0; // Contador de turnos
+    const puntosBase = 200; // Puntos base del juego
 
-
-    // Mostramos el sistema de puntos al usuario
+    // Muestra el sistema de puntos al usuario
     const mostrarSistemaPuntos = () => {
+        // Muestra información sobre el sistema de puntaje
         console.log("Bienvenido al Bingo!");
         console.log("Sistema de Puntos:");
         console.log("- Menos turnos = Más puntos");
@@ -63,52 +63,52 @@ const bingo = () => {
         console.log("¡Completa el cartón en menos turnos para obtener más puntos!\n");
     };
 
+    // Función que da la bienvenida al usuario
     const bingoGame = (user) => {
         console.log("BINGO GAME!");
         console.log(`Bienvenido ${user}!`);
     };
 
-
+    // Genera un cartón de Bingo aleatorio
     const generarCarton = () => {
-        const carton = new Set(); // Se crea un set para evitar repeticiones.
+        const carton = new Set(); // Set para almacenar números únicos
 
-        while (carton.size < 12) { // Mientras el cartón no tenga 15 elementos.
-            const numero = Math.floor(Math.random() * 30) + 1; // Generamos un numero aleatorio entre 1 y 30.
-            carton.add(numero); // Añadimos el numero al set.
+        // Genera 12 números únicos entre 1 y 30 para el cartón
+        while (carton.size < 12) {
+            const numero = Math.floor(Math.random() * 30) + 1;
+            carton.add(numero);
         }
-        return Array.from(carton); // Convertimos el set en un array.
+        return Array.from(carton); // Convierte el set en un array
     };
 
-
+    // Muestra el cartón en formato de tabla
     const mostrarCarton = (user, carton) => {
-        // Ordena el carton de menor a mayor
-        carton.sort((a, b) => a - b); // Utiliza el método sort para ordenar el cartón numéricamente
+        // Ordena el cartón numéricamente
+        carton.sort((a, b) => a - b);
 
-        const rows = []; // Crea una matriz vacía para almacenar las filas del cartón
-        for (let i = 0; i < 3; i++) { // Bucle externo para crear las tres filas del cartón
-            const row = {}; // Crea un objeto vacío para representar cada fila del cartón
-            for (let j = 0; j < 4; j++) { // Bucle interno para las cuatro columnas de cada fila
-                // Asigna cada número del cartón a una columna específica en el objeto 'row'
-                row[`Columna ${j + 1}`] = carton[i * 4 + j];
-                // i * 4 + j es la manera de acceder a cada número en el cartón, organizado en filas y columnas
+        const rows = []; // Matriz para las filas del cartón
+        for (let i = 0; i < 3; i++) { // Itera 3 veces para generar las filas del cartón
+            const row = {}; // Objeto para representar cada fila del cartón
+            for (let j = 0; j < 4; j++) { // Itera 4 veces para generar las columnas del cartón
+                row[`Columna ${j + 1}`] = carton[i * 4 + j]; // Agrega la columna al objeto de fila
             }
-            rows.push(row); // Agrega la fila completada a la matriz 'rows'
+            rows.push(row); // Agrega la fila al array de filas
         }
-        // Imprime el encabezado del cartón con el nombre del usuario
         console.log(`Cartón de ${user}:`);
-        // Imprime el cartón en formato de tabla en la consola
-        console.table(rows); // Muestra el cartón como una tabla en la consola
+        console.table(rows); // Muestra el cartón como tabla en consola
     };
+
+    // Genera un nuevo cartón o permite continuar con el actual
     const generarNuevoCarton = () => {
-        let carton;
-        let jugar = true;
+        let carton; // Almacena el cartón actual
+        let jugar = true;  // Indica si se debe generar un nuevo cartón
 
         while (jugar) {
             const otroCarton = readlineSync.question("¿Deseas otro cartón? (Si/No)").toLowerCase();
 
             if (otroCarton === 'no') {
                 carton = generarCarton(); // Genera un nuevo cartón
-                jugar = false; // Sal del bucle
+                jugar = false; // Sale del bucle
             } else if (otroCarton === 'si') {
                 carton = generarCarton(); // Genera un nuevo cartón
                 mostrarCarton(user, carton); // Muestra el cartón
@@ -117,110 +117,104 @@ const bingo = () => {
             }
         }
         return carton;
-    }
+    };
 
-
+    // Realiza un turno del juego
     const turno = (carton) => {
-        const randomNum = Math.floor(Math.random() * 30) + 1; // Generamos un numero aleatorio entre 1 y 30.
-        console.log(`El numero es: ${randomNum}`); // Mostramos el numero aleatorio.
+        const randomNum = Math.floor(Math.random() * 30) + 1; // Genera un número aleatorio
+        console.log(`El numero es: ${randomNum}`); // Muestra el número aleatorio
 
-        if (carton.includes(randomNum)) { // Verificamos si el numero existe en el cartón.
-            const index = carton.indexOf(randomNum); // Obtenemos el indice del numero.
-            carton[index] = "X"; // Cambiamos el numero por una X.
+        if (carton.includes(randomNum)) { // Verifica si el número está en el cartón
+            const index = carton.indexOf(randomNum); // Obtiene el índice del número en el cartón
+            carton[index] = "X"; // Marca el número en el cartón como "X"
             console.log(`El numero ${randomNum} ha sido encontrado.`);
         } else {
             console.log(`El numero ${randomNum} no ha sido encontrado en tu cartón.`);
         }
 
-        mostrarCarton(user, carton);
+        mostrarCarton(user, carton); // Muestra el cartón actualizado
         return carton;
     };
 
-
+    // Verifica si se ha completado una línea en el cartón
     const linea = (carton) => {
-        if (!lineaCantada) {
-            const filas = [
+        if (!lineaCantada) { // Verifica si la línea ya fue completada
+            const filas = [ // Matriz de filas del cartón
                 carton.slice(0, 5),
                 carton.slice(5, 10),
                 carton.slice(10, 15)
             ];
-            for (let fila of filas) {
-                if (fila.every(element => element === 'X')) {
+            for (let fila of filas) { // Itera sobre las filas del cartón
+                if (fila.every(element => element === 'X')) { // Verifica si la fila está completa
                     console.log("¡LINEA!");
-                    lineaCantada = true;
+                    lineaCantada = true; // Marca la línea como completada
                 }
             }
         }
     };
 
-
+    // Maneja los turnos del juego y verifica si se completó el cartón
     const nuevoTurno = (carton, user) => {
         let continuar = true;
-        while (continuar && !carton.every(element => element === 'X')) {
+        while (continuar && !carton.every(element => element === 'X')) { // Verifica si el cartón ya se completo
             const answer = readlineSync.question("¿Deseas seguir jugando? (Si/No)").toLowerCase();
             if (answer === "no") {
                 console.log('¡Gracias por jugar!');
                 continuar = false;
             } else {
-                carton = turno(carton);
-                linea(carton);
-                turnos++;
+                carton = turno(carton); // Realiza un turno
+                linea(carton); // Verifica si se completó una línea
+                turnos++; // Incrementa el contador de turnos
                 console.log(`Turno ${turnos}`);
             }
         }
         if (carton.every(element => element === 'X')) {
-            const puntos = calcularPuntos(turnos, user); // Calculamos el puntaje al finalizar la partida
+            const puntos = calcularPuntos(turnos, user); // Calcula los puntos al completar el cartón
             console.log(`¡Bingo! Has completado el cartón en ${turnos} turnos.`);
             console.log(`Has obtenido una puntación de: ${puntos}`);
         }
         return carton;
     };
 
+    // Pregunta al usuario si desea jugar otra partida
     const nuevaPartida = () => {
         const jugarNuevamente = readlineSync.question("¿Deseas jugar otra partida? (Si/No)").toLowerCase();
         if (jugarNuevamente === "si") {
-            lineaCantada = false; // Restablece la variable para la nueva partida
-            turnos = 0; // Restablece el contador de turnos para la nueva partida
-            bingo(); // Inicia un nuevo juego
+            lineaCantada = false; // Reinicia la variable para la nueva partida
+            turnos = 0; // Reinicia el contador de turnos
+            bingo(); // Inicia una nueva partida
         } else {
             console.log("¡Hasta la próxima!");
         }
     };
 
-
-
-
+    // Calcula los puntos del usuario y los añade al ranking
     const calcularPuntos = (turnos, user) => {
-        // Calculamos el puntaje basado en los turnos
-        const puntos = puntosBase - turnos;
-
-        // Aseguramos que el puntaje no sea negativo
-        const puntosFinal = puntos >= 0 ? puntos : 0;
-        ranking.push({ user: user, puntos: puntosFinal }); // Agregamos el usuario y su puntaje al ranking 
-        return puntosFinal
+        const puntos = puntosBase - turnos; // Calcula los puntos basados en los turnos
+        const puntosFinal = puntos >= 0 ? puntos : 0; // Asegura que los puntos no sean negativos
+        ranking.push({ user: user, puntos: puntosFinal }); // Añade usuario y puntaje al ranking
+        return puntosFinal;
     };
 
-
+    // Muestra el ranking de usuarios ordenados por puntaje
     const mostrarRanking = () => {
-        ranking.sort((a, b) => b.puntos - a.puntos)
+        ranking.sort((a, b) => b.puntos - a.puntos); // Ordena el ranking por puntaje
 
         console.log('\nRanking de Usuarios:');
-        ranking.forEach((element, index) => {
-            console.log(`${index + 1}. ${element.user} - ${element.puntos} puntos`)
+        ranking.forEach((element, index) => { // Muestra el ranking ordenado 
+            console.log(`${index + 1}. ${element.user} - ${element.puntos} puntos`) // Imprime el usuario y puntaje
         })
-    }
-
+    };
 
     const user = readlineSync.question("Bienvenido al Bingo!. Introduce tu nombre de jugador: ");
-    bingoGame(user);
-    mostrarSistemaPuntos();
-    let carton = generarCarton();
-    mostrarCarton(user, carton);
-    generarNuevoCarton();
-    nuevoTurno(carton, user);
-    mostrarRanking();
-    nuevaPartida()
-
+    bingoGame(user); // Da la bienvenida al usuario
+    mostrarSistemaPuntos(); // Muestra el sistema de puntos
+    let carton = generarCarton(); // Genera un cartón
+    mostrarCarton(user, carton); // Muestra el cartón generado
+    generarNuevoCarton(); // Pregunta si se desea otro cartón o continuar
+    nuevoTurno(carton, user); // Inicia el juego
+    mostrarRanking(); // Muestra el ranking al finalizar la partida
+    nuevaPartida(); // Pregunta si se desea jugar otra vez
 };
 
-bingo();
+bingo(); // Inicia el juego de Bingo
