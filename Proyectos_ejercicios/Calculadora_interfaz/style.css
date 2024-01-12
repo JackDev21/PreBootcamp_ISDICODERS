@@ -43,3 +43,55 @@ body {
     background-color: black;
     color: white;
 }
+
+.row2 {
+    grid-row: 2;
+    grid-column: span 1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row3 {
+    grid-row: 3;
+    grid-column: span 1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row4 {
+    grid-row: 4;
+    grid-column: span 1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row5 {
+    grid-row: 5;
+    grid-column: span 1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row6 {
+    grid-row: 6;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column2 {
+    grid-column: span 2;
+}
+
+.column {
+    grid-column: span 1;
+}
