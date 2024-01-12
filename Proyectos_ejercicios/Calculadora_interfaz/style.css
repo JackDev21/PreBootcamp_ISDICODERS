@@ -4,3 +4,42 @@
     box-sizing: border-box;
 
 }
+
+body {
+    background-color: lightslategray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 5px;
+    font-size: 3vw;
+
+
+}
+
+.calculadora {
+    max-width: 400px;
+    width: 80vw;
+    max-height: 600px;
+    height: 80vh;
+    background-color: lightgray;
+    border: 1px solid lightsalmon;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    text-align: center;
+
+}
+
+.display {
+    grid-row: 1;
+    grid-column: span 4;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10vw;
+    background-color: black;
+    color: white;
+}
