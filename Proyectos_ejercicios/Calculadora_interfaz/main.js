@@ -157,7 +157,7 @@ const calculator = () => {
             res = parseFloat(numberOne) * -1
         }
 
-        if (Number.isInteger(res)) {
+        if (Number.isInteger(res)) { // Si el resultado es un entero (no tiene decimales), lo convierte a string
             res = res.toString()
 
         } else {
