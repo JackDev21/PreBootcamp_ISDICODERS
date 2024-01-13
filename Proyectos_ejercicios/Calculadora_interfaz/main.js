@@ -85,48 +85,51 @@ const calculator = () => {
     )
     */
 
-    comma.addEventListener('click', (e) => // Con addEventListener agregamos un evento de clic al botón coma
-        display.textContent = display.textContent + '.'
-    )
+    comma.addEventListener('click', () => { // Con addEventListener agregamos un evento de clic al botón coma
+        if (!display.textContent.includes('.')) { // Si el display no contiene un punto, agrega uno
+            display.textContent = display.textContent + '.'
+        }
+    })
+
     reset.addEventListener('click', restart) // Con addEventListener agregamos un evento de clic al botón reset
 
-    sum.addEventListener('click', (e) => { // Con addEventListener agregamos un evento de clic al botón sum
+    sum.addEventListener('click', () => { // Con addEventListener agregamos un evento de clic al botón sum
         numberOne = display.textContent;
         calculation = '+';
         clearDisplay(); // Limpia el display
     })
 
-    diff.addEventListener('click', (e) => {
+    diff.addEventListener('click', () => {
         numberOne = display.textContent;
         calculation = '-';
         clearDisplay();
     })
 
-    mult.addEventListener('click', (e) => {
+    mult.addEventListener('click', () => {
         numberOne = display.textContent;
         calculation = '*';
         clearDisplay();
     })
 
-    div.addEventListener('click', (e) => {
+    div.addEventListener('click', () => {
         numberOne = display.textContent;
         calculation = '/';
         clearDisplay();
     })
 
-    percent.addEventListener('click', (e) => {
+    percent.addEventListener('click', () => {
         numberOne = display.textContent;
         calculation = '%';
         clearDisplay();
     })
 
-    invert.addEventListener('click', (e) => {
+    invert.addEventListener('click', () => {
         numberOne = display.textContent;
         calculation = '+/-';
         clearDisplay();
     })
 
-    equal.addEventListener('click', (e) => {
+    equal.addEventListener('click', () => {
         numberTwo = display.textContent;
         result()
     })
