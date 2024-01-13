@@ -29,8 +29,6 @@ const numberButtons = document.querySelectorAll('.num'); // Obtiene todos los bo
 
 const calculator = () => {
 
-
-
     const clearDisplay = () => { // limpia el display
         display.textContent = '';
     }
@@ -41,11 +39,6 @@ const calculator = () => {
         numberTwo = '';
         calculation = '';
     }
-
-
-
-
-
 
     // Agrega un solo evento a todos los botones numéricos
     numberButtons.forEach(button => {
@@ -170,12 +163,6 @@ const calculator = () => {
 
         display.textContent = res
     }
-
-
-
 }
-
-
-
 
 calculator()
