@@ -3,7 +3,7 @@ let numberTwo;
 let calculation;
 
 
-const display = document.querySelector('#display');
+const display = document.querySelector('#display'); // Obtiene el elemento 'display' por su ID
 const reset = document.querySelector('#clear');
 const invert = document.querySelector('#invert');
 const percent = document.querySelector('#percent');
@@ -25,17 +25,17 @@ const comma = document.querySelector('#comma');
 const equal = document.querySelector('#equal');
 
 // Obtén todos los botones numéricos
-const numberButtons = document.querySelectorAll('.num');
+const numberButtons = document.querySelectorAll('.num'); // Obtiene todos los botones numéricos
 
 const calculator = () => {
 
 
 
-    const clearDisplay = () => {
+    const clearDisplay = () => { // limpia el display
         display.textContent = '';
     }
 
-    const restart = () => {
+    const restart = () => { // Reinicia la calculadora
         display.textContent = '0';
         numberOne = '';
         numberTwo = '';
@@ -50,8 +50,8 @@ const calculator = () => {
     // Agrega un solo evento a todos los botones numéricos
     numberButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Limita la longitud del display a 8 caracteres
-            if (display.textContent.length < 8) {
+            // Limita la longitud del display a 12 caracteres
+            if (display.textContent.length < 12) {
                 // Si el display tiene solo '0', reemplázalo con el número del botón, de lo contrario, agrégalo
                 display.textContent = display.textContent === '0' ? button.textContent : display.textContent + button.textContent;
             }
@@ -92,15 +92,15 @@ const calculator = () => {
     )
     */
 
-    comma.addEventListener('click', (e) =>
+    comma.addEventListener('click', (e) => // Con addEventListener agregamos un evento de clic al botón coma
         display.textContent = display.textContent + '.'
     )
-    reset.addEventListener('click', restart)
+    reset.addEventListener('click', restart) // Con addEventListener agregamos un evento de clic al botón reset
 
-    sum.addEventListener('click', (e) => {
+    sum.addEventListener('click', (e) => { // Con addEventListener agregamos un evento de clic al botón sum
         numberOne = display.textContent;
         calculation = '+';
-        clearDisplay();
+        clearDisplay(); // Limpia el display
     })
 
     diff.addEventListener('click', (e) => {
@@ -141,7 +141,7 @@ const calculator = () => {
 
     const result = () => {
         let res = 0
-        if (calculation === '+') {
+        if (calculation === '+') { // Calcula el resultado de la operación, con parseFloat convierte el string a float(decimal)
             res = parseFloat(numberOne) + parseFloat(numberTwo)
         } else if (calculation === '-') {
             res = parseFloat(numberOne) - parseFloat(numberTwo)
@@ -149,18 +149,23 @@ const calculator = () => {
             res = parseFloat(numberOne) * parseFloat(numberTwo)
         } else if (calculation === '/') {
             if (parseFloat(numberTwo) === 0) {
-                res = 'No se puede dividir entre 0'
+                res = alert('Un numero no puede ser dividir entre 0') // Si el segundo número es 0 en la division, muestra un alert
                 display.textContent = res
+
             } else {
                 res = parseFloat(numberOne) / parseFloat(numberTwo)
             }
-
         } else if (calculation === '%') {
             res = parseFloat(numberOne) / 100
         } else if (calculation === '+/-') {
             res = parseFloat(numberOne) * -1
-        } else {
+        }
 
+        if (Number.isInteger(res)) {
+            res = res.toString()
+
+        } else {
+            res = parseFloat(res.toPrecision(12)) // toPrecision(12) redondea a 12 cifras y toFixed(12) redondea a 12 decimales
         }
 
         display.textContent = res
@@ -169,4 +174,8 @@ const calculator = () => {
 
 
 }
+
+
+
+
 calculator()
