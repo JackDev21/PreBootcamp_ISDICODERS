@@ -6,34 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
     <section class="calculadora">
-        <div class="display">10001</div>
-        <div class="symbol button row2">AC</div>
-        <div class="symbol button row2">+/-</div>
-        <div class="symbol button row2">%</div>
-        <div class="symbol button row2">÷</div>
-        <div class="num button row3">7</div>
-        <div class="num button row3">8</div>
-        <div class="num button row3">9</div>
-        <div class="symbol button row3">X</div>
-        <div class="num button row4">4</div>
-        <div class="num button row4">5</div>
-        <div class="num button row4">6</div>
-        <div class="symbol button row4">-</div>
-        <div class="num button row5">1</div>
-        <div class="num button row5">2</div>
-        <div class="num button row5">3</div>
-        <div class="symbol button row5">+</div>
-        <div class="num button spancolumn2 row6">0</div>
-        <div class="symbol button spancolumn1 row6">,</div>
-        <div class="igual symbol button spancolumn1 row6">=</div>
-
+        <div class="display" id="display">0</div>
+        <button class="symbol button row2" type="button" id="clear">AC</button>
+        <button class="symbol button row2" type="button" id="invert">+/-</button>
+        <button class="symbol button row2" type="button" id="percent">%</button>
+        <button class="symbol button row2" type="button" id="div">÷</button>
+        <button class="num button row3" type="button" id="seven">7</button>
+        <button class="num button row3" type="button" id="eight">8</button>
+        <button class="num button row3" type="button" id="nine">9</button>
+        <button class="symbol button row3" type="button" id="mult">*</button>
+        <button class="num button row4" type="button" id="four">4</button>
+        <button class="num button row4" type="button" id="five">5</button>
+        <button class="num button row4" type="button" id="six">6</button>
+        <button class="symbol button row4" type="button" id="diff">-</button>
+        <button class="num button row5" type="button" id="one">1</button>
+        <button class="num button row5" type="button" id="two">2</button>
+        <button class="num button row5" type="button" id="three">3</button>
+        <button class="symbol button row5" type="button" id="sum">+</button>
+        <button class="num button spancolumn2 row6" type="button" id="zero">0</button>
+        <button class="symbol button spancolumn1 row6" type="button" id="comma">,</button>
+        <button class="equal symbol button spancolumn1 row6" type="button" id="equal">=</button>
     </section>
-
+    <script src="./main.js"></script>
 </body>
 
 </html>

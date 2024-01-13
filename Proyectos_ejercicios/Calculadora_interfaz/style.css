@@ -30,6 +30,7 @@ body {
     text-align: center;
     border-radius: 20px;
 
+
 }
 
 .display {
@@ -48,6 +49,11 @@ body {
     font-size: 40px;
     border: 2px solid black;
     background-color: gray;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.329);
 }
 
 .num {
@@ -103,7 +109,7 @@ body {
     align-items: center;
 }
 
-.igual {
+.equal {
     border-radius: 0 0px 20px 0;
 }
 
