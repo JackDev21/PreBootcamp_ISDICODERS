@@ -25,11 +25,11 @@ body {
 }
 
 .game {
-    background-image: url(./img/backgroundMarioLuigi.png);
-    background-repeat: no-repeat;
-    background-position: center center;
     width: auto;
     height: 100%;
+    background-image: url(./img/mario.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 .circle-container {
@@ -37,125 +37,140 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 50%;
+    width: 97%;
+    height: 97%;
 }
+
 
 .circle li {
     list-style: none;
+    padding: 5px;
 }
 
 .circle .letter {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
     text-align: center;
-    transform-origin: 150px 150px;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: bold;
-    color: white;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    width: 50px;
+    background-color: white;
+
+
 }
 
-/* Generar los estilos para cada ítem basado en su posición en la lista */
 
-
+/* La primera letra (A) está a -93 grados */
 .circle .letter:nth-child(1) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(-93deg) translate(250px) rotate(93deg);
 }
+
+/* Calculamos el ángulo de separación */
+/* 360 grados / 27 letras = 13.333 grados entre cada letra */
+/* Comenzamos desde -93 grados y sumamos 13.333 grados sucesivamente */
 
 .circle .letter:nth-child(2) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(-79.667deg) translate(250px) rotate(79.667deg);
 }
 
 .circle .letter:nth-child(3) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(-66.334deg) translate(250px) rotate(66.334deg);
 }
 
 .circle .letter:nth-child(4) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(-53.001deg) translate(250px) rotate(53.001deg);
 }
 
 .circle .letter:nth-child(5) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(-39.668deg) translate(250px) rotate(39.668deg);
 }
 
 .circle .letter:nth-child(6) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(-26.335deg) translate(250px) rotate(26.335deg);
 }
 
 .circle .letter:nth-child(7) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(-13.002deg) translate(250px) rotate(13.002deg);
 }
 
 .circle .letter:nth-child(8) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(0.331deg) translate(250px) rotate(-0.331deg);
 }
 
 .circle .letter:nth-child(9) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(13.664deg) translate(250px) rotate(-13.664deg);
 }
 
 .circle .letter:nth-child(10) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(26.997deg) translate(250px) rotate(-26.997deg);
 }
 
 .circle .letter:nth-child(11) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(40.330deg) translate(250px) rotate(-40.330deg);
 }
 
 .circle .letter:nth-child(12) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(53.663deg) translate(250px) rotate(-53.663deg);
 }
 
 .circle .letter:nth-child(13) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(66.996deg) translate(250px) rotate(-66.996deg);
 }
 
 .circle .letter:nth-child(14) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(80.329deg) translate(250px) rotate(-80.329deg);
 }
 
 .circle .letter:nth-child(15) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(93.662deg) translate(250px) rotate(-93.662deg);
 }
 
 .circle .letter:nth-child(16) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(106.995deg) translate(250px) rotate(-106.995deg);
 }
 
 .circle .letter:nth-child(17) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(120.328deg) translate(250px) rotate(-120.328deg);
 }
 
 .circle .letter:nth-child(18) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(133.661deg) translate(250px) rotate(-133.661deg);
 }
 
 .circle .letter:nth-child(19) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(146.994deg) translate(250px) rotate(-146.994deg);
 }
 
 .circle .letter:nth-child(20) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(160.327deg) translate(250px) rotate(-160.327deg);
 }
 
 .circle .letter:nth-child(21) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(173.660deg) translate(250px) rotate(-173.660deg);
 }
 
 .circle .letter:nth-child(22) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(186.993deg) translate(250px) rotate(-186.993deg);
 }
 
 .circle .letter:nth-child(23) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(200.326deg) translate(250px) rotate(-200.326deg);
 }
 
 .circle .letter:nth-child(24) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(213.659deg) translate(250px) rotate(-213.659deg);
 }
 
 .circle .letter:nth-child(25) {
-    transform: rotate(-90deg) translate(150px) rotate(90deg);
+    transform: rotate(226.992deg) translate(250px) rotate(-226.992deg);
+}
+
+.circle .letter:nth-child(26) {
+    transform: rotate(240.325deg) translate(250px) rotate(-240.325deg);
+}
+
+.circle .letter:nth-child(27) {
+    transform: rotate(253.658deg) translate(250px) rotate(-253.658deg);
 }
