@@ -31,6 +31,10 @@ body {
 
 }
 
+.circle {
+    position: absolute;
+}
+
 .circle-container {
     position: absolute;
     display: flex;
@@ -56,6 +60,7 @@ body {
     border-radius: 50%;
     width: 50px;
     background-color: white;
+
 
 
 }
@@ -172,6 +177,8 @@ body {
 
 .score-board {
     position: absolute;
+    top: 5vh;
+    left: 20vw;
     justify-content: center;
     text-align: center;
     width: 100px;
