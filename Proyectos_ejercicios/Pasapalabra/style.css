@@ -11,8 +11,6 @@ body {
     background: linear-gradient(to bottom, #ff9900, #ffffff);
 }
 
-
-
 .game::after {
     content: '';
     position: absolute;
@@ -28,8 +26,9 @@ body {
     width: auto;
     height: 100%;
     background-image: url(./img/mario.jpg);
-    background-size: cover;
-    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
 }
 
 .circle-container {
@@ -61,15 +60,9 @@ body {
 
 }
 
-
-/* La primera letra (A) está a -93 grados */
 .circle .letter:nth-child(1) {
     transform: rotate(-93deg) translate(250px) rotate(93deg);
 }
-
-/* Calculamos el ángulo de separación */
-/* 360 grados / 27 letras = 13.333 grados entre cada letra */
-/* Comenzamos desde -93 grados y sumamos 13.333 grados sucesivamente */
 
 .circle .letter:nth-child(2) {
     transform: rotate(-79.667deg) translate(250px) rotate(79.667deg);
@@ -173,4 +166,30 @@ body {
 
 .circle .letter:nth-child(27) {
     transform: rotate(253.658deg) translate(250px) rotate(-253.658deg);
+}
+
+
+
+.score-board {
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    width: 100px;
+    height: auto;
+    padding: 10px;
+
+}
+
+.score {
+    font-size: 50px;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+
+.time {
+    font-size: 50px;
+    border: 1px solid black;
 }
