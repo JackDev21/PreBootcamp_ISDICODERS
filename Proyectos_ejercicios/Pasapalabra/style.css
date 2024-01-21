@@ -30,7 +30,132 @@ body {
     background-position: center center;
     width: auto;
     height: 100%;
+}
+
+.circle-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+}
+
+.circle li {
+    list-style: none;
+}
+
+.circle .letter {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    transform-origin: 150px 150px;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Generar los estilos para cada ítem basado en su posición en la lista */
 
 
+.circle .letter:nth-child(1) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
 
+.circle .letter:nth-child(2) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(3) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(4) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(5) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(6) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(7) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(8) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(9) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(10) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(11) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(12) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(13) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(14) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(15) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(16) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(17) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(18) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(19) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(20) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(21) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(22) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(23) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(24) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
+}
+
+.circle .letter:nth-child(25) {
+    transform: rotate(-90deg) translate(150px) rotate(90deg);
 }
