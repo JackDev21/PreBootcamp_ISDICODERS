@@ -519,11 +519,11 @@ p {
 
 .play {
     position: absolute;
-    top: 51vh;
+    top: 50vh;
     left: 50vw;
     color: orange;
     font-size: 20px;
-    transform: translate(-50%, -50%);
+    transform: translate(-80%, -20%);
 }
 
 
