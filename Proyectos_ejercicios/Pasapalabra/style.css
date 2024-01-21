@@ -19,7 +19,6 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(255, 255, 255, 0.150);
-    z-index: 1;
 }
 
 .game {
@@ -396,12 +395,14 @@ p {
     z-index: 3;
     width: 34px;
     height: 34px;
+    cursor: pointer;
 
 }
 
 .box:hover+.mush {
     animation: mush 0.5s linear forwards;
     opacity: 1;
+
 
 }
 
@@ -517,7 +518,7 @@ p {
 
 }
 
-.play {
+.start {
     position: absolute;
     top: 50vh;
     left: 50vw;

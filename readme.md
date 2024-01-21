@@ -74,4 +74,3 @@ Existen otras **alternativas** para ejecutar el código:
 - Añadir una **extensión de VSC** como [CodeRunner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner), que teniendo instalado Node, permite ejecutar un fichero js desde VSC
 
 ---
-
