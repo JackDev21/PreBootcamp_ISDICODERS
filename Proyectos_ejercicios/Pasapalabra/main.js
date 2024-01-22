@@ -40,99 +40,43 @@ const words = [
     new Word(26, "Z", "Empieza por Z:", "¿Nombre de uno de los enemigos que aparece en varios juegos de Mario Bros y se asemeja a una bola con pinchos?", "Zigzag")
 ];
 
-
 let remainingWords = words.length;
 console.log(remainingWords);
 
 
-let prefix = document.querySelector('idPrefix');
-let definition = document.querySelector('#idDefinition');
-
-const showDefinition = (pos) => {
-    prefix.innerHTML = words[pos].prefix;
-    definition.innerHTML = words[pos].definition;
-}
 
 
-let userAnswer = document.querySelector('#idUserAnswer');
-let circleLetter = document.querySelector('#idCircleLetter');
-let score = document.querySelector('#idScore');
-
-const checkAnswer = (pos) => {
-    userAnswer = userAnswer.toLowerCase();
-    if (userAnswer === words[pos].word.toLowerCase()) {
-        words[pos].correct = true;
-        circleLetter[words[pos].id].classList.add('letter-correct')
-    } else {
-        words[pos].correct = false;
-        circleLetter[words[pos].id].classList.add('letter-incorrect')
-    }
-    remainingWords--;
-    score.innerHTML = remainingWords;
-
-    return count++
-}
-
-const pasapalabra = (pos) => {
-    const wordRemaining = words.splice(pos, 1)[0];
-    words.push[wordRemaining];
-}
-
-const continuePlaying = () => {
-    if (count === 27) {
-        endGame();
-    } else {
-        userAnswer.value = '';
-        showDefinition(count);
+let timeRemaining = 150;
+let intervalId;
+const timer = document.querySelector("#idSeconds");
+const displayTime = () => {
+    timer.textContent = timeRemaining;
+    timeRemaining--;
+    if (timeRemaining < 0) {
+        clearInterval(intervalId);
+        timer.textContent = "0";
     }
 }
 
 
+const score = document.querySelector("#idScore");
+let scoreRemaining = 27;
+const displayScore = () => {
 
-let seconds = document.querySelector('#idSeconds');
 
-const countdown = () => {
-    seconds = parseInt(seconds.innerHTML, 10);
-    if (seconds === 1) {
-        temp.innerHTML = 0;
-        endGame();
-        return;
-    }
-    seconds--;
-    temp.innerHTML = seconds;
-    timeout = setTimeout(countdown, 1000);
 }
 
 
-let idQuestion = document.querySelector('#idQuestion');
-let idControl = document.querySelector('#idControl');
-let idTitle = document.querySelector('#idTitle');
-let idSubtitle = document.querySelector('#idSubtitle');
-let idClose = document.querySelector('#idClose');
 
 
 
-const endGame = () => {
-    idQuestion.addClass('hidden');
-    idControl.removeClass('hidden');
-    idTitle.innerHTML = "Fin de partida!";
-    idSubtitle.innerHTML = showUserScore();
-    idClose.addClass('hidden');
-}
-
-const showScoreUser = () => {
-    let counter = 0
-    for (i = 0; i < words.length; i++) {
-        if (words[i].correct == true) {
-            counter++
-        }
-    }
-    return `Has conseguido un total de ${counter} aciertos`;
-}
-
-
-// Program
 
 
 
+const startButton = document.querySelector("#startButton");
+startButton.addEventListener("click", () => {
+    clearInterval(intervalId);
+    timeRemaining = 150;
+    intervalId = setInterval(displayTime, 1000);
+});
 

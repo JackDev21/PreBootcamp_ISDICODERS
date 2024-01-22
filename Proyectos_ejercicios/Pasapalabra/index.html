@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Pasapalabra</title>
+    <title>Pasapalabra Mario</title>
 </head>
 
 <body>
@@ -14,12 +14,10 @@
             <div id="idScore" class="score">27</div>
             <div id="idSeconds" class="time">150</div>
         </div>
-
-
         <div class="brick one"></div>
         <div class="start">Start</div>
         <div class="tooltip-mario-container">
-            <div class="box"></div>
+            <div id="startButton" class="box"></div>
             <div class="mush"></div>
         </div>
         <div class="brick two"></div>
@@ -55,30 +53,25 @@
                 <li class="letter">Z</li>
             </ul>
             <div class="control-container">
-                <a id="idClose" class="btn close hidden" href="">Cerrar</a>
-                <h4>¡Bienvenido al juego Pasapalabra de Mario Bros!</h4>
-                <p>Se haran preguntas sobre el mundo de Mario Bros. Cada usuario deberá responder con la palabra a la
-                    que
-                    corresponden. El
-                    usuario tiene la opción de decir Pasapalabra y dejar esa definición para mas adelante.</p>
-                <p>El programa es sensible a los acentos, asi que se debe introducir la palabra sin tilde. Es posible
-                    utilizar la tecla
-                    ENTER para enviar la palabra y el SPACE para hacer pasapalabra.</p>
+                <div id="idStartControl" class="startControl">
+                    <h4>¡Bienvenido al juego Pasapalabra de Mario Bros!</h4>
+                    <p>Se haran preguntas sobre el mundo de Mario Bros. Cada usuario deberá responder con la palabra a
+                        la
+                        que
+                        corresponden. El
+                        usuario tiene la opción de decir Pasapalabra y dejar esa definición para mas adelante.</p>
+                    <p>El programa es sensible a los acentos, asi que se debe introducir la palabra sin tilde. </p>
+                </div>
             </div>
-            <div id="idQuestion" class="question hidden">
+            <div id="idQuestion" class="question">
                 <span id="idPrefix" class="prefix">Empieza por A:</span>
                 <p class="idPhrase">Personaje principal de Mario Bros.</p>
                 <input id="idUserAnswer" type="text" placeholder="Introduce tu respuesta">
-                <a class="btn" href="#">Enviar</a>
-                <a class="btn" href="#">Pasapalabra</a>
-
-            </div>
-            <div id="idControl" class="control hidden">
-                <p id="idTitle" class="title"></p>
-                <p id="idSubtitle" class="subtitle"></p>
+                <a id="idSend" class="btn" href="#">Enviar</a>
+                <a id="idPasapalabra" class="btn" href="#">Pasapalabra</a>
                 <a id="idPlay" class="btn" href="">Jugar de nuevo</a>
+                <a id="idClose" class="btn close" href="">Cerrar</a>
             </div>
-
         </div>
         <footer>
             <p>Made with ❤️ by Jose A.Canto (JackDev)</p>
