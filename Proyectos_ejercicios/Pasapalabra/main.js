@@ -96,6 +96,7 @@ const countdown = () => {
     }
     seconds--;
     temp.innerHTML = seconds;
+    timeout = setTimeout(countdown, 1000);
 }
 
 
