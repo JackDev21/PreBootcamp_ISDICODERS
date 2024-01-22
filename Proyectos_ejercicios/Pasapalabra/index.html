@@ -11,7 +11,7 @@
 <body>
     <div class="game">
         <div class="score-board">
-            <div class="score">27</div>
+            <div id="idScore" class="score">27</div>
             <div class="time">150</div>
         </div>
 
@@ -65,18 +65,19 @@
                     ENTER para enviar la palabra y el SPACE para hacer pasapalabra.</p>
             </div>
             <div class="question">
-                <span class="prefix">Empieza por A:</span>
-                <p class="phrase">Personaje principal de Mario Bros.</p>
-                <input type="text" placeholder="Introduce tu respuesta">
+                <span id="idPrefix" class="prefix">Empieza por A:</span>
+                <p class="idPhrase">Personaje principal de Mario Bros.</p>
+                <input id="idUserAnswer" type="text" placeholder="Introduce tu respuesta">
                 <a class="btn" href="#">Enviar</a>
                 <a class="btn" href="#">Pasapalabra</a>
+                <a class="btn" href="">Jugar de nuevo</a>
+
             </div>
         </div>
         <footer>
             <p>Made with ❤️ by Jose A.Canto (JackDev)</p>
         </footer>
     </div>
-
 
 
     <script src="main.js"></script>

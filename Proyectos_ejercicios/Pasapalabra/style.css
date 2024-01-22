@@ -221,7 +221,7 @@ p {
     padding: 10px;
     position: relative;
     top: 42vh;
-    left: 0vw;
+    left: 8vw;
     text-align: center;
 }
 
@@ -384,7 +384,7 @@ p {
         14px 32px 0px #fff, 16px 32px 0px #fff, 18px 32px 0px #fff,
         20px 32px 0px #fc9838, 22px 32px 0px #fff;
     transform: translate(-0px, -0px);
-    z-index: -1;
+
     opacity: 0;
 
 }
@@ -392,7 +392,6 @@ p {
 .box {
     position: absolute;
     background-color: rgba(46, 37, 37, 0);
-    z-index: 3;
     width: 34px;
     height: 34px;
     cursor: pointer;
@@ -514,7 +513,7 @@ p {
         32px 32px 0px #000;
     position: absolute;
     transform: translate(-30px);
-    z-index: 3;
+    z-index: 1;
 
 }
 
@@ -526,6 +525,26 @@ p {
     font-size: 20px;
     transform: translate(-80%, -20%);
 }
+
+
+
+.question {
+    z-index: 1;
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 footer {

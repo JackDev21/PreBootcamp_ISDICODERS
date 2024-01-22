@@ -39,4 +39,56 @@ const words = [
 ];
 
 
+let remainingWords = words.length;
+console.log(remainingWords);
+
+const prefix = document.querySelector('idPrefix');
+const definition = document.querySelector('#idDefinition');
+const userAnswer = document.querySelector('#idUserAnswer');
+const circleLetter = document.querySelector('#idCircleLetter');
+const score = document.querySelector('#idScore');
+
+
+const showDefinition = (pos) => {
+    prefix.innerHTML = words[pos].prefix;
+    definition.innerHTML = words[pos].definition;
+}
+
+
+const checkAnswer = (pos) => {
+    userAnswer = userAnswer.toLowerCase();
+    if (userAnswer === words[pos].word.toLowerCase()) {
+        words[pos].correct = true;
+        circleLetter[words[pos].id].classList.add('letter-correct')
+    } else {
+        words[pos].correct = false;
+        circleLetter[words[pos].id].classList.add('letter-incorrect')
+    }
+    remainingWords--;
+    score.innerHTML = remainingWords;
+
+    return count++
+}
+
+const pasapalabra = (pos) => {
+    const wordRemaining = words.splice(pos, 1)[0];
+    words.push[wordRemaining];
+}
+
+const continuePlaying = () => {
+    if (count === 27) {
+        endGame();
+    } else {
+        userAnswer.value = '';
+        showDefinition(count);
+    }
+}
+
+let seconds;
+let temp;
+
+
+
+
+
 
