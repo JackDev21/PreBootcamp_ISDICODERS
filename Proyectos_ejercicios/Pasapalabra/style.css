@@ -532,7 +532,7 @@ p {
 
 
 
-.question {
+.panel-question {
     z-index: 1;
     position: relative;
     display: flex;

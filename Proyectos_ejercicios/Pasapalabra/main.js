@@ -40,9 +40,9 @@ const words = [
     new Word(26, "Z", "Empieza por Z:", "¿Nombre de uno de los enemigos que aparece en varios juegos de Mario Bros y se asemeja a una bola con pinchos?", "Zigzag")
 ];
 
+
 let remainingWords = words.length;
 console.log(remainingWords);
-
 
 
 
@@ -62,21 +62,51 @@ const displayTime = () => {
 const score = document.querySelector("#idScore");
 let scoreRemaining = 27;
 const displayScore = () => {
-
+    score.textContent = scoreRemaining;
 
 }
 
 
+const question = document.querySelector("#idQuestionText");
+const prefix = document.querySelector("#idPrefix");
+let answer = document.querySelector("#idUserAnswer");
+const sendAnswer = document.querySelector('#idSend')
+let currentWordIndex = 0;
 
+const userQuestion = () => {
+    if (currentWordIndex < remainingWords) {
+        prefix.textContent = words[currentWordIndex].prefix;
+        question.textContent = words[currentWordIndex].definition;
 
+        sendAnswer.removeEventListener("click", handleAnswer);
 
+        // Asigna la función de manejo de la respuesta al evento de clic del botón de envío
+        sendAnswer.addEventListener("click", handleAnswer);
+    }
+}
 
+function handleAnswer() {
+    // Obtén la respuesta ingresada por el usuario
+    const userAnswer = answer.value.toLowerCase();
 
+    // Verifica si la respuesta es correcta
+    if (words[currentWordIndex].correctAnswer.toLowerCase() === userAnswer) {
+        scoreRemaining--;
+        displayScore();
+    }
+
+    // Avanza a la siguiente pregunta
+    currentWordIndex++;
+    userQuestion();
+
+    // Limpia el campo de respuesta para la próxima pregunta
+    answer.value = "";
+}
 
 const startButton = document.querySelector("#startButton");
 startButton.addEventListener("click", () => {
     clearInterval(intervalId);
     timeRemaining = 150;
     intervalId = setInterval(displayTime, 1000);
+    userQuestion();
 });
-
