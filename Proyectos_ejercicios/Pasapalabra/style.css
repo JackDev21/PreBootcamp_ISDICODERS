@@ -517,13 +517,16 @@ p {
 
 }
 
+
 .start {
     position: absolute;
-    top: 50vh;
-    left: 50vw;
-    color: orange;
-    font-size: 20px;
-    transform: translate(-80%, -20%);
+    top: 53.5vh;
+    left: 50.1vw;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    transform: translate(-95%, -240%);
+    z-index: 2;
 }
 
 
@@ -531,6 +534,14 @@ p {
 .question {
     z-index: 1;
     position: relative;
+}
+
+.control {
+    z-index: 1;
+}
+
+.control-container {
+    z-index: 1;
 }
 
 

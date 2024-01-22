@@ -1,3 +1,5 @@
+// Functions
+
 class Word {
     constructor(id, letter, prefix, definition, correctAnswer) {
         this.id = id;
@@ -42,19 +44,19 @@ const words = [
 let remainingWords = words.length;
 console.log(remainingWords);
 
+
 let prefix = document.querySelector('idPrefix');
 let definition = document.querySelector('#idDefinition');
-let userAnswer = document.querySelector('#idUserAnswer');
-let circleLetter = document.querySelector('#idCircleLetter');
-let score = document.querySelector('#idScore');
-let seconds = document.querySelector('#idSeconds');
-
 
 const showDefinition = (pos) => {
     prefix.innerHTML = words[pos].prefix;
     definition.innerHTML = words[pos].definition;
 }
 
+
+let userAnswer = document.querySelector('#idUserAnswer');
+let circleLetter = document.querySelector('#idCircleLetter');
+let score = document.querySelector('#idScore');
 
 const checkAnswer = (pos) => {
     userAnswer = userAnswer.toLowerCase();
@@ -87,6 +89,8 @@ const continuePlaying = () => {
 
 
 
+let seconds = document.querySelector('#idSeconds');
+
 const countdown = () => {
     seconds = parseInt(seconds.innerHTML, 10);
     if (seconds === 1) {
@@ -99,6 +103,35 @@ const countdown = () => {
     timeout = setTimeout(countdown, 1000);
 }
 
+
+let idQuestion = document.querySelector('#idQuestion');
+let idControl = document.querySelector('#idControl');
+let idTitle = document.querySelector('#idTitle');
+let idSubtitle = document.querySelector('#idSubtitle');
+let idClose = document.querySelector('#idClose');
+
+
+
+const endGame = () => {
+    idQuestion.addClass('hidden');
+    idControl.removeClass('hidden');
+    idTitle.innerHTML = "Fin de partida!";
+    idSubtitle.innerHTML = showUserScore();
+    idClose.addClass('hidden');
+}
+
+const showScoreUser = () => {
+    let counter = 0
+    for (i = 0; i < words.length; i++) {
+        if (words[i].correct == true) {
+            counter++
+        }
+    }
+    return `Has conseguido un total de ${counter} aciertos`;
+}
+
+
+// Program
 
 
 

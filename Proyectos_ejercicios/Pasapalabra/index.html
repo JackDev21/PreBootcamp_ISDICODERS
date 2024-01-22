@@ -55,6 +55,7 @@
                 <li class="letter">Z</li>
             </ul>
             <div class="control-container">
+                <a id="idClose" class="btn close hidden" href="">Cerrar</a>
                 <h4>¡Bienvenido al juego Pasapalabra de Mario Bros!</h4>
                 <p>Se haran preguntas sobre el mundo de Mario Bros. Cada usuario deberá responder con la palabra a la
                     que
@@ -64,15 +65,20 @@
                     utilizar la tecla
                     ENTER para enviar la palabra y el SPACE para hacer pasapalabra.</p>
             </div>
-            <div class="question">
+            <div id="idQuestion" class="question hidden">
                 <span id="idPrefix" class="prefix">Empieza por A:</span>
                 <p class="idPhrase">Personaje principal de Mario Bros.</p>
                 <input id="idUserAnswer" type="text" placeholder="Introduce tu respuesta">
                 <a class="btn" href="#">Enviar</a>
                 <a class="btn" href="#">Pasapalabra</a>
-                <a class="btn" href="">Jugar de nuevo</a>
 
             </div>
+            <div id="idControl" class="control hidden">
+                <p id="idTitle" class="title"></p>
+                <p id="idSubtitle" class="subtitle"></p>
+                <a id="idPlay" class="btn" href="">Jugar de nuevo</a>
+            </div>
+
         </div>
         <footer>
             <p>Made with ❤️ by Jose A.Canto (JackDev)</p>
