@@ -42,11 +42,12 @@ const words = [
 let remainingWords = words.length;
 console.log(remainingWords);
 
-const prefix = document.querySelector('idPrefix');
-const definition = document.querySelector('#idDefinition');
-const userAnswer = document.querySelector('#idUserAnswer');
-const circleLetter = document.querySelector('#idCircleLetter');
-const score = document.querySelector('#idScore');
+let prefix = document.querySelector('idPrefix');
+let definition = document.querySelector('#idDefinition');
+let userAnswer = document.querySelector('#idUserAnswer');
+let circleLetter = document.querySelector('#idCircleLetter');
+let score = document.querySelector('#idScore');
+let seconds = document.querySelector('#idSeconds');
 
 
 const showDefinition = (pos) => {
@@ -84,9 +85,18 @@ const continuePlaying = () => {
     }
 }
 
-let seconds;
-let temp;
 
+
+const countdown = () => {
+    seconds = parseInt(seconds.innerHTML, 10);
+    if (seconds === 1) {
+        temp.innerHTML = 0;
+        endGame();
+        return;
+    }
+    seconds--;
+    temp.innerHTML = seconds;
+}
 
 
 
