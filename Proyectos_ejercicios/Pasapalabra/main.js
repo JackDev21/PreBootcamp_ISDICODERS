@@ -178,73 +178,122 @@ const questions = [
 ];
 
 
-console.log(questions.length);
 
+// Selectores para los elementos del DOM
 const startButton = document.querySelector('#startButton');
-const startGame = () => {
-    startButton.addEventListener('click', () => {
-        countdown();
-        showQuestions(0);
-        sendButton.addEventListener("click", checkAnswer);
-    })
-}
+const sendButton = document.querySelector("#idSend");
+const scoreDisplay = document.querySelector("#idScore");
+const userAnswerInput = document.querySelector("#idUserAnswer");
+const questionDisplay = document.querySelector("#idQuestion");
+const passButton = document.querySelector("#idPasapalabra");
+const letters = document.querySelectorAll(".letter"); // Selecciona todas las letras
 
-const questionDisplay = document.querySelector("#idQuestion")
+// Variables de estado del juego
+let currentQuestionIndex = 0;
+let wordCounter = 27;
+let countdownValue = 100;
+let countdownInterval = null;
+let correctAnswers = [];
+let incorrectAnswers = [];
+let respuestasPasadas = [];
+
+// Función para mostrar preguntas
 const showQuestions = (index) => {
     if (index >= 0 && index < questions.length) {
         const question = questions[index].question;
         questionDisplay.textContent = question;
+    } else {
+        // No hay más preguntas, fin del juego
+        endGame();
     }
-
 }
 
-
-let currentQuestionIndex = 0;
-const sendButton = document.querySelector("#idSend")
+// Función para pasar a la siguiente pregunta
 const nextQuestion = () => {
-    currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
+        currentQuestionIndex++;
         showQuestions(currentQuestionIndex);
+    } else {
+        endGame();
     }
 }
 
-
-let wordCounter = 27
-let scoreDisplay = document.querySelector("#idScore");
-const userAnswerInput = document.querySelector("#idUserAnswer")
-const letters = document.querySelectorAll(".letter")
+// Función para verificar la respuesta del usuario
 const checkAnswer = () => {
-    const userAnswer = userAnswerInput.value.trim()
+    const userAnswer = userAnswerInput.value.trim();
     const correctAnswer = questions[currentQuestionIndex].answer;
-    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+
+    if (userAnswer === "") {
+        questions[currentQuestionIndex].skipped = true; // Marcar como saltada
+        nextQuestion(); // Pasar a la siguiente pregunta
+        return;
+    }
+
+    if (userAnswer === correctAnswer) {
         letters[currentQuestionIndex].style.backgroundColor = "green";
         wordCounter--;
         scoreDisplay.textContent = wordCounter;
-
+        correctAnswers.push(currentQuestionIndex);
     } else {
         letters[currentQuestionIndex].style.backgroundColor = "red";
+        incorrectAnswers.push(currentQuestionIndex);
     }
-    userAnswerInput.value = ""
-    nextQuestion();
-}
 
+    userAnswerInput.value = "";
 
-
-
-const countdown = () => {
-    let countdown = 200;
-    const countdownDisplay = document.querySelector("#idSeconds");
-    const countdownInterval = setInterval(() => {
-        countdown--;
-        countdownDisplay.textContent = countdown;
-        if (countdown === 0) {
-            clearInterval(countdownInterval);
-            startDisplay.textContent = "¡Se acabó el tiempo!"
+    if (currentQuestionIndex === questions.length - 1) {
+        if (questions.filter(q => !q.skipped).length > 0) {
+            continueWithPassedQuestions(); // Continuar con preguntas saltadas
+        } else {
+            endGame();
         }
-    }, 1000)
+    } else {
+        nextQuestion();
+    }
 }
 
+// Función para el temporizador de cuenta regresiva
+const countdown = () => {
+    const countdownDisplay = document.querySelector("#idSeconds");
+    if (countdownDisplay) {
+        countdownInterval = setTimeout(() => {
+            countdownValue--;
+            countdownDisplay.textContent = countdownValue;
+            if (countdownValue === 0) {
+                endGame();
+            } else {
+                countdown();
+            }
+        }, 1000);
+    }
+}
 
+// Función para el final del juego
+const endGame = () => {
+    clearInterval(countdownInterval);
+    const endTime = document.querySelector(".control-container");
+    if (endTime) {
+        endTime.textContent = "Game Over!\n";
+        endTime.textContent += `Correct answers: ${correctAnswers.length}/${questions.length}\n`;
+        endTime.textContent += `Incorrect answers: ${incorrectAnswers.length}/${questions.length}`;
+    }
 
+    sendButton.removeEventListener("click", checkAnswer);
+    userAnswerInput.disabled = true;
+    startButton.disabled = true;
+}
 
-startGame();
+// Evento al hacer clic en "Pasapalabra"
+passButton.addEventListener('click', () => {
+    respuestasPasadas.push(currentQuestionIndex);
+    nextQuestion();
+});
+
+// Evento al hacer clic en "Start"
+startButton.addEventListener('click', () => {
+    if (!countdownInterval) {
+        countdown();
+        showQuestions(currentQuestionIndex);
+        sendButton.addEventListener("click", checkAnswer);
+    }
+});
