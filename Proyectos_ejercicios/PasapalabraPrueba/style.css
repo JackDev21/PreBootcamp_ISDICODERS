@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(25, 133, 241);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(255, 255, 255)
+}
+
+h1 {
+    font-size: 4.5rem;
+    position: relative;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.info {
+    width: 900px;
+    height: 50px;
+    margin: auto;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.rosco {
+    display: flex;
+    margin-top: 40px;
+}
+
+.rosco li {
+    background-image: radial-gradient(circle, rgb(34, 86, 243), rgba(7, 7, 207, 0.743));
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    list-style: none;
+    padding: 7px 11px;
+    margin: 7px;
+    line-height: 1;
+    font-size: 1.4rem;
+    width: 40px;
+    height: 40px;
+}
+
+.question-html {
+    border: 1.5px solid rgb(255, 255, 255);
+    background-color: rgb(34, 86, 243);
+    width: 900px;
+    height: 80px;
+    border-radius: 5%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.answer-html {
+    width: 350px;
+    height: 40px;
+    display: flex;
+    margin: 95px auto 50px;
+    background-color: transparent;
+    font-size: 1.3rem;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+
+::placeholder {
+    color: rgb(255, 255, 255);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.buttons {
+    display: inline-block;
+}
+
+.buttons-check {
+    border-radius: 15%;
+    border: 1.5px solid rgb(255, 255, 255);
+    background-color: rgb(230, 61, 160);
+    width: 150px;
+    height: 40px;
+    margin-left: 390px;
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: pointer;
+}
+
+.buttons-check:hover {
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.buttons-pas {
+    border-radius: 15%;
+    border: 1.5px solid rgb(255, 255, 255);
+    background-color: rgba(255, 217, 0, 0.874);
+    width: 150px;
+    height: 40px;
+    margin-left: 100px;
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: pointer;
+}
+
+.buttons-pas:hover {
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.buttons-end {
+    border-radius: 15%;
+    border: 1.5px solid rgb(255, 255, 255);
+    background-color: rgb(61, 230, 205);
+    width: 150px;
+    height: 40px;
+    margin-left: 100px;
+    color: rgb(255, 255, 255);
+    font-size: 1.3rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: pointer;
+}
+
+.buttons-end:hover {
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.container {
+    display: flex;
+    margin: 20px;
+}
+
+.timer {
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    background-color: rgb(34, 86, 243);
+    width: 80px;
+    height: 80px;
+    margin-left: 50px;
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 20px 15px;
+}
+
+.answers-correct {
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    background-color: rgba(34, 243, 93, 0.717);
+    width: 50px;
+    height: 50px;
+    margin-left: 50px;
+    text-align: center;
+    padding: 8px 8px;
+    font-size: 1.6rem;
+}
+
+.answers-incorrect {
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    background-color: rgb(243, 55, 34);
+    color: rgb(255, 255, 255);
+    width: 50px;
+    height: 50px;
+    margin-left: 50px;
+    text-align: center;
+    padding: 8px 8px;
+    font-size: 1.6rem;
+}
+
+.play {
+    background-color: rgb(34, 86, 243);
+    width: 150px;
+    height: 50px;
+    margin-left: 300px;
+    margin-top: 20px;
+    padding: 8px 25px 10px 2px;
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+}
+
+.play:hover {
+    color: rgb(0, 0, 0);
+}

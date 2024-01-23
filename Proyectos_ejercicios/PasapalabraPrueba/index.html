@@ -3,85 +3,63 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,400,600,900">
-    <title>Pasapalabra</title>
+    <title>Juego Pasapalabra HTML-CSS-JS</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="ROSCO-PASAPALABRA.jpeg">
 </head>
 
 <body>
-    <section class="game">
-        <div class="circle-container">
-            <div class="title-container">
-                <p class="title">PASAPALABRA</p>
-            </div>
-            <ul class="circle">
-                <li class="item">A</li>
-                <li class="item">B</li>
-                <li class="item">C</li>
-                <li class="item">D</li>
-                <li class="item">E</li>
-                <li class="item">F</li>
-                <li class="item">G</li>
-                <li class="item">H</li>
-                <li class="item">I</li>
-                <li class="item">J</li>
-                <li class="item">L</li>
-                <li class="item">M</li>
-                <li class="item">N</li>
-                <li class="item">Ñ</li>
-                <li class="item">O</li>
-                <li class="item">P</li>
-                <li class="item">Q</li>
-                <li class="item">R</li>
-                <li class="item">S</li>
-                <li class="item">T</li>
-                <li class="item">U</li>
-                <li class="item">V</li>
-                <li class="item">X</li>
-                <li class="item">Y</li>
-                <li class="item">Z</li>
-            </ul>
-            <ul class="scoreboard">
-                <li id="js--timer" class="timer" href="">150</li>
-                <li id="js--score" class="score" href="">25</li>
-            </ul>
-        </div>
-        <div class="controls-container">
-            <i id="js--close" class="icon-close hidden"></i>
-            <div id="js--ng-controls" class="ng-controls">
-                <h4>Bienvenidos al juego de Pasapalabra de Skylab Coders Academy!</h4>
-                <p>Basado en el exitoso concurso de televisión Pasapalabra de Telecinco, las normas son muy sencillas:
-                </p>
-                <p>Se mostraran unas definiciones por pantalla y el usuario deberá responder con la palabra a la que
-                    corresponden. El usuario tiene la opción de decir Pasapalabra y dejar esa definición para mas
-                    adelante.</p>
-                <p>El programa es sensible a las acentuación, asi que se debe introducir la palabra sin tilde. Es
-                    posible utilizar la tecla ENTER para enviar la palabra y el SPACE para hacer pasapalabra.</p>
-                <a id="js--new-game" class="btn"><i class="icon-play"></i>Jugar</a>
-            </div>
-            <div id="js--question-controls" class="question-controls hidden">
-                <span id="js--hint" class="hint"></span>
-                <p id="js--definition" class="definition"></p>
+    <h1>Pasapalabra</h1>
+    <ul class="rosco">
+        <li class="letter">A</li>
+        <li class="letter">B</li>
+        <li class="letter">C</li>
+        <li class="letter">D</li>
+        <li class="letter">E</li>
+        <li class="letter">F</li>
+        <li class="letter">G</li>
+        <li class="letter">H</li>
+        <li class="letter">I</li>
+        <li class="letter">J</li>
+        <li class="letter">K</li>
+        <li class="letter">L</li>
+        <li class="letter">M</li>
+        <li class="letter">N</li>
+        <li class="letter">Ñ</li>
+        <li class="letter">O</li>
+        <li class="letter">P</li>
+        <li class="letter">Q</li>
+        <li class="letter">R</li>
+        <li class="letter">S</li>
+        <li class="letter">T</li>
+        <li class="letter">U</li>
+        <li class="letter">V</li>
+        <li class="letter">W</li>
+        <li class="letter">X</li>
+        <li class="letter">Y</li>
+        <li class="letter">Z</li>
+    </ul>
 
-                <input id="js--user-answer" type="text" placeholder="Introduce tu respuesta">
-
-                <a id="js--send" class="btn btn--green" href="#">Enviar</a>
-                <a id="js--pasapalabra" class="btn" href="#">Pasapalabra</a>
-            </div>
-            <div id="js--pa-controls" class="pa-controls hidden">
-                <p id="js--end-title" class="title"></p>
-                <p id="js--end-subtitle" class="subtitle"></p>
-                <a id="js--pa" class="btn" href=""><i class="icon-loop"></i>Jugar de nuevo</a>
-            </div>
+    <div class="question-html">
+    </div>
+    <div class="info"></div>
+    <div>
+        <input type="text" class="answer-html" placeholder="Introduce aquí tu respuesta" />
+        <div class="buttons">
+            <input type="button" class="buttons-check" value="Comprobar" />
+            <input type="button" class="buttons-pas" value="Pasapalabra" />
+            <input type="button" class="buttons-end" value="Fin" />
         </div>
-    </section>
-    <footer>
-        <p>Made with <i class="icon-heart"></i> by <a href="http://www.twitter.com/marioterron157">Mario Terron</a></p>
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/app.js"></script>
+    </div>
+    <div class="container">
+        <div class="timer">130</div>
+        <div class="answers-correct"></div>
+        <div class="answers-incorrect"></div>
+        <input type="button" class="play" value="Jugar" />
+    </div>
+    <script src="./main.js"></script>
 </body>
 
 </html>
