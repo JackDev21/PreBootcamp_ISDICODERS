@@ -1,112 +1,250 @@
-// Functions
 
-class Word {
-    constructor(id, letter, prefix, definition, correctAnswer) {
-        this.id = id;
-        this.letter = letter;
-        this.prefix = prefix;
-        this.definition = definition;
-        this.correctAnswer = correctAnswer;
-    }
-}
-
-const words = [
-    new Word(0, "A", "Contiene la A:", "Personaje principal de Mario Bros.", "Mario"),
-    new Word(1, "B", "Empieza por B:", "Enemigo recurrente en los juegos de Mario, con caparazón y púas.", "Buzzy Beetle"),
-    new Word(2, "C", "Empieza por C:", "Princesa a menudo secuestrada por Bowser en Mario Bros.", "Princesa Peach"),
-    new Word(3, "D", "Empieza por D:", "Enemigo que lanza hachas en los castillos de Mario.", "Bowser"),
-    new Word(4, "E", "Empieza por E:", "Planta carnívora que aparece en tuberías.", "Planta Piraña"),
-    new Word(5, "F", "Empieza por F:", "Moneda utilizada como moneda principal en el mundo de Mario Bros.", "Ficha Estrella"),
-    new Word(6, "G", "Empieza por G:", "Enemigo que lanza bolas de fuego.", "Goomba"),
-    new Word(7, "H", "Empieza por H:", "Hongo que hace crecer a Mario.", "Hongo de Crecimiento"),
-    new Word(8, "I", "Empieza por I:", "Isla tropical donde se desarrolla la historia de Super Mario Sunshine.", "Isla Delfino"),
-    new Word(9, "J", "Empieza por J:", "¿Nombre del enemigo con forma de nube que lanza rayos y aparece en varios juegos de Mario Bros?", "Jefe Trueno"),
-    new Word(10, "K", "Empieza por K:", "Vehiculo utilizado en las carreras de Mario.", "Kart"),
-    new Word(11, "L", "Empieza por L:", "Compañero y amigo de Mario durante las aventuras.", "Luigi"),
-    new Word(12, "M", "Empieza por M:", "Moneda que concede una vida extra si se recopilan 100.", "Moneda 1-Up"),
-    new Word(13, "N", "Empieza por N:", "Nube que transporta a Mario a otras ubicaciones.", "Nube Warp"),
-    new Word(14, "Ñ", "Contiene la Ñ:", "Mario cuando repara una tubería", "Apaño."),
-    new Word(15, "O", "Empieza por O:", "Enemigo que lanza huevos explosivos.", "Ovni Shy Guy"),
-    new Word(16, "P", "Empieza por P:", "Princesa a menudo secuestrada por Bowser en Mario Bros.", "Princesa Peach"),
-    new Word(17, "Q", "Contine la Q:", "Enemigo que dispara flechas.", "Arquero"),
-    new Word(18, "R", "Empieza por R:", "Personaje que ayuda a Mario en algunas aventuras.", "Toad Rojo"),
-    new Word(19, "S", "Empieza por S:", "Enemigo con forma de tortuga.", "Koopa Troopa"),
-    new Word(20, "T", "Empieza por T:", "Personaje que lanza truenos.", "Trueno Chomp"),
-    new Word(21, "U", "Contiene la U:", "Palabra que va antes que el nombre de Mario.", "Super"),
-    new Word(22, "V", "Empieza por V:", "Villano principal en el mundo de Mario Bros.", "Bowser"),
-    new Word(23, "W", "Empieza por W:", "Enemigo que lanza bolas de hielo.", "Wiggler"),
-    new Word(24, "X", "Empieza por X:", "Simbolo que marca un tesoro", "X"),
-    new Word(25, "Y", "Empieza por Y:", "¿Nombre del dinosaurio amigo de Mario que aparece en algunos juegos de la serie, especialmente en 'Super Mario World'?", "Yoshi"),
-    new Word(26, "Z", "Empieza por Z:", "¿Nombre de uno de los enemigos que aparece en varios juegos de Mario Bros y se asemeja a una bola con pinchos?", "Zigzag")
+const questions = [
+    {
+        letter: "a",
+        answer: "mario",
+        status: 0,
+        question:
+            "CONTIENE LA A. Personaje principal de Mario Bros.",
+    },
+    {
+        letter: "b",
+        answer: "bowser",
+        status: 0,
+        question:
+            "CON LA B. Enemigo que lanza hachas en los castillos de Mario.",
+    },
+    {
+        letter: "c",
+        answer: "princesa peach",
+        status: 0,
+        question: "CONTIENE LA C. Princesa a menudo secuestrada por Bowser en Mario Bros.",
+    },
+    {
+        letter: "d",
+        answer: "donkey kong",
+        status: 0,
+        question:
+            "CON LA D. Gorila que acompaña a Mario en algunas aventuras.",
+    },
+    {
+        letter: "e",
+        answer: "planta Piraña",
+        status: 0,
+        question:
+            "CONTIENE LA E. Planta carnívora que aparece en tuberías.",
+    },
+    {
+        letter: "f",
+        answer: "",
+        status: 0,
+        question: "CON LA F. ",
+    },
+    {
+        letter: "g",
+        answer: "goomba",
+        status: 0,
+        question:
+            "CON LA G. Enemigo que lanza bolas de fuego."
+    },
+    {
+        letter: "h",
+        answer: "Hongo de Crecimiento",
+        status: 0,
+        question: "CON LA H. Hongo que hace crecer a Mario.",
+    },
+    {
+        letter: "i",
+        answer: "daisy",
+        status: 0,
+        question: "CON LA I. Princesa de Sarasaland",
+    },
+    {
+        letter: "j",
+        answer: "jefe trueno",
+        status: 0,
+        question:
+            "CON LA J. Nombre del enemigo con forma de nube que lanza rayos y aparece en varios juegos de Mario Bros",
+    },
+    {
+        letter: "k",
+        answer: "kart",
+        status: 0,
+        question:
+            "CON LA K. Vehiculo utilizado en las carreras de Mario.",
+    },
+    {
+        letter: "l",
+        answer: "Luigi",
+        status: 0,
+        question: "CON LA L. Compañero y amigo de Mario durante las aventuras.",
+    },
+    {
+        letter: "m",
+        answer: "misantropo",
+        status: 0,
+        question:
+            "CON LA M. Persona que huye del trato con otras personas o siente gran aversión hacia ellas",
+    },
+    {
+        letter: "n",
+        answer: "necedad",
+        status: 0,
+        question: "CON LA N. Demostración de poca inteligencia",
+    },
+    {
+        letter: "ñ",
+        answer: "señal",
+        status: 0,
+        question:
+            "CONTIENE LA Ñ. Indicio que permite deducir algo de lo que no se tiene un conocimiento directo.",
+    },
+    {
+        letter: "o",
+        answer: "orco",
+        status: 0,
+        question:
+            "CON LA O. Humanoide fantástico de apariencia terrible y bestial, piel de color verde creada por el escritor Tolkien",
+    },
+    {
+        letter: "p",
+        answer: "Princesa Peach",
+        status: 0,
+        question:
+            "CON LA P. Princesa a menudo secuestrada por Bowser en Mario Bros."
+    },
+    {
+        letter: "q",
+        answer: "queso",
+        status: 0,
+        question:
+            "CON LA Q. Producto obtenido por la maduración de la cuajada de la leche",
+    },
+    { letter: "r", answer: "raton", status: 0, question: "CON LA R. Roedor" },
+    {
+        letter: "s",
+        answer: "super",
+        status: 0,
+        question: "CON LA S. Palabra que va antes que el nombre de Mario.",
+    },
+    {
+        letter: "t",
+        answer: "toad",
+        status: 0,
+        question:
+            "CON LA T. Champiñon que acompaña a Mario en algunas aventuras.",
+    },
+    {
+        letter: "u",
+        answer: "unamuno",
+        status: 0,
+        question:
+            "CON LA U. Escritor y filósofo español de la generación del 98 autor del libro 'Niebla' en 1914",
+    },
+    {
+        letter: "v",
+        answer: "vikingos",
+        status: 0,
+        question:
+            "CON LA V. Nombre dado a los miembros de los pueblos nórdicos originarios de Escandinavia, famosos por sus incursiones y pillajes en Europa",
+    },
+    {
+        letter: "w",
+        answer: "wario",
+        status: 0,
+        question:
+            "CONTIENE LA W. Archienemigo de mario con una W en su gorra",
+    },
+    {
+        letter: "x",
+        answer: "botox",
+        status: 0,
+        question: "CONTIENE LA X. Toxina bacteriana utilizada en cirujía estética",
+    },
+    {
+        letter: "y",
+        answer: "Yoshi",
+        status: 0,
+        question:
+            "CONTIENE LA Y. Nombre del dinosaurio amigo de Mario que aparece en algunos juegos de la serie, especialmente en 'Super Mario World",
+    },
+    {
+        letter: "z",
+        answer: "zigzag",
+        status: 0,
+        question:
+            "CON LA Z. Nombre de uno de los enemigos que aparece en varios juegos de Mario Bros y se asemeja a una bola con pinchos",
+    },
 ];
 
 
-let remainingWords = words.length;
-console.log(remainingWords);
+console.log(questions.length);
+
+const startButton = document.querySelector('#startButton');
+const startGame = () => {
+    startButton.addEventListener('click', () => {
+        countdown();
+        showQuestions(0);
+        sendButton.addEventListener("click", checkAnswer);
+    })
+}
+
+const questionDisplay = document.querySelector("#idQuestion")
+const showQuestions = (index) => {
+    if (index >= 0 && index < questions.length) {
+        const question = questions[index].question;
+        questionDisplay.textContent = question;
+    }
+
+}
 
 
-
-let timeRemaining = 150;
-let intervalId;
-const timer = document.querySelector("#idSeconds");
-const displayTime = () => {
-    timer.textContent = timeRemaining;
-    timeRemaining--;
-    if (timeRemaining < 0) {
-        clearInterval(intervalId);
-        timer.textContent = "0";
+let currentQuestionIndex = 0;
+const sendButton = document.querySelector("#idSend")
+const nextQuestion = () => {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestions(currentQuestionIndex);
     }
 }
 
 
-const score = document.querySelector("#idScore");
-let scoreRemaining = 27;
-const displayScore = () => {
-    score.textContent = scoreRemaining;
+let wordCounter = 27
+let scoreDisplay = document.querySelector("#idScore");
+const userAnswerInput = document.querySelector("#idUserAnswer")
+const letters = document.querySelectorAll(".letter")
+const checkAnswer = () => {
+    const userAnswer = userAnswerInput.value.trim()
+    const correctAnswer = questions[currentQuestionIndex].answer;
+    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        letters[currentQuestionIndex].style.backgroundColor = "green";
+        wordCounter--;
+        scoreDisplay.textContent = wordCounter;
 
-}
-
-
-const question = document.querySelector("#idQuestionText");
-const prefix = document.querySelector("#idPrefix");
-let answer = document.querySelector("#idUserAnswer");
-const sendAnswer = document.querySelector('#idSend')
-let currentWordIndex = 0;
-
-const userQuestion = () => {
-    if (currentWordIndex < remainingWords) {
-        prefix.textContent = words[currentWordIndex].prefix;
-        question.textContent = words[currentWordIndex].definition;
-
-        sendAnswer.removeEventListener("click", handleAnswer);
-
-        // Asigna la función de manejo de la respuesta al evento de clic del botón de envío
-        sendAnswer.addEventListener("click", handleAnswer);
+    } else {
+        letters[currentQuestionIndex].style.backgroundColor = "red";
     }
+    userAnswerInput.value = ""
+    nextQuestion();
 }
 
-function handleAnswer() {
-    // Obtén la respuesta ingresada por el usuario
-    const userAnswer = answer.value.toLowerCase();
 
-    // Verifica si la respuesta es correcta
-    if (words[currentWordIndex].correctAnswer.toLowerCase() === userAnswer) {
-        scoreRemaining--;
-        displayScore();
-    }
 
-    // Avanza a la siguiente pregunta
-    currentWordIndex++;
-    userQuestion();
 
-    // Limpia el campo de respuesta para la próxima pregunta
-    answer.value = "";
+const countdown = () => {
+    let countdown = 200;
+    const countdownDisplay = document.querySelector("#idSeconds");
+    const countdownInterval = setInterval(() => {
+        countdown--;
+        countdownDisplay.textContent = countdown;
+        if (countdown === 0) {
+            clearInterval(countdownInterval);
+            startDisplay.textContent = "¡Se acabó el tiempo!"
+        }
+    }, 1000)
 }
 
-const startButton = document.querySelector("#startButton");
-startButton.addEventListener("click", () => {
-    clearInterval(intervalId);
-    timeRemaining = 150;
-    intervalId = setInterval(displayTime, 1000);
-    userQuestion();
-});
+
+
+
+startGame();
