@@ -174,15 +174,19 @@ const showQuestion = () => {
         const questionDisplay = document.querySelector('.question');
         const questionText = questions[currentQuestionIndex].question;
         questionDisplay.textContent = questionText;
-
     }
 }
 
 
 const showResult = () => {
-    const result = document.querySelector('#btn-start');
-    result.textContent = `Respuestas correctas ${correctAnswer} \nRespuestas incorrectas ${incorrectAnswer}`
+    const start = document.querySelector('#btn-start');
+    start.style.display = 'none'; // Oculta el botón de inicio
+
+    const result = document.querySelector('.result-container .result');
+    result.textContent = `Respuestas correctas: ${correctAnswer} Respuestas incorrectas: ${incorrectAnswer}`;
+
 }
+
 
 let scoreValue = 27; // Define el valor inicial del puntaje fuera de la función
 
@@ -199,7 +203,6 @@ const checkAnswer = () => {
         score.textContent = scoreValue; // Actualiza el contenido del elemento de puntaje
         currentQuestionIndex++;
         showQuestion();
-
 
         // Aquí puedes agregar lógica adicional si deseas pasar a la siguiente pregunta, etc.
 
@@ -222,7 +225,7 @@ document.querySelector('#btnsend').addEventListener('click', checkAnswer);
 
 const timeDisplay = () => {
     const timer = document.querySelector('.timer');
-    let timeValue = 60;
+    let timeValue = 1;
 
     // Actualiza el tiempo cada segundo (1000 milisegundos)
     const crono = setInterval(() => { // setInterval() devuelve un identificador del intervalo
@@ -248,16 +251,18 @@ const endGame = () => {
 }
 endGame();
 
+let gameStarted = false; // Variable para verificar si el juego ya ha sido iniciado
+
 const startGame = () => {
     const start = document.querySelector('#btn-start');
 
     start.addEventListener('click', () => {
-        start.disabled = true; // Deshabilita el botón de inicio una vez que se inicia el juego
-        timeDisplay();
-        showQuestion();
-
+        if (!gameStarted) { // Verifica si el juego ya ha sido iniciado
+            gameStarted = true; // Marca el juego como iniciado
+            start.disabled = true; // Deshabilita el botón de inicio una vez que se inicia el juego
+            timeDisplay();
+            showQuestion();
+        }
     })
-
-
 }
 startGame();
