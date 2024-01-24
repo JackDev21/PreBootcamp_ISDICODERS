@@ -1,0 +1,487 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(./img/fondosimpson.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+li {
+    list-style: none;
+    background-color: rgba(255, 255, 255, 0.253);
+    border: 1px solid rgb(0, 0, 0);
+    width: auto;
+    height: auto;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.panel-circle {
+
+    width: 900px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.panel-scoretime {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    bottom: 5vh;
+    right: 11vw;
+
+}
+
+.score {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    position: relative;
+    font-size: 60px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.timer {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    border-radius: 25px;
+
+}
+
+.start {
+    padding: 10px 25px;
+    /* Tamaño del botón */
+    background-color: #4CAF50;
+    /* Color de fondo */
+    color: white;
+    /* Color del texto */
+    border: none;
+    /* Sin borde */
+    border-radius: 50px;
+    /* Bordes redondeados para un aspecto de 'píldora' */
+    font-size: 18px;
+    /* Tamaño del texto */
+    font-weight: bold;
+    /* Negrita */
+    cursor: pointer;
+    /* Cambiar el cursor al pasar sobre el botón */
+    transition: all 0.3s;
+    /* Transición suave para efectos hover y focus */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.336);
+    /* Sombra suave */
+    outline: none;
+    /* Evita el contorno predeterminado en foco */
+    position: relative;
+    /* Posicionamiento relativo */
+    top: 25vh;
+    /* Ajusta a tu necesidad */
+    right: 11vw;
+    /* Ajusta a tu necesidad */
+    z-index: 1;
+
+}
+
+.btn-start:hover {
+    background-color: #e6ff04;
+    /* Color de fondo al pasar el ratón por encima */
+}
+
+.btn-start:focus {
+    box-shadow: 0 0 10px 10px rgb(0, 0, 0);
+    /* Sombra para indicar foco */
+}
+
+.panel-circle .circle {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    width: 800px;
+    height: 800px;
+}
+
+/* Panel Circle */
+.circle .letter {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    transform-origin: center;
+    font-size: 20px;
+}
+
+.circle .letter:nth-child(1) {
+    transform: rotate(-90deg) translate(325px) rotate(90deg);
+}
+
+.circle .letter:nth-child(2) {
+    transform: rotate(-76.5deg) translate(325px) rotate(76.5deg);
+}
+
+.circle .letter:nth-child(3) {
+    transform: rotate(-63deg) translate(325px) rotate(63deg);
+}
+
+.circle .letter:nth-child(4) {
+    transform: rotate(-49.5deg) translate(325px) rotate(49.5deg);
+}
+
+.circle .letter:nth-child(5) {
+    transform: rotate(-36deg) translate(325px) rotate(36deg);
+}
+
+.circle .letter:nth-child(6) {
+    transform: rotate(-22.5deg) translate(325px) rotate(22.5deg);
+}
+
+.circle .letter:nth-child(7) {
+    transform: rotate(-9deg) translate(325px) rotate(9deg);
+}
+
+.circle .letter:nth-child(8) {
+    transform: rotate(4.5deg) translate(325px) rotate(-4.5deg);
+}
+
+.circle .letter:nth-child(9) {
+    transform: rotate(18deg) translate(325px) rotate(-18deg);
+}
+
+.circle .letter:nth-child(10) {
+    transform: rotate(31.5deg) translate(325px) rotate(-31.5deg);
+}
+
+.circle .letter:nth-child(11) {
+    transform: rotate(45deg) translate(325px) rotate(-45deg);
+}
+
+.circle .letter:nth-child(12) {
+    transform: rotate(58.5deg) translate(325px) rotate(-58.5deg);
+}
+
+.circle .letter:nth-child(13) {
+    transform: rotate(72deg) translate(325px) rotate(-72deg);
+}
+
+.circle .letter:nth-child(14) {
+    transform: rotate(85.5deg) translate(325px) rotate(-85.5deg);
+}
+
+.circle .letter:nth-child(15) {
+    transform: rotate(99deg) translate(325px) rotate(-99deg);
+}
+
+.circle .letter:nth-child(16) {
+    transform: rotate(112.5deg) translate(325px) rotate(-112.5deg);
+}
+
+.circle .letter:nth-child(17) {
+    transform: rotate(126deg) translate(325px) rotate(-126deg);
+}
+
+.circle .letter:nth-child(18) {
+    transform: rotate(139.5deg) translate(325px) rotate(-139.5deg);
+}
+
+.circle .letter:nth-child(19) {
+    transform: rotate(153deg) translate(325px) rotate(-153deg);
+}
+
+.circle .letter:nth-child(20) {
+    transform: rotate(166.5deg) translate(325px) rotate(-166.5deg);
+}
+
+.circle .letter:nth-child(21) {
+    transform: rotate(180deg) translate(325px) rotate(-180deg);
+}
+
+.circle .letter:nth-child(22) {
+    transform: rotate(193.5deg) translate(325px) rotate(-193.5deg);
+}
+
+.circle .letter:nth-child(23) {
+    transform: rotate(207deg) translate(325px) rotate(-207deg);
+}
+
+.circle .letter:nth-child(24) {
+    transform: rotate(220.5deg) translate(325px) rotate(-220.5deg);
+}
+
+.circle .letter:nth-child(25) {
+    transform: rotate(234deg) translate(325px) rotate(-234deg);
+}
+
+.circle .letter:nth-child(26) {
+    transform: rotate(245.5deg) translate(325px) rotate(-247.5deg);
+}
+
+.circle .letter:nth-child(27) {
+    transform: rotate(258deg) translate(325px) rotate(-261deg);
+}
+
+.panel-game {
+    border: 2px solid rgba(0, 0, 0, 0);
+    width: 800px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 30px;
+    border-radius: 25%;
+    background: rgba(0, 0, 0, 0.438);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+
+#txtAnswer {
+    padding: 10px 15px;
+    /* Espaciado interno cómodo */
+    background-color: #ffffffe1;
+    /* Color de fondo blanco */
+    border: 2px solid #dcdcdc;
+    /* Borde sutil */
+    border-radius: 25px;
+    /* Bordes redondeados para suavidad */
+    font-size: 16px;
+    /* Tamaño de fuente legible */
+    width: 100%;
+    /* Ancho del input adaptado */
+    max-width: 400px;
+    /* Máximo ancho para dispositivos grandes */
+    margin: 0 auto;
+    /* Centrado automáticamente */
+    box-shadow: 2px 4px 16px rgb(0, 0, 0);
+    /* Sombra sutil para profundidad */
+    transition: border-color 0.2s, box-shadow 0.2s;
+    /* Transiciones suaves */
+    outline: none;
+    /* Eliminar el contorno al hacer clic */
+}
+
+#txtAnswer:focus {
+    border-color: #f65c01;
+    /* Cambio de color de borde al enfocar */
+    box-shadow: 0 0 10px rgba(246, 92, 1, 0.5);
+    /* Sombra más notoria al enfocar */
+}
+
+#txtAnswer::placeholder {
+    color: #a9a9a9;
+    /* Color para el texto del placeholder */
+}
+
+#btnsend {
+    padding: 10px 20px;
+    /* Espaciado interno */
+    background-color: #007bff;
+    /* Color de fondo azul */
+    color: white;
+    /* Color del texto */
+    border: 2px solid transparent;
+    /* Borde transparente (puede cambiarlo si lo desea) */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    font-size: 16px;
+    /* Tamaño del texto */
+    font-weight: bold;
+    /* Fuente en negrita */
+    cursor: pointer;
+    /* Cambiar el cursor al pasar sobre el botón */
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    /* Efecto suave al cambiar estados */
+    text-transform: uppercase;
+    /* Texto en mayúsculas */
+    letter-spacing: 1px;
+    /* Espaciado entre letras */
+    outline: none;
+    /* Eliminar el contorno al hacer clic */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.400);
+}
+
+#btnsend:hover {
+    background-color: #0056b3;
+    /* Color de fondo al pasar el ratón por encima */
+    border-color: #004080;
+    /* Color del borde al pasar el ratón por encima */
+}
+
+#btnsend:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    /* Sombra exterior para indicar el foco */
+}
+
+
+.info-game {
+    width: 800px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.pasapalabra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btnpasapalabra {
+    padding: 10px 20px;
+    /* Espaciado interno más pequeño */
+    background-color: #feda4afa;
+    /* Amarillo claro, más suave */
+    color: #333333;
+    /* Texto oscuro para contraste */
+    border: none;
+    /* Sin borde para un look más limpio */
+    border-radius: 20px;
+    /* Bordes redondeados, pero menos pronunciados */
+    font-size: 16px;
+    /* Tamaño de texto moderado */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    /* Fuente informal para un toque simpático */
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    /* Transiciones suaves */
+    outline: none;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Sombra sutil */
+}
+
+#btnpasapalabra:hover {
+    background-color: #ffcc00;
+    /* Un amarillo más intenso cuando se pasa el ratón */
+    transform: scale(1.05);
+    /* Ligeramente más grande al pasar el ratón */
+}
+
+#btnpasapalabra:focus {
+    box-shadow: 0 0 0 3px #ffcc00;
+    /* Resaltar el foco con una sombra externa */
+}
+
+#btnpasapalabra:active {
+    transform: scale(0.95);
+    /* Efecto de "pulsación" al hacer clic */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra más suave al hacer clic */
+}
+
+
+.question {
+    padding: 20px;
+    background-color: #f7e18ad0;
+    /* Amarillo de Los Simpson */
+    color: #333333;
+    /* Texto oscuro para contraste */
+    border-radius: 10px;
+    /* Bordes ligeramente redondeados */
+    font-size: 20px;
+    /* Tamaño de texto grande para legibilidad */
+    font-weight: bold;
+    /* Texto en negrita para destacar */
+    text-align: center;
+    /* Alineación del texto al centro */
+    margin: 20px auto;
+    /* Margen automático para centrar el bloque */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra para dar profundidad */
+    max-width: 800px;
+    /* Máximo ancho para evitar que la línea sea demasiado larga */
+    transition: transform 0.2s;
+    /* Transición suave para hover */
+}
+
+.question:hover {
+    transform: scale(1.05);
+    /* Efecto para cuando se pasa el ratón por encima */
+}
+
+
+
+
+.close {
+    border: 2px solid rgb(251, 255, 0);
+    border-radius: 10%;
+    background-color: rgba(251, 255, 0, 0.178);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0vh;
+    left: 85vw;
+    right: 0;
+    bottom: 93vh;
+    margin: auto;
+    cursor: pointer;
+    font-size: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.400);
+
+}
+
+.close:hover {
+    background-color: #d3c22f;
+    /* Color de fondo al pasar el ratón por encima */
+}
+
+.close:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    /* Sombra para indicar foco */
+}
+
+
+
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 35vw;
+    right: 0;
+    height: 60px;
+    width: 500px;
+    font-size: 25px;
+}
