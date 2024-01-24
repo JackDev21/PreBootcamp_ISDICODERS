@@ -1,187 +1,246 @@
 const questions = [
     {
         letter: "a",
-        answer: "",
+        answer: "Apu",
         status: 0,
-        question:
-            "CONTIENE LA A. ",
+        question: " Con la A: ¿Quién es el dueño de la tienda Kwik-E-Mart?",
     },
     {
         letter: "b",
-        answer: "bowser",
+        answer: "Bart",
         status: 0,
-        question:
-            "CON LA B. Enemigo que lanza hachas en los castillos de Mario.",
+        question: "Con la B: ¿Cuál es el hijo mayor de la familia Simpson?",
     },
     {
         letter: "c",
-        answer: "princesa peach",
+        answer: "Central Nuclear",
         status: 0,
-        question: "CONTIENE LA C. Princesa a menudo secuestrada por Bowser en Mario Bros.",
+        question: "Con la C: ¿Donde trabaja Homer Simpson?",
     },
     {
         letter: "d",
-        answer: "donkey kong",
+        answer: "Duff",
         status: 0,
-        question:
-            "CON LA D. Gorila que acompaña a Mario en algunas aventuras.",
+        question: "Con la D: ¿Cómo se llama la cerveza favorita en Springfield?",
     },
     {
         letter: "e",
-        answer: "planta Piraña",
+        answer: "Edna",
         status: 0,
-        question:
-            "CONTIENE LA E. Planta carnívora que aparece en tuberías.",
+        question: "Con la E: ¿Quién es la maestra de Bart Simpson?",
     },
     {
         letter: "f",
-        answer: "",
+        answer: "Flanders",
         status: 0,
-        question: "CON LA F. ",
+        question: "Con la F: ¿Cómo se apellida el vecino de los Simpson?",
     },
     {
         letter: "g",
-        answer: "goomba",
+        answer: "Grafiti",
         status: 0,
-        question:
-            "CON LA G. Enemigo que lanza bolas de fuego."
+        question: "Con la G: ¿En qué actividad creativa y a menudo problemática es conocido Bart Simpson?",
     },
     {
         letter: "h",
-        answer: "Hongo de Crecimiento",
+        answer: "Homer",
         status: 0,
-        question: "CON LA H. Hongo que hace crecer a Mario.",
+        question: "Con la H: ¿Quién es el padre de la familia Simpson?",
     },
     {
         letter: "i",
-        answer: "daisy",
+        answer: "Itchy",
         status: 0,
-        question: "CON LA I. Princesa de Sarasaland",
+        question: "Con la I: ¿Cómo se llama el ratón en el show de Krusty el payaso?",
     },
     {
         letter: "j",
-        answer: "jefe trueno",
+        answer: "Jebediah Springfield",
         status: 0,
-        question:
-            "CON LA J. Nombre del enemigo con forma de nube que lanza rayos y aparece en varios juegos de Mario Bros",
+        question: "Con la J: ¿Quién es el fundador de Springfield?",
     },
     {
         letter: "k",
-        answer: "kart",
+        answer: "Krusty",
         status: 0,
-        question:
-            "CON LA K. Vehiculo utilizado en las carreras de Mario.",
+        question: "Con la K: ¿Cuál es el nombre del payaso en la televisión de Springfield?",
     },
     {
         letter: "l",
-        answer: "Luigi",
+        answer: "Lisa Simpson",
         status: 0,
-        question: "CON LA L. Compañero y amigo de Mario durante las aventuras.",
+        question: "Con la L: ¿Cuál es el nombre de la hija mediana de la familia Simpson?",
     },
     {
         letter: "m",
-        answer: "misantropo",
+        answer: "Maggie",
         status: 0,
-        question:
-            "CON LA M. Persona que huye del trato con otras personas o siente gran aversión hacia ellas",
+        question: "Con la M: ¿Cómo se llama la hija más pequeña de la familia Simpson?",
     },
     {
         letter: "n",
-        answer: "necedad",
+        answer: "Ned Flanders",
         status: 0,
-        question: "CON LA N. Demostración de poca inteligencia",
+        question: "Con la N: ¿Cuál es el nombre del vecino religioso de los Simpson?",
     },
     {
         letter: "ñ",
-        answer: "señal",
+        answer: "Ñu",
         status: 0,
-        question:
-            "CONTIENE LA Ñ. Indicio que permite deducir algo de lo que no se tiene un conocimiento directo.",
+        question: "Con la Ñ: ¿Cuál es el nombre del animal que Homer compra en un episodio para tener como mascota?",
     },
+
     {
         letter: "o",
-        answer: "orco",
+        answer: "Otto",
         status: 0,
-        question:
-            "CON LA O. Humanoide fantástico de apariencia terrible y bestial, piel de color verde creada por el escritor Tolkien",
+        question: "Con la O: ¿Cuál es el nombre del conductor del autobús escolar?",
     },
     {
         letter: "p",
-        answer: "Princesa Peach",
+        answer: "Patty",
         status: 0,
-        question:
-            "CON LA P. Princesa a menudo secuestrada por Bowser en Mario Bros."
+        question: "Con la P: ¿Cómo se llama la hermana gemela de Marge?",
     },
     {
         letter: "q",
-        answer: "queso",
+        answer: "Quimby",
         status: 0,
-        question:
-            "CON LA Q. Producto obtenido por la maduración de la cuajada de la leche",
+        question: "Con la Q: ¿Cuál es el apellido del alcalde de Springfield?",
     },
-    { letter: "r", answer: "raton", status: 0, question: "CON LA R. Roedor" },
+    {
+        letter: "r",
+        answer: "Ralph",
+        status: 0,
+        question: "Con la R: ¿Cómo se llama el hijo torpe del Jefe Gorgory Wiggum?",
+    },
     {
         letter: "s",
-        answer: "super",
+        answer: "Selma",
         status: 0,
-        question: "CON LA S. Palabra que va antes que el nombre de Mario.",
+        question: "Con la S: ¿Cómo se llama la hermana gemela de Marge?",
     },
     {
         letter: "t",
-        answer: "toad",
+        answer: "Troy McClure",
         status: 0,
-        question:
-            "CON LA T. Champiñon que acompaña a Mario en algunas aventuras.",
+        question: "Con la T: ¿Cómo se llama el actor secundario en los Simpson?",
     },
     {
         letter: "u",
-        answer: "unamuno",
+        answer: "Universidad",
         status: 0,
-        question:
-            "CON LA U. Escritor y filósofo español de la generación del 98 autor del libro 'Niebla' en 1914",
+        question: "Con la U: ¿A qué lugar asiste Lisa cuando es admitida en la academia para niños superdotados?",
     },
     {
         letter: "v",
-        answer: "vikingos",
+        answer: "Violín",
         status: 0,
-        question:
-            "CON LA V. Nombre dado a los miembros de los pueblos nórdicos originarios de Escandinavia, famosos por sus incursiones y pillajes en Europa",
+        question: "Con la V: ¿Qué instrumento musical toca Lisa en varios episodios de Los Simpson?",
     },
+
     {
         letter: "w",
-        answer: "wario",
+        answer: "Waylon Smithers",
         status: 0,
-        question:
-            "CONTIENE LA W. Archienemigo de mario con una W en su gorra",
+        question: "Con la W: ¿Cuál es el nombre del asistente personal de Mr. Burns?",
     },
     {
         letter: "x",
-        answer: "botox",
+        answer: "Expediente X",
         status: 0,
-        question: "CONTIENE LA X. Toxina bacteriana utilizada en cirujía estética",
+        question: "Con la X: ¿Qué serie de televisión parodiaron en un episodio de Halloween?",
     },
     {
         letter: "y",
-        answer: "Yoshi",
+        answer: "Yeti",
         status: 0,
-        question:
-            "CONTIENE LA Y. Nombre del dinosaurio amigo de Mario que aparece en algunos juegos de la serie, especialmente en 'Super Mario World",
+        question: "Con la Y: ¿Qué ser mitológico de pies grandes intenta encontrar Bart en el bosque?",
     },
     {
         letter: "z",
-        answer: "zigzag",
+        answer: "Zia",
         status: 0,
-        question:
-            "CON LA Z. Nombre de uno de los enemigos que aparece en varios juegos de Mario Bros y se asemeja a una bola con pinchos",
+        question: "Con la Z: ¿Cuál es el nombre de la hija de Lisa en el futuro?",
     },
 ];
 
 
 
-const question = document.querySelector(".question")
-const start = document.querySelector(".start")
+
+const showQuestion = () => {
+    const question = document.querySelector('.question');
+    question.innerHTML = questions[0].question;
+}
 
 
-start.addEventListener("click", () => {
-    question.innerHTML = questions[0].question
-})
+const showResult = () => {
+    const result = document.querySelector('#btn-start');
+    result.textContent = `Respuestas correctas ${correctAnswer} \nRespuestas incorrectas ${incorrectAnswer}`
+}
+
+let scoreValue = 27; // Define el valor inicial del puntaje fuera de la función
+const score = document.querySelector('.score'); // Selecciona el elemento de puntaje
+let correctAnswer = 0;
+let incorrectAnswer = 0;
+
+const checkAnswer = () => {
+    const userAnswer = document.querySelector("#txtAnswer").value; // Obtén el valor del input
+    if (userAnswer.toLowerCase() === questions[0].answer.toLowerCase()) { // Comprueba si la respuesta es correcta
+        scoreValue--; // Resta uno del puntaje si la respuesta es correcta
+        correctAnswer++;
+        score.textContent = scoreValue; // Actualiza el contenido del elemento de puntaje
+
+        // Aquí puedes agregar lógica adicional si deseas pasar a la siguiente pregunta, etc.
+
+    } else {
+
+        incorrectAnswer++
+    }
+
+    // Limpia el campo de respuesta después de comprobar
+    document.querySelector("#txtAnswer").value = '';
+}
+
+// Asegúrate de llamar a checkAnswer en algún lugar, por ejemplo, al hacer click en un botón de enviar
+document.querySelector('#btnsend').addEventListener('click', checkAnswer);
+
+
+
+
+const timeDisplay = () => {
+    const timer = document.querySelector('.timer');
+    let timeValue = 5;
+
+    // Actualiza el tiempo cada segundo (1000 milisegundos)
+    const crono = setInterval(() => { // setInterval() devuelve un identificador del intervalo
+        timer.innerHTML = timeValue;
+        timeValue--;
+
+        // Cuando el tiempo llegue a 0, limpia el intervalo para detener el contador
+        if (timeValue < 0) {
+            clearInterval(crono); // clearInterval() elimina el intervalo con el identificador dado
+            showResult(); // Llama a la función showResult() para mostrar el resultado final
+
+        }
+    }, 1000);
+
+};
+
+
+
+
+const startGame = () => {
+    const start = document.querySelector('#btn-start');
+
+    start.addEventListener('click', () => {
+        start.disabled = true; // Deshabilita el botón de inicio una vez que se inicia el juego
+        timeDisplay();
+        showQuestion();
+
+    })
+
+
+}
+
+startGame();
