@@ -1,10 +1,10 @@
 const questions = [
     {
         letter: "a",
-        answer: "mario",
+        answer: "",
         status: 0,
         question:
-            "CONTIENE LA A. Personaje principal de Mario Bros.",
+            "CONTIENE LA A. ",
     },
     {
         letter: "b",
