@@ -165,12 +165,17 @@ const questions = [
     },
 ];
 
+console.log(questions.length)
 
 
-
+let currentQuestionIndex = 0;
 const showQuestion = () => {
-    const question = document.querySelector('.question');
-    question.innerHTML = questions[0].question;
+    if (currentQuestionIndex >= 0 && currentQuestionIndex < questions.length) {
+        const questionDisplay = document.querySelector('.question');
+        const questionText = questions[currentQuestionIndex].question;
+        questionDisplay.textContent = questionText;
+
+    }
 }
 
 
@@ -180,22 +185,29 @@ const showResult = () => {
 }
 
 let scoreValue = 27; // Define el valor inicial del puntaje fuera de la función
-const score = document.querySelector('.score'); // Selecciona el elemento de puntaje
+
 let correctAnswer = 0;
 let incorrectAnswer = 0;
-
 const checkAnswer = () => {
     const userAnswer = document.querySelector("#txtAnswer").value; // Obtén el valor del input
-    if (userAnswer.toLowerCase() === questions[0].answer.toLowerCase()) { // Comprueba si la respuesta es correcta
+    const score = document.querySelector('.score'); // Selecciona el elemento de puntaje
+    const letter = document.querySelectorAll('.letter');
+    if (userAnswer.toLowerCase() === questions[currentQuestionIndex].answer.toLowerCase()) { // Comprueba si la respuesta es correcta
+        letter[currentQuestionIndex].style.backgroundColor = "green";
         scoreValue--; // Resta uno del puntaje si la respuesta es correcta
         correctAnswer++;
         score.textContent = scoreValue; // Actualiza el contenido del elemento de puntaje
+        currentQuestionIndex++;
+        showQuestion();
+
 
         // Aquí puedes agregar lógica adicional si deseas pasar a la siguiente pregunta, etc.
 
     } else {
-
+        letter[currentQuestionIndex].style.backgroundColor = "red";
         incorrectAnswer++
+        currentQuestionIndex++;
+        showQuestion();
     }
 
     // Limpia el campo de respuesta después de comprobar
@@ -210,7 +222,7 @@ document.querySelector('#btnsend').addEventListener('click', checkAnswer);
 
 const timeDisplay = () => {
     const timer = document.querySelector('.timer');
-    let timeValue = 5;
+    let timeValue = 60;
 
     // Actualiza el tiempo cada segundo (1000 milisegundos)
     const crono = setInterval(() => { // setInterval() devuelve un identificador del intervalo
@@ -219,16 +231,22 @@ const timeDisplay = () => {
 
         // Cuando el tiempo llegue a 0, limpia el intervalo para detener el contador
         if (timeValue < 0) {
-            clearInterval(crono); // clearInterval() elimina el intervalo con el identificador dado
             showResult(); // Llama a la función showResult() para mostrar el resultado final
-
+            clearInterval(crono); // clearInterval() elimina el intervalo con el identificador dado
         }
     }, 1000);
 
 };
 
 
+const endGame = () => {
+    const close = document.querySelector('#btnclose');
+    close.addEventListener('click', () => {
+        showResult();
 
+    });
+}
+endGame();
 
 const startGame = () => {
     const start = document.querySelector('#btn-start');
@@ -242,5 +260,4 @@ const startGame = () => {
 
 
 }
-
 startGame();
