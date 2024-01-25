@@ -197,7 +197,7 @@ const checkAnswer = () => {
     const score = document.querySelector('.score'); // Selecciona el elemento de puntaje
     const letter = document.querySelectorAll('.letter');
     if (userAnswer.toLowerCase() === questions[currentQuestionIndex].answer.toLowerCase()) { // Comprueba si la respuesta es correcta
-        letter[currentQuestionIndex].style.backgroundColor = "green";
+        letter[currentQuestionIndex].classList.add("correct-answer")
         scoreValue--; // Resta uno del puntaje si la respuesta es correcta
         correctAnswer++;
         score.textContent = scoreValue; // Actualiza el contenido del elemento de puntaje
@@ -207,7 +207,7 @@ const checkAnswer = () => {
         // Aquí puedes agregar lógica adicional si deseas pasar a la siguiente pregunta, etc.
 
     } else {
-        letter[currentQuestionIndex].style.backgroundColor = "red";
+        letter[currentQuestionIndex].classList.add("incorrect-answer");
         incorrectAnswer++
         currentQuestionIndex++;
         showQuestion();
@@ -221,14 +221,13 @@ const checkAnswer = () => {
 document.querySelector('#btnsend').addEventListener('click', checkAnswer);
 
 
-
-
+let crono;
 const timeDisplay = () => {
     const timer = document.querySelector('.timer');
-    let timeValue = 1;
+    let timeValue = 10;
 
     // Actualiza el tiempo cada segundo (1000 milisegundos)
-    const crono = setInterval(() => { // setInterval() devuelve un identificador del intervalo
+    crono = setInterval(() => { // setInterval() devuelve un identificador del intervalo
         timer.innerHTML = timeValue;
         timeValue--;
 
@@ -236,26 +235,34 @@ const timeDisplay = () => {
         if (timeValue < 0) {
             showResult(); // Llama a la función showResult() para mostrar el resultado final
             clearInterval(crono); // clearInterval() elimina el intervalo con el identificador dado
+            endGameDisplay.style.display = 'flex';
+            panelGame.style.visibility = 'hidden';
         }
     }, 1000);
-
 };
 
 
+const endGameDisplay = document.querySelector('.end-game');
+const panelGame = document.querySelector('.panel-game');
 const endGame = () => {
     const close = document.querySelector('#btnclose');
+
     close.addEventListener('click', () => {
+        clearInterval(crono);
         showResult();
+        endGame.style.display = 'flex';
+        panelGame.style.visibility = 'hidden'; // El elemento se oculta pero mantiene su espacio.
+
 
     });
 }
 endGame();
 
+
 let gameStarted = false; // Variable para verificar si el juego ya ha sido iniciado
 
 const startGame = () => {
     const start = document.querySelector('#btn-start');
-
     start.addEventListener('click', () => {
         if (!gameStarted) { // Verifica si el juego ya ha sido iniciado
             gameStarted = true; // Marca el juego como iniciado

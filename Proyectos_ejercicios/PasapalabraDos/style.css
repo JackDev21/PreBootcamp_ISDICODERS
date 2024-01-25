@@ -34,13 +34,14 @@ li {
 .panel-circle {
     width: 80%;
     /* Cambiado a un porcentaje para hacerlo responsive */
-    max-width: 900px;
+    max-width: 50vw;
     /* Establece un ancho máximo para evitar que el círculo se vuelva demasiado grande en pantallas grandes */
     height: auto;
     /* Cambiado a auto para permitir el ajuste de altura según el contenido */
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 4rem;
 }
 
 .panel-scoretime {
@@ -55,24 +56,24 @@ li {
 }
 
 .score {
-    width: 100px;
-    height: 100px;
+    width: 10%;
+    height: auto;
     display: flex;
     position: relative;
-    font-size: 60px;
     justify-content: center;
     align-items: center;
+    border: 1px solid black;
     border-radius: 25px;
 }
 
 .timer {
-    width: 100px;
-    height: 100px;
+    width: 12%;
+    height: auto;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 60px;
+    border: 1px solid black;
     border-radius: 25px;
 
 }
@@ -482,6 +483,19 @@ li {
     text-align: center;
 }
 
+.correct-answer {
+    background-color: green;
+
+}
+
+.incorrect-answer {
+    background-color: red;
+
+}
+
+
+
+
 .close {
     border: 2px solid rgb(251, 255, 0);
     border-radius: 10%;
@@ -513,7 +527,56 @@ li {
     /* Sombra para indicar foco */
 }
 
+.end-game {
+    position: absolute;
+    border: 2px solid rgb(0, 0, 0);
+    width: 350px;
+    height: auto;
+    display: none;
+    flex-direction: column;
+    /* Cambiado de row a column */
+    justify-content: center;
+    align-items: center;
+    top: 44vh;
+    right: 15vw;
+    font-size: 2em;
+    background-color: #f9f9f9d2;
+    /* Color de fondo suave */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.836);
+    /* Sombra suave */
+    border-radius: 10px;
+    /* Bordes redondeados */
+    padding: 20px;
+    /* Espacio dentro del borde */
 
+}
+
+.title-end {
+    margin-bottom: 20px;
+    /* Espacio entre el título y el botón */
+    color: #333;
+    /* Color oscuro para el texto */
+    text-align: center;
+}
+
+.play-again-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: rgba(255, 255, 255, 0.993);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    /* Tamaño de fuente relativo */
+    margin-top: auto;
+    /* Alinea el botón hacia abajo */
+    transition: background-color 0.3s ease;
+    /* Transición suave para el hover */
+}
+
+.play-again-btn:hover {
+    background-color: #45a049;
+}
 
 
 
