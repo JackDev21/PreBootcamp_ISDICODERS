@@ -250,7 +250,7 @@ const endGame = () => {
     close.addEventListener('click', () => {
         clearInterval(crono);
         showResult();
-        endGame.style.display = 'flex';
+        endGameDisplay.style.display = 'flex';
         panelGame.style.visibility = 'hidden'; // El elemento se oculta pero mantiene su espacio.
 
 
