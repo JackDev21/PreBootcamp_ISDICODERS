@@ -174,6 +174,21 @@ let incorrectAnswer = 0;
 let gameStarted = false; // Variable para verificar si el juego ya ha sido iniciado
 let crono;
 
+const start = document.querySelector('#btn-start');
+const startGame = () => {
+    if (!gameStarted) { // Verifica si el juego ya ha sido iniciado
+        currentQuestionIndex++
+        gameStarted = true; // Marca el juego como iniciado
+        start.disabled = true; // Deshabilita el botón de inicio una vez que se inicia el juego
+        timeDisplay();
+        showQuestion();
+    }
+
+}
+start.addEventListener('click', startGame);
+
+
+
 
 const showQuestion = () => {
 
@@ -194,64 +209,77 @@ const showResult = () => {
 
 
 
-const startGame = () => {
-    currentQuestionIndex++
-    if (!gameStarted) { // Verifica si el juego ya ha sido iniciado
-        gameStarted = true; // Marca el juego como iniciado
-        start.disabled = true; // Deshabilita el botón de inicio una vez que se inicia el juego
-        timeDisplay();
-        showQuestion();
-    }
-}
-const start = document.querySelector('#btn-start');
-start.addEventListener('click', startGame);
-
-
-
 const letter = document.querySelectorAll('.letter');
 
 const checkAnswer = () => {
     const score = document.querySelector('.score');
     const userAnswer = document.querySelector("#txtAnswer").value;
 
-    if (userAnswer === "") {
-        return;
+    if (currentQuestionIndex < questions.length) {
+        /*if (userAnswer === "") {
+            return;
+        }*/
+
+        if (userAnswer.toLowerCase().trim() === questions[currentQuestionIndex].answer.toLowerCase().trim()) {
+            letter[currentQuestionIndex].classList.add("correct-answer");
+            correctAnswer++;
+            scoreValue--;
+            currentQuestionIndex++;
+        } else {
+            letter[currentQuestionIndex].classList.add("incorrect-answer");
+            incorrectAnswer++;
+            currentQuestionIndex++;
+        }
+        if (currentQuestionIndex === questions.length) {
+            showUnansweredQuestions();
+        }
+
+        // Actualiza el contenido del elemento de puntaje
+        score.textContent = scoreValue;
+        questions[currentQuestionIndex].status = 1;
+        // Limpia el campo de respuesta después de comprobar
+        document.querySelector("#txtAnswer").value = '';
+
+        // Muestra la siguiente pregunta
+        showQuestion();
     }
-
-    if (userAnswer.toLowerCase().trim() === questions[currentQuestionIndex].answer.toLowerCase().trim()) {
-        letter[currentQuestionIndex].classList.add("correct-answer");
-        correctAnswer++;
-        scoreValue--;
-        currentQuestionIndex++;
-    } else {
-        letter[currentQuestionIndex].classList.add("incorrect-answer");
-        incorrectAnswer++;
-        currentQuestionIndex++;
-    }
-
-    // Actualiza el contenido del elemento de puntaje
-    score.textContent = scoreValue;
-
-    // Limpia el campo de respuesta después de comprobar
-    document.querySelector("#txtAnswer").value = '';
-
-    // Muestra la siguiente pregunta
-    showQuestion();
 }
-
 // Asigna la función checkAnswer al evento click del botón
 const send = document.querySelector('#btnsend')
 send.addEventListener('click', checkAnswer);
 
-
 const pasapalabra = () => {
-    letter[currentQuestionIndex].classList.add("pasapalabra-answer");
-    currentQuestionIndex++
-
+    if (currentQuestionIndex < questions.length) {
+        // Marcar como pasapalabra y avanzar a la siguiente pregunta
+        letter[currentQuestionIndex].classList.add("pasapalabra-answer");
+        questions[currentQuestionIndex].status = 2;
+        currentQuestionIndex++;
+        // Verificar si se llegó al final y mostrar las preguntas sin responder
+        if (currentQuestionIndex === questions.length) {
+            showUnansweredQuestions();
+        } else {
+            showQuestion();
+        }
+    }
 };
+
+
+
 const pasapalabraButton = document.querySelector('#btnpasapalabra');
 pasapalabraButton.addEventListener('click', pasapalabra);
 
+const showUnansweredQuestions = () => {
+    const unansweredQuestions = questions.filter(q => q.status === 2);
+    if (unansweredQuestions.length > 0) {
+        questions.push(...unansweredQuestions); // Agrega las preguntas sin responder al final del array
+        currentQuestionIndex = questions.length - unansweredQuestions.length; // Reinicia el índice al inicio de las preguntas sin responder
+        showQuestion(); // Muestra la primera pregunta sin responder
+
+    } else {
+        // Si no hay preguntas sin responder, muestra el resultado final
+        endGame();
+    }
+}
 
 
 const timeDisplay = () => {
@@ -283,7 +311,7 @@ close.addEventListener('click', closeGame);
 const endGame = () => {
     clearInterval(crono);
     showResult();
+    showUnansweredQuestions(); // Llama a la función para mostrar preguntas no respondidas
     endGameDisplay.style.display = 'flex';
-    panelGame.style.visibility = 'hidden'; // El elemento se oculta pero mantiene su espacio.
+    panelGame.style.visibility = 'hidden';
 }
-
