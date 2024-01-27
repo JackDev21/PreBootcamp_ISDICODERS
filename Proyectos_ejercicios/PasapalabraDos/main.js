@@ -625,10 +625,12 @@ const startGame = () => {
         correctAnswers = 0;
         incorrectAnswers = 0;
 
+
         nextQuestion(); // Muestra la primera pregunta
 
-        // Deshabilitar el botón de inicio
+
         startButton.disabled = true;
+
 
         // Configurar el temporizador solo si no está activo
         if (!crono) {
@@ -640,33 +642,45 @@ const startGame = () => {
         questions.forEach(question => {
             question.status = 0;
         });
+
+
     }
+
 };
+
 
 
 const restartGame = () => {
     startButton.style.visibility = 'visible';
-    result.style.visibility = 'hidden';
     panelGame.style.visibility = 'visible';
     endGameDisplay.style.display = 'none';
+    result.style.visibility = 'hidden';
 
-    letter.forEach(letterelement => {
-        letterelement.classList.remove("correct-answer");
-        letterelement.classList.remove("incorrect-answer");
-    })
+
     index = -1;
     round = 1;
     correctAnswers = 0;
     incorrectAnswers = 0;
 
+
+    letter.forEach(letterelement => {
+        letterelement.classList.remove("correct-answer");
+        letterelement.classList.remove("incorrect-answer");
+    })
+
+    if (crono) {
+        // Restablecer el tiempo y mostrarlo
+        timeDisplay();
+    }
     nextQuestion();
+
 
 }
 
 
-
 const closeGame = () => {
     endGame();
+    result.style.visibility = 'visible';
 
 };
 
