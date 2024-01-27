@@ -485,7 +485,6 @@ const sumOfQuestions = [
 
 
 
-
 let randomQuestion;
 let questions = [];
 
@@ -516,7 +515,7 @@ const getQuestions = () => {
 
 const timeDisplay = () => {
     const timer = document.querySelector('.timer');
-    let timeValue = 50;
+    let timeValue = 120;
 
     crono = setInterval(() => { // setInterval es una función que crea un temporizador
         timer.innerHTML = timeValue; // Se muestra el tiempo en el elemento con la clase .timer
@@ -529,13 +528,10 @@ const timeDisplay = () => {
 };
 
 
-
 const nextQuestion = () => {
     index = index + 1; // Incrementa el índice de pregunta
     questionJS.innerHTML = questions[index].question; // Muestra la pregunta actual
 };
-
-
 
 
 const nextRound = () => {
@@ -568,7 +564,7 @@ const checkStatus = () => {
     }
     // Si estamos en una ronda posterior a la primera y el índice es menor que 26
     else if ((round > 1) && (index < 26)) {
-        // Bucle do-while: Avanza al siguiente índice hasta encontrar una pregunta con estado diferente de 2 o recorrer todas las preguntas
+        //Avanza al siguiente índice hasta encontrar una pregunta con estado diferente de 2 o recorrer todas las preguntas
         do {
             index++; // Incrementa el índice
             // Si llegamos al final de las preguntas, reinicia el índice y avanza a la siguiente ronda
@@ -576,7 +572,7 @@ const checkStatus = () => {
                 index = 0;
                 nextRound();
             }
-        } while ((questions[index].status !== 2) && (correctAnswers + incorrectAnswers < sumOfQuestions.length));
+        } while ((questions[index].status !== 2) && (correctAnswers + incorrectAnswers < sumOfQuestions.length)); // mientras el status de la pregunta sea diferente de 2 o no hayamos terminado el juego
         // Muestra la pregunta correspondiente y reinicia el valor del campo de respuesta del usuario
         questionJS.innerHTML = questions[index].question;
         userAnswer.value = "";
@@ -584,31 +580,17 @@ const checkStatus = () => {
 }
 
 
-const userAnswer = document.querySelector('#txtAnswer');
-const letter = document.querySelectorAll('.letter');
-
-
-
 const showResult = () => {
-    const start = document.querySelector('#btn-start');
-    start.style.display = 'none'; // Oculta el botón de inicio
-
-    const result = document.querySelector('.result-container .result'); // Selecciona el elemento de resultado
+    startButton.style.visibility = 'hidden'; // Oculta el botón de inicio
     result.textContent = `Respuestas correctas: ${correctAnswers} Respuestas incorrectas: ${incorrectAnswers}`; // Actualiza el texto del elemento de resultado
 }
 
 
-
-
-const pasButton = () => {
-    letter[index].classList.add("pasapalabra-answer");
+const passButton = () => {
     questions[index].status = 2;
     checkStatus(); // Verifica si se ha terminado el juego y muestra el resultado si es así.
 
 };
-const buttonPasapalabra = document.querySelector('#btnpasapalabra');
-buttonPasapalabra.addEventListener('click', pasButton);
-const score = document.querySelector('.score');
 
 
 const checkAnswer = () => {
@@ -629,51 +611,65 @@ const checkAnswer = () => {
     checkStatus();
 };
 
-const send = document.querySelector('#btnsend');
-send.addEventListener('click', checkAnswer);
 
-
-const startButton = document.querySelector('#btn-start');
 
 const startGame = () => {
-    // Restablecer el array de preguntas
-    questions = getQuestions();
+    // Verifica si el juego ya está en progreso antes de iniciarlo nuevamente
+    if (index === -1 || (correctAnswers + incorrectAnswers) === 0) {
+        // Restablecer el array de preguntas
+        questions = getQuestions();
 
-    // Restablecer el índice, la ronda y las respuestas
-    index = -1; // El índice se inicia en -1 porque el juego comienza en la pregunta 0
+        // Restablecer el índice, la ronda y las respuestas
+        index = -1; // El índice se inicia en -1 porque el juego comienza en la pregunta 0
+        round = 1;
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+
+        nextQuestion(); // Muestra la primera pregunta
+
+        // Deshabilitar el botón de inicio
+        startButton.disabled = true;
+
+        // Configurar el temporizador solo si no está activo
+        if (!crono) {
+            // Restablecer el tiempo y mostrarlo
+            timeDisplay();
+        }
+
+        // Restablecer el estado de las preguntas
+        questions.forEach(question => {
+            question.status = 0;
+        });
+    }
+};
+
+
+const restartGame = () => {
+    startButton.style.visibility = 'visible';
+    result.style.visibility = 'hidden';
+    panelGame.style.visibility = 'visible';
+    endGameDisplay.style.display = 'none';
+
+    letter.forEach(letterelement => {
+        letterelement.classList.remove("correct-answer");
+        letterelement.classList.remove("incorrect-answer");
+    })
+    index = -1;
     round = 1;
     correctAnswers = 0;
     incorrectAnswers = 0;
 
-    nextQuestion(); // Muestra la primera pregunta
+    nextQuestion();
 
-    // Deshabilitar el botón de inicio
-    startButton.disabled = true;
-
-    // Configurar el temporizador solo si no está activo
-    if (!crono) {
-        // Restablecer el tiempo y mostrarlo
-        timeDisplay();
-    }
-    // Restablecer el estado de las preguntas
-    questions.forEach(question => {
-        question.status = 0;
-    });
-};
+}
 
 
-startButton.addEventListener('click', startGame);
-
-const endGameDisplay = document.querySelector('.end-game');
-const panelGame = document.querySelector('.panel-game');
-const closeButton = document.querySelector('#btnclose');
 
 const closeGame = () => {
     endGame();
 
 };
 
-closeButton.addEventListener('click', closeGame);
 
 const endGame = () => {
     clearInterval(crono);
@@ -682,3 +678,23 @@ const endGame = () => {
     startButton.disabled = true;
     showResult();
 };
+
+const send = document.querySelector('#btnsend');
+const startButton = document.querySelector('#btn-start');
+const playAgain = document.querySelector('#play-again');
+const endGameDisplay = document.querySelector('.end-game');
+const panelGame = document.querySelector('.panel-game');
+const closeButton = document.querySelector('#btnclose');
+const buttonPasapalabra = document.querySelector('#btnpasapalabra');
+const score = document.querySelector('.score');
+const userAnswer = document.querySelector('#txtAnswer');
+const letter = document.querySelectorAll('.letter');
+const result = document.querySelector('.result-container .result');
+const restartButton = document.querySelector('#play-again');
+
+send.addEventListener('click', checkAnswer);
+startButton.addEventListener('click', startGame);
+closeButton.addEventListener('click', closeGame);
+playAgain.addEventListener('click', restartGame);
+buttonPasapalabra.addEventListener('click', passButton);
+restartButton.addEventListener('click', restartGame);
