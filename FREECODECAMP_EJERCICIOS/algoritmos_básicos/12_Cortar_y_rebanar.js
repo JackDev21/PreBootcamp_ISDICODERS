@@ -10,7 +10,7 @@ Devuelve el arreglo resultante. Los arreglos de entrada deben permanecer iguales
 
 function frankenSplice(arr1, arr2, n) {
 
-  let newArray = arr2.slice()
+  let newArray = [...arr2]
 
   for (let i = 0; i < arr1.length; i++) {
     newArray.splice(n, 0, arr1[i])
