@@ -15,7 +15,9 @@ function sumFibs(num) {
   while (fibCurr <= num) {
     // Si el número actual de Fibonacci es impar, lo sumamos
     if (fibCurr % 2 !== 0) {
-      sum += fibCurr;
+      sum = sum + fibCurr;
+      console.log(sum)
+
     }
 
     // Calculamos el siguiente número de Fibonacci
