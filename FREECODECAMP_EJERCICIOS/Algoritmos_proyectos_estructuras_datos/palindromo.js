@@ -10,26 +10,16 @@ Pasaremos cadenas con formatos variables, como racecar, RaceCar y race CAR entre
 También pasaremos cadenas con símbolos especiales, como 2A3*3a2, 2A3 3a2 y 2_A3*3#A2. */
 
 function palindrome(str) {
-  // Convertimos la cadena a minúsculas y eliminamos los espacios en blanco al principio y al final
-  // Luego, reemplazamos todos los caracteres que no sean letras ni números por una cadena vacía
-  str = str.replace(/[^a-z0-9]/gi, '').trim().toLowerCase();
-  console.log(str); // Imprimimos la cadena resultante después de los cambios
+  // Eliminar espacios en blanco y convertir a minúsculas
+  const palabra = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase(); // con regex eliminamos todos los caracteres que no sean letras o números y convertimos todo a minúsculas
+  console.log(processedStr); // Mostrar la cadena procesada en la consola
 
-  // Iteramos a través de la mitad de la longitud de la cadena
-  for (let i = 0; i < str.length; i++) {
-    console.log(str[i]); // Imprimimos cada carácter de la cadena para propósitos de depuración
+  // Invertir la cadena procesada
+  const palabraInvertida = processedStr.split('').reverse().join('');
+  console.log(reversedStr); // Mostrar la cadena invertida en la consola
 
-    // Verificamos si el carácter actual no es igual al carácter simétrico en la otra mitad de la cadena
-    if (str[i] !== str[str.length - 1 - i]) {
-      // Si no son iguales, devolvemos false, ya que no es un palíndromo
-
-      return false;
-    }
-  }
-
-  // Si hemos recorrido toda la cadena y no hemos encontrado ninguna diferencia,
-  // entonces la cadena es un palíndromo, por lo que devolvemos true
-  return true;
+  // Verificar si la cadena procesada es igual a su versión invertida
+  return palabra === palabraInvertida;
 }
 
-console.log(palindrome("eye")); // Probamos la función con la cadena "eye" y mostramos el resultado en la consola
+console.log(palindrome("_eye"));
